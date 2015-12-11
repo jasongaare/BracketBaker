@@ -18,25 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
-                                <rect key="frame" x="135" y="28" width="445" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pick A Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
-                                <rect key="frame" x="15" y="28" width="112" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick A Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
+                                <rect key="frame" x="20" y="74" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8c-cy-Yid">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Customize Bracket" id="Yj8-5n-fU9"/>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
+                                <rect key="frame" x="142" y="74" width="438" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tii-cT-1qH" firstAttribute="leading" secondItem="4t1-AU-kEN" secondAttribute="trailing" constant="8" id="Ery-4U-Voj"/>
-                            <constraint firstItem="tii-cT-1qH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="LnM-4m-lQd"/>
-                            <constraint firstItem="4t1-AU-kEN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="Mlu-FM-fJE"/>
-                            <constraint firstItem="tii-cT-1qH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="eZM-JT-YTX"/>
-                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fZm-zh-uo4"/>
+                            <constraint firstItem="R8c-cy-Yid" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="4Z4-ED-3YS"/>
+                            <constraint firstItem="R8c-cy-Yid" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RhE-l8-lLd"/>
+                            <constraint firstItem="tii-cT-1qH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="XjC-9T-yPd"/>
+                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="R8c-cy-Yid" secondAttribute="bottom" constant="10" id="bWP-3w-aF1"/>
+                            <constraint firstItem="tii-cT-1qH" firstAttribute="centerY" secondItem="4t1-AU-kEN" secondAttribute="centerY" id="cI3-Sl-sKT"/>
+                            <constraint firstItem="tii-cT-1qH" firstAttribute="leading" secondItem="4t1-AU-kEN" secondAttribute="trailing" constant="10" id="h8c-jO-ftz"/>
+                            <constraint firstItem="tii-cT-1qH" firstAttribute="top" secondItem="R8c-cy-Yid" secondAttribute="bottom" constant="10" id="j8v-PU-7xo"/>
+                            <constraint firstItem="4t1-AU-kEN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rdN-ba-1D7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -45,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="387"/>
+            <point key="canvasLocation" x="403" y="371"/>
         </scene>
     </scenes>
 </document>
