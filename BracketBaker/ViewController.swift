@@ -12,6 +12,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     // MARK: Global Variables
     
+    var dataLoaded = false
+    
     var masterDataArray : [[String]] = []
     
     var southRegionArray : [[String]] = []
@@ -23,28 +25,61 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Retreive current bracket data
-        if retreiveDatafromURL() {
-            print("Data loaded.")
+
+        // *----1----*
+        // We want to ensure we have a file on device with the bracket seedings
+        let seedingFile = FileSaveHelper(fileName: "currentSeedings", fileExtension: .TXT, subDirectory: "SaveFiles", directory: .DocumentDirectory)
+        // If we don't have the file, create it
+        if !seedingFile.fileExists {
+            do {
+                try seedingFile.saveFile(string: "JDG")
+                print("Creating file")
+            }
+            catch {
+                print(error)
+            }
         }
         
-        let testPicker = UIPickerView()
-        testPicker.delegate = self
-        
-        winnerPickerTextField.inputView = testPicker
-        
-        populateInitialArrays()
-        
-        print(midwestRegionArray[1][2])
-        print(westRegionArray[1][2])
-        
-        
-        // Made it!
-        print("Successful Load.")
+        // *----2----*
+        // Let's get the data we need
+        if retreiveData(seedingFile) {
+            print("Data loaded.")
+            dataLoaded = true
+            
+            populateInitialArrays()
+            
+            let testPicker = UIPickerView()
+            testPicker.delegate = self
+            winnerPickerTextField.inputView = testPicker
+            
+            // Made it!
+            print("Successful Load.")
+        }
+            
+        // If we couldn't find data, then this app is worthless
+        // Should rarely get here, however.
+        else {
+            dataLoaded = false
+            // Do nothing 
+            // Alert presents in viewDidAppear
+        }
     }
 
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        if(!dataLoaded)
+        {
+            let alert = UIAlertController(title: "No Data", message: "Functionality limited due to lack of data. Try again with valid network connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            let okayAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+            alert.addAction(okayAction)
+            presentViewController(alert, animated: true) { () -> Void in }
+        }
+
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,7 +87,22 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     // MARK: Data Manipulation
     
-    func retreiveDatafromURL() -> Bool {
+    func retreiveData(seedingFile: FileSaveHelper) -> Bool {
+        
+        // Local variables (we want this to be equal in the end)
+        var currentSaveFile = ""
+        var rawDataString = ""
+        
+        // Get the string of the current save file
+        do {
+            currentSaveFile = try seedingFile.getContentsOfFile()
+            print("Found the file")
+        }
+        catch
+        {
+            print(error)
+        }
+        
         
         // Dropbox: 2015seedings.txt
         // Line information: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
@@ -62,18 +112,52 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         do {
             
             let rawBracketData = try NSData(contentsOfURL: NSURL(string: pathURL)!, options: NSDataReadingOptions())
-            let rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)!
-            
-            //Separate by lines, then separate lines into the master data array
-            let linesOfData = rawDataString.componentsSeparatedByString("\n")
-            for ix in linesOfData {
-                masterDataArray.append(ix.componentsSeparatedByString("/") as [String])
-            }
-            
+            rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
+            print("Got the file online")
         } catch {
             print(error)
         }
         
+        // If the saved data and live data are not the same, figure out why!
+        if currentSaveFile != rawDataString
+        {
+            print("Uh oh! The files are different")
+            // Maybe we don't have a data connection (can't access URL)
+            if rawDataString == ""
+            {
+                // As long as our save file is not the initial file, we can proceed
+                // Initial file would == "JDG"
+                if currentSaveFile == "JDG"
+                {
+                    print("No data found on device or online.")
+                    return false;
+                }
+            }
+            else {
+                print("Better set the save file to the one online")
+                // If they are not equal, BUT we have retreived a file from URL, then update save file
+                do {
+                    print("Updating File")
+                    
+                    // Try to save to disk (long term)
+                    try seedingFile.saveFile(string: rawDataString)
+
+                    // Also update our current working (short term) string
+                    currentSaveFile = rawDataString
+                }
+                catch {
+                    print(error)
+                }
+            }
+        }
+        
+        // Unless we returned without data, we can proceed to populate masterDataArray
+        
+        //Separate by lines, then separate lines into the master data array
+        let linesOfData = currentSaveFile.componentsSeparatedByString("\n")
+        for ix in linesOfData {
+            masterDataArray.append(ix.componentsSeparatedByString("/"))
+        }
         
         return true
     }
