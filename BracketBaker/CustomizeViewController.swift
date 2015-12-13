@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     // MARK: Global Variables
     
@@ -21,6 +21,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var westRegionArray : [[String]] = []
     var midwestRegionArray : [[String]] = []
     
+    let allPicker = UIPickerView()
+    let southPicker = UIPickerView()
+    let eastPicker = UIPickerView()
+    let westPicker = UIPickerView()
+    let midwestPicker = UIPickerView()
+    
     // MARK: View Load/Unload Functions
     
     override func viewDidLoad() {
@@ -32,6 +38,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         // If we don't have the file, create it
         if !seedingFile.fileExists {
             do {
+                // This is just a placeholder
                 try seedingFile.saveFile(string: "JDG")
                 print("Creating file")
             }
@@ -46,17 +53,30 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             print("Data loaded.")
             dataLoaded = true
             
+            
+            
+        // *----3----*
+        // Set up our regional arrays and populate the various pickers
+            
             populateInitialArrays()
             
-            let testPicker = UIPickerView()
-            testPicker.delegate = self
-            winnerPickerTextField.inputView = testPicker
+            allPicker.delegate = self
+            southPicker.delegate = self
+            eastPicker.delegate = self
+            westPicker.delegate = self
+            midwestPicker.delegate = self
+            
+            eastFinalTextField.inputView = eastPicker
+            southFinalTextField.inputView = southPicker
+            westFinalTextField.inputView = westPicker
+            midwestFinalTextField.inputView = midwestPicker
+            winnerPickerTextField.inputView = allPicker
             
             // Made it!
             print("Successful Load.")
         }
             
-        // If we couldn't find data, then this app is worthless
+        // If we couldn't find data anywhere, then this app is worthless
         // Should rarely get here, however.
         else {
             dataLoaded = false
@@ -71,7 +91,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         if(!dataLoaded)
         {
-            let alert = UIAlertController(title: "No Data", message: "Functionality limited due to lack of data. Try again with valid network connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "No Data", message: "Functionality limited due to lack of data. Try again with working network connection.", preferredStyle: UIAlertControllerStyle.Alert)
             let okayAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
             alert.addAction(okayAction)
             presentViewController(alert, animated: true) { () -> Void in }
@@ -185,38 +205,109 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     // The number of rows of data
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return (masterDataArray.count + 1)
+        
+        // Our data depends on which picker we have, so let's determine that first
+        var thisPickerArray : [[String]] = []
+        
+        switch pickerView {
+        case southPicker:
+            thisPickerArray = southRegionArray
+        case eastPicker:
+            thisPickerArray = eastRegionArray
+        case westPicker:
+            thisPickerArray = westRegionArray
+        case midwestPicker:
+            thisPickerArray = midwestRegionArray
+        default:
+            thisPickerArray = masterDataArray
+        }
+        
+        return (thisPickerArray.count + 1)
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        // Our data depends on which picker we have, so let's determine that first
+        var thisPickerArray : [[String]] = []
+        
+        switch pickerView {
+            case southPicker:
+                thisPickerArray = southRegionArray
+            case eastPicker:
+                thisPickerArray = eastRegionArray
+            case westPicker:
+                thisPickerArray = westRegionArray
+            case midwestPicker:
+                thisPickerArray = midwestRegionArray
+            default:
+                thisPickerArray = masterDataArray
+        }
+        
         if row == 0 {
             return "Random"
         }
         else {
-            return masterDataArray[row-1][2]
+            return thisPickerArray[row-1][2]
         }
     }
     
     // Catpure the picker view selection
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
+        // Our data depends on which picker we have, so let's determine that first
+        var thisPickerTextField = UITextField()
+        var thisPickerArray : [[String]] = []
+        
+        switch pickerView {
+        case southPicker:
+            thisPickerTextField = southFinalTextField
+            thisPickerArray = southRegionArray
+        case eastPicker:
+            thisPickerTextField = eastFinalTextField
+            thisPickerArray = eastRegionArray
+        case westPicker:
+            thisPickerTextField = westFinalTextField
+            thisPickerArray = westRegionArray
+        case midwestPicker:
+            thisPickerTextField = midwestFinalTextField
+            thisPickerArray = midwestRegionArray
+        default:
+            thisPickerTextField = winnerPickerTextField
+            thisPickerArray = masterDataArray
+        }
+        
         //Assign value
         if row == 0 {
-            winnerPickerTextField.text = "Random"
+            thisPickerTextField.text = "Random"
         }
         else {
-             winnerPickerTextField.text = masterDataArray[row-1][2]
+             thisPickerTextField.text = thisPickerArray[row-1][2]
         }
         
         // Close the picker
-        winnerPickerTextField.resignFirstResponder()
+        thisPickerTextField.resignFirstResponder()
     }
+    
+    // MARK: Actions
+
+    @IBAction func createButtonClicked(sender: UIBarButtonItem) {
+        
+        winnerLabel.text = "Winner is: \(winnerPickerTextField.text!)"
+    }
+    
 
     // MARK: Outlets and Connections
     
     @IBOutlet weak var winnerPickerTextField: UITextField!
     
+    @IBOutlet weak var midwestFinalTextField: UITextField!
+    @IBOutlet weak var westFinalTextField: UITextField!
+    @IBOutlet weak var southFinalTextField: UITextField!
+    @IBOutlet weak var eastFinalTextField: UITextField!
+    
+    @IBOutlet weak var createButton: UIBarButtonItem!
+    
+    @IBOutlet weak var winnerLabel: UILabel!
     
 }
