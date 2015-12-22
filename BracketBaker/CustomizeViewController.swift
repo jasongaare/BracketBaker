@@ -14,6 +14,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     var dataLoaded = false
     
+    // This is the text when there is no team selected
+    let placeholder = "???"
+    
     var masterDataArray : [[String]] = []
     
     var southRegionArray : [[String]] = []
@@ -26,6 +29,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let eastPicker = UIPickerView()
     let westPicker = UIPickerView()
     let midwestPicker = UIPickerView()
+    
+    // Midwest & West Winner
+    let finalPicker1 = UIPickerView()
+    // South & East Winner
+    let finalPicker2 = UIPickerView()
+    
     
     // MARK: View Load/Unload Functions
     
@@ -65,16 +74,42 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             eastPicker.delegate = self
             westPicker.delegate = self
             midwestPicker.delegate = self
+            finalPicker1.delegate = self
+            finalPicker2.delegate = self
             
+            
+            // Let's open the picker, instead of a keyboard, for these fields
             eastFinalTextField.inputView = eastPicker
             southFinalTextField.inputView = southPicker
             westFinalTextField.inputView = westPicker
             midwestFinalTextField.inputView = midwestPicker
+            finalOneTextField.inputView = finalPicker1
+            finalTwoTextField.inputView = finalPicker2
             winnerPickerTextField.inputView = allPicker
+            
+            // Sort arrays by seeding
+            southRegionArray = southRegionArray.sort {Int($0[1]) < Int($1[1])}
+            eastRegionArray = eastRegionArray.sort {Int($0[1]) < Int($1[1])}
+            westRegionArray = westRegionArray.sort {Int($0[1]) < Int($1[1])}
+            midwestRegionArray = midwestRegionArray.sort {Int($0[1]) < Int($1[1])}
+            
+            // Set initial text
+            eastFinalTextField.text = self.placeholder
+            southFinalTextField.text = self.placeholder
+            westFinalTextField.text = self.placeholder
+            midwestFinalTextField.text = self.placeholder
+            finalOneTextField.text = self.placeholder
+            finalTwoTextField.text = self.placeholder
+            winnerPickerTextField.text = self.placeholder
             
             // Made it!
             print("Successful Load.")
+            
+            
+            
+        // This bracket ends our "if data loaded" block
         }
+            
             
         // If we couldn't find data anywhere, then this app is worthless
         // Should rarely get here, however.
@@ -218,6 +253,66 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             thisPickerArray = westRegionArray
         case midwestPicker:
             thisPickerArray = midwestRegionArray
+        case finalPicker1:
+            // If user selected a midwest team, we only want that as an option on the final
+            if (midwestFinalTextField.text != self.placeholder) {
+
+                // Find the team
+                for ix in midwestRegionArray {
+                    if ix[2] == midwestFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += midwestRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (westFinalTextField.text != self.placeholder) {
+
+                //find the team
+                for ix in westRegionArray {
+                    if ix[2] == westFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += westRegionArray
+            }
+        case finalPicker2:
+            // If user selected a midwest team, we only want that as an option on the final
+            if (southFinalTextField.text != self.placeholder) {
+                
+                // Find the team
+                for ix in southRegionArray {
+                    if ix[2] == southFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += midwestRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (eastFinalTextField.text != self.placeholder) {
+                
+                //find the team
+                for ix in eastRegionArray {
+                    if ix[2] == eastFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += eastRegionArray
+            }
         default:
             thisPickerArray = masterDataArray
         }
@@ -240,15 +335,81 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 thisPickerArray = westRegionArray
             case midwestPicker:
                 thisPickerArray = midwestRegionArray
+            case finalPicker1:
+                
+                // If user selected a midwest team, we only want that as an option on the final
+                if (midwestFinalTextField.text != self.placeholder) {
+
+                    // Find the team
+                    for ix in midwestRegionArray {
+                        if ix[2] == midwestFinalTextField.text {
+                            thisPickerArray.append(ix)
+                            break
+                        }
+                    }
+                }
+                else {
+                    thisPickerArray += midwestRegionArray
+                }
+                
+                // If user selected a west team, we only want that as an option on the final
+                if (westFinalTextField.text != self.placeholder) {
+
+                    //find the team
+                    for ix in westRegionArray {
+                        if ix[2] == westFinalTextField.text {
+                            thisPickerArray.append(ix)
+                            break
+                        }
+                    }
+                }
+                else {
+                    thisPickerArray += westRegionArray
+                }
+                
+                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            case finalPicker2:
+                // If user selected a midwest team, we only want that as an option on the final
+                if (southFinalTextField.text != self.placeholder) {
+                    
+                    // Find the team
+                    for ix in southRegionArray {
+                        if ix[2] == southFinalTextField.text {
+                            thisPickerArray.append(ix)
+                            break
+                        }
+                    }
+                }
+                else {
+                    thisPickerArray += midwestRegionArray
+                }
+                
+                // If user selected a west team, we only want that as an option on the final
+                if (eastFinalTextField.text != self.placeholder) {
+                    
+                    //find the team
+                    for ix in eastRegionArray {
+                        if ix[2] == eastFinalTextField.text {
+                            thisPickerArray.append(ix)
+                            break
+                        }
+                    }
+                }
+                else {
+                    thisPickerArray += eastRegionArray
+                }
+                
+                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
             default:
                 thisPickerArray = masterDataArray
         }
         
         if row == 0 {
-            return "Random"
+            return self.placeholder
         }
         else {
-            return thisPickerArray[row-1][2]
+            // [Seed]. [Team Name]
+            return "\(thisPickerArray[row-1][1]). \(thisPickerArray[row-1][2])"
         }
     }
     
@@ -263,23 +424,99 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         case southPicker:
             thisPickerTextField = southFinalTextField
             thisPickerArray = southRegionArray
+            finalPicker2.reloadAllComponents()
         case eastPicker:
             thisPickerTextField = eastFinalTextField
             thisPickerArray = eastRegionArray
+            finalPicker2.reloadAllComponents()
         case westPicker:
             thisPickerTextField = westFinalTextField
             thisPickerArray = westRegionArray
+            finalPicker1.reloadAllComponents()
         case midwestPicker:
             thisPickerTextField = midwestFinalTextField
             thisPickerArray = midwestRegionArray
+            finalPicker1.reloadAllComponents()
+            
+        case finalPicker1:
+            thisPickerTextField = finalOneTextField
+            
+            // If user selected a midwest team, we only want that as an option on the final
+            if (midwestFinalTextField.text != self.placeholder) {
+
+                // Find the team
+                for ix in midwestRegionArray {
+                    if ix[2] == midwestFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += midwestRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (westFinalTextField.text != self.placeholder) {
+
+                //find the team
+                for ix in westRegionArray {
+                    if ix[2] == westFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += westRegionArray
+            }
+            
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            
+        case finalPicker2:
+            thisPickerTextField = finalTwoTextField
+            
+            // If user selected a midwest team, we only want that as an option on the final
+            if (southFinalTextField.text != self.placeholder) {
+                
+                // Find the team
+                for ix in southRegionArray {
+                    if ix[2] == southFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += southRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (eastFinalTextField.text != self.placeholder) {
+                
+                //find the team
+                for ix in eastRegionArray {
+                    if ix[2] == eastFinalTextField.text {
+                        thisPickerArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                thisPickerArray += eastRegionArray
+            }
+            
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            
         default:
             thisPickerTextField = winnerPickerTextField
             thisPickerArray = masterDataArray
+        //end switch
         }
         
         //Assign value
         if row == 0 {
-            thisPickerTextField.text = "Random"
+            thisPickerTextField.text = self.placeholder
         }
         else {
              thisPickerTextField.text = thisPickerArray[row-1][2]
@@ -288,6 +525,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Close the picker
         thisPickerTextField.resignFirstResponder()
     }
+    
     
     // MARK: Actions
 
@@ -305,6 +543,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var westFinalTextField: UITextField!
     @IBOutlet weak var southFinalTextField: UITextField!
     @IBOutlet weak var eastFinalTextField: UITextField!
+    @IBOutlet weak var finalOneTextField: UITextField!
+    @IBOutlet weak var finalTwoTextField: UITextField!
     
     @IBOutlet weak var createButton: UIBarButtonItem!
     
