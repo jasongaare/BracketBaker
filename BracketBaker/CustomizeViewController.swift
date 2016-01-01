@@ -546,9 +546,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
     @IBAction func createButtonClicked(sender: UIBarButtonItem) {
         
+        // When the button is clicked, we want to capture the user customization preferences
         let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!)
         
-        let bracket = BracketSolver()
+        // Then we create the bracket, starting by sending the raw data over to the solver
+        let bracket = BracketSolver(masterArray: masterDataArray, mwArray: midwestRegionArray, wArray: westRegionArray, sArray: southRegionArray, eArray: eastRegionArray, ph: placeholder)
+        
+        // Using the user preferences we fill out the bracket
         bracket.fillOutBracket(theseUserPrefs)
         
         
