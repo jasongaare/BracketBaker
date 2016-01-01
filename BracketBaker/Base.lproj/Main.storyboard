@@ -146,6 +146,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Customize Bracket" id="Fiy-Jb-zeS">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="qnx-mF-vYc" userLabel="Reset">
+                            <connections>
+                                <action selector="resetButtonClicked:" destination="BYZ-38-t0r" id="OVK-5B-rth"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" id="xnw-aL-dmo">
                             <connections>
                                 <action selector="createButtonClicked:" destination="BYZ-38-t0r" id="IbA-EX-U7r"/>
@@ -158,6 +163,7 @@
                         <outlet property="finalOneTextField" destination="fu6-rx-TGH" id="L3S-CF-9Es"/>
                         <outlet property="finalTwoTextField" destination="epA-4O-TvU" id="zGq-Qz-HaQ"/>
                         <outlet property="midwestFinalTextField" destination="mOX-rj-RaE" id="azg-sp-gIc"/>
+                        <outlet property="resetButton" destination="qnx-mF-vYc" id="uGq-EQ-rFJ"/>
                         <outlet property="southFinalTextField" destination="i8Q-Nc-l7N" id="gay-BP-XMu"/>
                         <outlet property="westFinalTextField" destination="fuf-j4-8sn" id="HcL-3Z-G5m"/>
                         <outlet property="winnerLabel" destination="Tr9-ox-zTz" id="azp-Ft-uqu"/>

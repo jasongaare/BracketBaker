@@ -342,7 +342,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             thisPickerTextField = finalTwoTextField
             thisPickerArray = finalPicker2Helper()
 
-            
         case winnerPicker:
             thisPickerTextField = winnerPickerTextField
             thisPickerArray = winnerPickerHelper()
@@ -556,9 +555,38 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         bracket.fillOutBracket(theseUserPrefs)
         
         
+        midwestFinalTextField.text = bracket.mwFinal
+        westFinalTextField.text = bracket.wFinal
+        southFinalTextField.text = bracket.sFinal
+        eastFinalTextField.text = bracket.eFinal
+        finalOneTextField.text = bracket.final1
+        finalTwoTextField.text = bracket.final2
+        winnerPickerTextField.text = bracket.winner
+        
+        
         winnerLabel.text = "Winner is: \(bracket.winner)"
     }
     
+    @IBAction func resetButtonClicked(sender: AnyObject) {
+        
+        // Change the text back to the placeholder
+        midwestFinalTextField.text = self.placeholder
+        westFinalTextField.text = self.placeholder
+        southFinalTextField.text = self.placeholder
+        eastFinalTextField.text = self.placeholder
+        finalOneTextField.text = self.placeholder
+        finalTwoTextField.text = self.placeholder
+        winnerPickerTextField.text = self.placeholder
+        
+        // Spin the pickers back to the top
+        midwestPicker.selectRow(0, inComponent: 0, animated: false)
+        westPicker.selectRow(0, inComponent: 0, animated: false)
+        southPicker.selectRow(0, inComponent: 0, animated: false)
+        eastPicker.selectRow(0, inComponent: 0, animated: false)
+        finalPicker1.selectRow(0, inComponent: 0, animated: false)
+        finalPicker2.selectRow(0, inComponent: 0, animated: false)
+        winnerPicker.selectRow(0, inComponent: 0, animated: false)
+    }
 
     // MARK: Outlets and Connections
     
@@ -572,6 +600,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var finalTwoTextField: UITextField!
     
     @IBOutlet weak var createButton: UIBarButtonItem!
+    @IBOutlet weak var resetButton: UIBarButtonItem!
     
     @IBOutlet weak var winnerLabel: UILabel!
     
