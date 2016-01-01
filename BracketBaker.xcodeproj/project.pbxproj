@@ -16,6 +16,7 @@
 		1B30B7F51C15EAF7008C0657 /* BracketBakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7F41C15EAF7008C0657 /* BracketBakerTests.swift */; };
 		1B30B8001C15EAF7008C0657 /* BracketBakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */; };
 		1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */; };
+		1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketBakerUITests.swift; sourceTree = "<group>"; };
 		1B30B8011C15EAF7008C0657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectedPrefs.swift; sourceTree = "<group>"; };
+		1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */,
-				1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */,
+				1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */,
 				1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */,
+				1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */,
 				1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */,
 				1B30B7E31C15EAF6008C0657 /* Main.storyboard */,
 				1B30B7E61C15EAF6008C0657 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */,
 				1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */,
 				1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */,
 				1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */,
