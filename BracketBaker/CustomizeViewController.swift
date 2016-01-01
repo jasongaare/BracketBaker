@@ -546,7 +546,10 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
     @IBAction func createButtonClicked(sender: UIBarButtonItem) {
         
-        winnerLabel.text = "Winner is: \(winnerPickerTextField.text!)"
+        let userPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!)
+        
+        
+        winnerLabel.text = "Winner is: \(userPrefs.winner)"
     }
     
 
