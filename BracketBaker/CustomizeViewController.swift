@@ -104,7 +104,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.text = self.placeholder
             
             // Made it!
-            print("Successful Load.")
+            print("Completed launch.")
             
             
             
@@ -232,6 +232,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
         
     }
+
     
     // MARK: UIPickerView Delegate
     
@@ -255,158 +256,11 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         case midwestPicker:
             thisPickerArray = midwestRegionArray
         case finalPicker1:
-            // If user selected a midwest team, we only want that as an option on the final
-            if (midwestFinalTextField.text != self.placeholder) {
-
-                // Find the team
-                for ix in midwestRegionArray {
-                    if ix[2] == midwestFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += midwestRegionArray
-            }
-            
-            // If user selected a west team, we only want that as an option on the final
-            if (westFinalTextField.text != self.placeholder) {
-
-                //find the team
-                for ix in westRegionArray {
-                    if ix[2] == westFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += westRegionArray
-            }
-            
-        // finalPicker2 
-            
+            thisPickerArray = finalPicker1Helper()
         case finalPicker2:
-            // If user selected a midwest team, we only want that as an option on the final
-            if (southFinalTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in southRegionArray {
-                    if ix[2] == southFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += midwestRegionArray
-            }
-            
-            // If user selected a west team, we only want that as an option on the final
-            if (eastFinalTextField.text != self.placeholder) {
-                
-                //find the team
-                for ix in eastRegionArray {
-                    if ix[2] == eastFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += eastRegionArray
-            }
-            
+            thisPickerArray = finalPicker2Helper()
         case winnerPicker:
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalTwoTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalTwoTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-                
-                // If user selected a midwest team, we only want that as an option on the final
-                if (southFinalTextField.text != self.placeholder) {
-                    
-                    // Find the team
-                    for ix in southRegionArray {
-                        if ix[2] == southFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (eastFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in eastRegionArray {
-                        if ix[2] == eastFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += eastRegionArray
-                }
-            }
-            
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalOneTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalOneTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-                if (midwestFinalTextField.text != self.placeholder) {
-                    // Find the team
-                    for ix in midwestRegionArray {
-                        if ix[2] == midwestFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (westFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in westRegionArray {
-                        if ix[2] == westFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += westRegionArray
-                }
-                
-            }
-        
+            thisPickerArray = winnerPickerHelper()
         default:
             thisPickerArray = masterDataArray
         }
@@ -430,167 +284,17 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             case midwestPicker:
                 thisPickerArray = midwestRegionArray
             case finalPicker1:
-                
-                // If user selected a midwest team, we only want that as an option on the final
-                if (midwestFinalTextField.text != self.placeholder) {
-
-                    // Find the team
-                    for ix in midwestRegionArray {
-                        if ix[2] == midwestFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (westFinalTextField.text != self.placeholder) {
-
-                    //find the team
-                    for ix in westRegionArray {
-                        if ix[2] == westFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += westRegionArray
-                }
-                
-                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+                thisPickerArray = finalPicker1Helper()
             case finalPicker2:
-                // If user selected a midwest team, we only want that as an option on the final
-                if (southFinalTextField.text != self.placeholder) {
-                    
-                    // Find the team
-                    for ix in southRegionArray {
-                        if ix[2] == southFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += southRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (eastFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in eastRegionArray {
-                        if ix[2] == eastFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += eastRegionArray
-                }
-                
-                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
-            
-        case winnerPicker:
-            
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalTwoTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalTwoTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-            
-                // If user selected a midwest team, we only want that as an option on the final
-                if (southFinalTextField.text != self.placeholder) {
-                
-                    // Find the team
-                    for ix in southRegionArray {
-                        if ix[2] == southFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-            
-                // If user selected a west team, we only want that as an option on the final
-                if (eastFinalTextField.text != self.placeholder) {
-                
-                    //find the team
-                    for ix in eastRegionArray {
-                        if ix[2] == eastFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += eastRegionArray
-                }
-            }
-            
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalOneTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalOneTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-                if (midwestFinalTextField.text != self.placeholder) {
-                    // Find the team
-                    for ix in midwestRegionArray {
-                        if ix[2] == midwestFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (westFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in westRegionArray {
-                        if ix[2] == westFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += westRegionArray
-                }
-                
-
-            }
-                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
-            
+                thisPickerArray = finalPicker2Helper()
+            case winnerPicker:
+                thisPickerArray = winnerPickerHelper()
             default:
                 thisPickerArray = masterDataArray
-                thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
         }
+        
+        // Sort by seed
+        thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
         
         if row == 0 {
             return self.placeholder
@@ -609,18 +313,22 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         var thisPickerArray : [[String]] = []
         
         switch pickerView {
+            
         case southPicker:
             thisPickerTextField = southFinalTextField
             thisPickerArray = southRegionArray
             finalPicker2.reloadAllComponents()
+            
         case eastPicker:
             thisPickerTextField = eastFinalTextField
             thisPickerArray = eastRegionArray
             finalPicker2.reloadAllComponents()
+            
         case westPicker:
             thisPickerTextField = westFinalTextField
             thisPickerArray = westRegionArray
             finalPicker1.reloadAllComponents()
+            
         case midwestPicker:
             thisPickerTextField = midwestFinalTextField
             thisPickerArray = midwestRegionArray
@@ -628,171 +336,25 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
         case finalPicker1:
             thisPickerTextField = finalOneTextField
-            
-            // If user selected a midwest team, we only want that as an option on the final
-            if (midwestFinalTextField.text != self.placeholder) {
-
-                // Find the team
-                for ix in midwestRegionArray {
-                    if ix[2] == midwestFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += midwestRegionArray
-            }
-            
-            // If user selected a west team, we only want that as an option on the final
-            if (westFinalTextField.text != self.placeholder) {
-
-                //find the team
-                for ix in westRegionArray {
-                    if ix[2] == westFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += westRegionArray
-            }
-            
-            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            thisPickerArray = finalPicker1Helper()
             
         case finalPicker2:
             thisPickerTextField = finalTwoTextField
-            
-            // If user selected a midwest team, we only want that as an option on the final
-            if (southFinalTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in southRegionArray {
-                    if ix[2] == southFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += southRegionArray
-            }
-            
-            // If user selected a west team, we only want that as an option on the final
-            if (eastFinalTextField.text != self.placeholder) {
-                
-                //find the team
-                for ix in eastRegionArray {
-                    if ix[2] == eastFinalTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-            }
-            else {
-                thisPickerArray += eastRegionArray
-            }
-            
-            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            thisPickerArray = finalPicker2Helper()
+
             
         case winnerPicker:
             thisPickerTextField = winnerPickerTextField
-            
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalTwoTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalTwoTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-                
-                // If user selected a midwest team, we only want that as an option on the final
-                if (southFinalTextField.text != self.placeholder) {
-                    
-                    // Find the team
-                    for ix in southRegionArray {
-                        if ix[2] == southFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (eastFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in eastRegionArray {
-                        if ix[2] == eastFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += eastRegionArray
-                }
-            }
-            
-            // If they've picked a semi winnner, no need to look at final four
-            if (finalOneTextField.text != self.placeholder) {
-                
-                // Find the team
-                for ix in masterDataArray {
-                    if ix[2] == finalOneTextField.text {
-                        thisPickerArray.append(ix)
-                        break
-                    }
-                }
-                
-            }
-            else {
-                if (midwestFinalTextField.text != self.placeholder) {
-                    // Find the team
-                    for ix in midwestRegionArray {
-                        if ix[2] == midwestFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += midwestRegionArray
-                }
-                
-                // If user selected a west team, we only want that as an option on the final
-                if (westFinalTextField.text != self.placeholder) {
-                    
-                    //find the team
-                    for ix in westRegionArray {
-                        if ix[2] == westFinalTextField.text {
-                            thisPickerArray.append(ix)
-                            break
-                        }
-                    }
-                }
-                else {
-                    thisPickerArray += westRegionArray
-                }
-                
-                
-            }
+            thisPickerArray = winnerPickerHelper()
             
         default:
             thisPickerTextField = winnerPickerTextField
             thisPickerArray = masterDataArray
-        //end switch
         }
+        
+        
+        // Sort by seed
+        thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
         
         //Assign value
         if row == 0 {
@@ -804,6 +366,179 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Close the picker
         thisPickerTextField.resignFirstResponder()
+    }
+   
+    // MARK: Picker View Helpers
+    // These help to reduce the need for duplicate code above
+    
+    func finalPicker1Helper() -> [[String]]  {
+    
+        var currentArray : [[String]] = []
+        
+        // If user selected a midwest team, we only want that as an option on the final
+        if (midwestFinalTextField.text != self.placeholder) {
+            
+            // Find the team
+            for ix in midwestRegionArray {
+                if ix[2] == midwestFinalTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+        }
+        else {
+            currentArray += midwestRegionArray
+        }
+        
+        // If user selected a west team, we only want that as an option on the final
+        if (westFinalTextField.text != self.placeholder) {
+            
+            //find the team
+            for ix in westRegionArray {
+                if ix[2] == westFinalTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+        }
+        else {
+            currentArray += westRegionArray
+        }
+        
+        return currentArray
+    }
+    
+    
+    func finalPicker2Helper() -> [[String]] {
+        
+        var currentArray : [[String]] = []
+        
+        // If user selected a midwest team, we only want that as an option on the final
+        if (southFinalTextField.text != self.placeholder) {
+            
+            // Find the team
+            for ix in southRegionArray {
+                if ix[2] == southFinalTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+        }
+        else {
+            currentArray += midwestRegionArray
+        }
+        
+        // If user selected a west team, we only want that as an option on the final
+        if (eastFinalTextField.text != self.placeholder) {
+            
+            //find the team
+            for ix in eastRegionArray {
+                if ix[2] == eastFinalTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+        }
+        else {
+            currentArray += eastRegionArray
+        }
+        
+        return currentArray
+    }
+    
+    func winnerPickerHelper() -> [[String]] {
+        
+        var currentArray : [[String]] = []
+        
+        // If they've picked a semi winnner, no need to look at final four
+        if (finalTwoTextField.text != self.placeholder) {
+            
+            // Find the team
+            for ix in masterDataArray {
+                if ix[2] == finalTwoTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+            
+        }
+        else {
+            
+            // If user selected a midwest team, we only want that as an option on the final
+            if (southFinalTextField.text != self.placeholder) {
+                
+                // Find the team
+                for ix in southRegionArray {
+                    if ix[2] == southFinalTextField.text {
+                        currentArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                currentArray += midwestRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (eastFinalTextField.text != self.placeholder) {
+                
+                //find the team
+                for ix in eastRegionArray {
+                    if ix[2] == eastFinalTextField.text {
+                        currentArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                currentArray += eastRegionArray
+            }
+        }
+        
+        // If they've picked a semi winnner, no need to look at final four
+        if (finalOneTextField.text != self.placeholder) {
+            
+            // Find the team
+            for ix in masterDataArray {
+                if ix[2] == finalOneTextField.text {
+                    currentArray.append(ix)
+                    break
+                }
+            }
+            
+        }
+        else {
+            if (midwestFinalTextField.text != self.placeholder) {
+                // Find the team
+                for ix in midwestRegionArray {
+                    if ix[2] == midwestFinalTextField.text {
+                        currentArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                currentArray += midwestRegionArray
+            }
+            
+            // If user selected a west team, we only want that as an option on the final
+            if (westFinalTextField.text != self.placeholder) {
+                
+                //find the team
+                for ix in westRegionArray {
+                    if ix[2] == westFinalTextField.text {
+                        currentArray.append(ix)
+                        break
+                    }
+                }
+            }
+            else {
+                currentArray += westRegionArray
+            }
+            
+        }
+        
+        return currentArray
     }
     
     
