@@ -365,7 +365,52 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             thisPickerTextField.text = self.placeholder
         }
         else {
-             thisPickerTextField.text = thisPickerArray[row-1][2]
+            let teamName = thisPickerArray[row-1][2]
+            thisPickerTextField.text = teamName
+            
+            // If this is the winner, we need to populate UPWARDS
+            if(pickerView == winnerPicker) {
+                // Get region of winner
+                switch Int(thisPickerArray[row-1][0])! {
+                case 1:
+                    midwestFinalTextField.text = teamName
+                    finalOneTextField.text = teamName
+                case 2:
+                    westFinalTextField.text = teamName
+                    finalOneTextField.text = teamName
+                case 3:
+                    eastFinalTextField.text = teamName
+                    finalTwoTextField.text = teamName
+                case 4:
+                    southFinalTextField.text = teamName
+                    finalTwoTextField.text = teamName
+                default : break
+                }
+            }
+            
+            // If this is the first final, we need to populate UPWARDS
+            else if(pickerView == finalPicker1) {
+                // Get region of winner
+                switch Int(thisPickerArray[row-1][0])! {
+                case 1:
+                    midwestFinalTextField.text = teamName
+                case 2:
+                    westFinalTextField.text = teamName
+                default: break
+                }
+            }
+        
+            // If this is the second final, we need to populate UPWARDS
+            else if(pickerView == finalPicker2) {
+                //Get region of winner
+                switch Int(thisPickerArray[row-1][0])! {
+                case 3:
+                    eastFinalTextField.text = teamName
+                case 4:
+                    southFinalTextField.text = teamName
+                default: break
+                }
+            }
         }
         
         // Close the picker
