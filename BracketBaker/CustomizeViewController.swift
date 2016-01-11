@@ -24,6 +24,11 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var westRegionArray : [[String]] = []
     var midwestRegionArray : [[String]] = []
     
+    var southSorted : [[String]] = []
+    var eastSorted : [[String]] = []
+    var westSorted : [[String]] = []
+    var midwestSorted : [[String]] = []
+    
     let winnerPicker = UIPickerView()
     let southPicker = UIPickerView()
     let eastPicker = UIPickerView()
@@ -89,10 +94,10 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.inputView = winnerPicker
             
             // Sort arrays by seeding
-            southRegionArray = southRegionArray.sort {Int($0[1]) < Int($1[1])}
-            eastRegionArray = eastRegionArray.sort {Int($0[1]) < Int($1[1])}
-            westRegionArray = westRegionArray.sort {Int($0[1]) < Int($1[1])}
-            midwestRegionArray = midwestRegionArray.sort {Int($0[1]) < Int($1[1])}
+            southSorted = southRegionArray.sort {Int($0[1]) < Int($1[1])}
+            eastSorted = eastRegionArray.sort {Int($0[1]) < Int($1[1])}
+            westSorted = westRegionArray.sort {Int($0[1]) < Int($1[1])}
+            midwestSorted = midwestRegionArray.sort {Int($0[1]) < Int($1[1])}
             
             // Set initial text
             eastFinalTextField.text = self.placeholder
@@ -220,13 +225,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         for ix in masterDataArray {
             switch Int(ix[0])! {
                 case 1:
-                    southRegionArray.append(ix)
-                case 2:
-                    eastRegionArray.append(ix)
-                case 3:
-                    westRegionArray.append(ix)
-                case 4:
                     midwestRegionArray.append(ix)
+                case 2:
+                    westRegionArray.append(ix)
+                case 3:
+                    eastRegionArray.append(ix)
+                case 4:
+                    southRegionArray.append(ix)
                 default: break
             }
         }
@@ -248,13 +253,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         switch pickerView {
         case southPicker:
-            thisPickerArray = southRegionArray
+            thisPickerArray = southSorted
         case eastPicker:
-            thisPickerArray = eastRegionArray
+            thisPickerArray = eastSorted
         case westPicker:
-            thisPickerArray = westRegionArray
+            thisPickerArray = westSorted
         case midwestPicker:
-            thisPickerArray = midwestRegionArray
+            thisPickerArray = midwestSorted
         case finalPicker1:
             thisPickerArray = finalPicker1Helper()
         case finalPicker2:
@@ -276,13 +281,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         switch pickerView {
             case southPicker:
-                thisPickerArray = southRegionArray
+                thisPickerArray = southSorted
             case eastPicker:
-                thisPickerArray = eastRegionArray
+                thisPickerArray = eastSorted
             case westPicker:
-                thisPickerArray = westRegionArray
+                thisPickerArray = westSorted
             case midwestPicker:
-                thisPickerArray = midwestRegionArray
+                thisPickerArray = midwestSorted
             case finalPicker1:
                 thisPickerArray = finalPicker1Helper()
             case finalPicker2:
@@ -316,22 +321,22 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
         case southPicker:
             thisPickerTextField = southFinalTextField
-            thisPickerArray = southRegionArray
+            thisPickerArray = southSorted
             finalPicker2.reloadAllComponents()
             
         case eastPicker:
             thisPickerTextField = eastFinalTextField
-            thisPickerArray = eastRegionArray
+            thisPickerArray = eastSorted
             finalPicker2.reloadAllComponents()
             
         case westPicker:
             thisPickerTextField = westFinalTextField
-            thisPickerArray = westRegionArray
+            thisPickerArray = westSorted
             finalPicker1.reloadAllComponents()
             
         case midwestPicker:
             thisPickerTextField = midwestFinalTextField
-            thisPickerArray = midwestRegionArray
+            thisPickerArray = midwestSorted
             finalPicker1.reloadAllComponents()
             
         case finalPicker1:
@@ -378,7 +383,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if (midwestFinalTextField.text != self.placeholder) {
             
             // Find the team
-            for ix in midwestRegionArray {
+            for ix in midwestSorted {
                 if ix[2] == midwestFinalTextField.text {
                     currentArray.append(ix)
                     break
@@ -386,14 +391,14 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
         }
         else {
-            currentArray += midwestRegionArray
+            currentArray += midwestSorted
         }
         
         // If user selected a west team, we only want that as an option on the final
         if (westFinalTextField.text != self.placeholder) {
             
             //find the team
-            for ix in westRegionArray {
+            for ix in westSorted {
                 if ix[2] == westFinalTextField.text {
                     currentArray.append(ix)
                     break
@@ -401,7 +406,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
         }
         else {
-            currentArray += westRegionArray
+            currentArray += westSorted
         }
         
         return currentArray
@@ -416,7 +421,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if (southFinalTextField.text != self.placeholder) {
             
             // Find the team
-            for ix in southRegionArray {
+            for ix in southSorted {
                 if ix[2] == southFinalTextField.text {
                     currentArray.append(ix)
                     break
@@ -424,14 +429,14 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
         }
         else {
-            currentArray += midwestRegionArray
+            currentArray += southSorted
         }
         
         // If user selected a west team, we only want that as an option on the final
         if (eastFinalTextField.text != self.placeholder) {
             
             //find the team
-            for ix in eastRegionArray {
+            for ix in eastSorted {
                 if ix[2] == eastFinalTextField.text {
                     currentArray.append(ix)
                     break
@@ -439,7 +444,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
         }
         else {
-            currentArray += eastRegionArray
+            currentArray += eastSorted
         }
         
         return currentArray
@@ -467,7 +472,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             if (southFinalTextField.text != self.placeholder) {
                 
                 // Find the team
-                for ix in southRegionArray {
+                for ix in southSorted {
                     if ix[2] == southFinalTextField.text {
                         currentArray.append(ix)
                         break
@@ -475,14 +480,14 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
             }
             else {
-                currentArray += midwestRegionArray
+                currentArray += southSorted
             }
             
             // If user selected a west team, we only want that as an option on the final
             if (eastFinalTextField.text != self.placeholder) {
                 
                 //find the team
-                for ix in eastRegionArray {
+                for ix in eastSorted {
                     if ix[2] == eastFinalTextField.text {
                         currentArray.append(ix)
                         break
@@ -490,7 +495,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
             }
             else {
-                currentArray += eastRegionArray
+                currentArray += eastSorted
             }
         }
         
@@ -509,7 +514,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         else {
             if (midwestFinalTextField.text != self.placeholder) {
                 // Find the team
-                for ix in midwestRegionArray {
+                for ix in midwestSorted {
                     if ix[2] == midwestFinalTextField.text {
                         currentArray.append(ix)
                         break
@@ -517,14 +522,14 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
             }
             else {
-                currentArray += midwestRegionArray
+                currentArray += midwestSorted
             }
             
             // If user selected a west team, we only want that as an option on the final
             if (westFinalTextField.text != self.placeholder) {
                 
                 //find the team
-                for ix in westRegionArray {
+                for ix in westSorted {
                     if ix[2] == westFinalTextField.text {
                         currentArray.append(ix)
                         break
@@ -532,7 +537,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
             }
             else {
-                currentArray += westRegionArray
+                currentArray += westSorted
             }
             
         }

@@ -10,6 +10,8 @@ import Foundation
 
 class BracketSolver {
     
+    // MARK: Variables
+    
     var placeholder = ""
     
     // ARRAY COLUMNS: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
@@ -29,47 +31,23 @@ class BracketSolver {
     var final2 = ""
     var winner = ""
     
+    // MARK: Solver Functions
+    
     func fillOutBracket(prefs : UserSelectedPrefs) {
         
-        var randomNumber : Int = 0
+        // Populate each region of the bracket
         
-        // Fill in the final four
+        var midwestComplete = populateRegion(midwestArray, userWinner: prefs.midwestFinal)
+        var westComplete = populateRegion(westArray, userWinner: prefs.westFinal)
+        var eastComplete = populateRegion(eastArray, userWinner: prefs.eastFinal)
+        var southComplete = populateRegion(southArray, userWinner: prefs.southFinal)
         
-        // Midwest
-        if(prefs.midwestFinal == placeholder) {
-            randomNumber = Int(arc4random_uniform(16))
-            self.mwFinal = self.midwestArray[randomNumber][2]
-        }
-        else {
-            self.mwFinal = prefs.midwestFinal
-        }
+        // Populate in the final four from the solved regions
         
-        // West
-        if(prefs.westFinal == placeholder) {
-            randomNumber = Int(arc4random_uniform(16))
-            self.wFinal = self.westArray[randomNumber][2]
-        }
-        else {
-            self.wFinal = prefs.westFinal
-        }
-        
-        // South
-        if(prefs.southFinal == placeholder) {
-            randomNumber = Int(arc4random_uniform(16))
-            self.sFinal = self.southArray[randomNumber][2]
-        }
-        else {
-            self.sFinal = prefs.southFinal
-        }
-        
-        // East
-        if(prefs.eastFinal == placeholder) {
-            randomNumber = Int(arc4random_uniform(16))
-            self.eFinal = self.eastArray[randomNumber][2]
-        }
-        else {
-            self.eFinal = prefs.eastFinal
-        }
+        self.mwFinal = midwestComplete[14][2]
+        self.wFinal = westComplete[14][2]
+        self.eFinal = eastComplete[14][2]
+        self.sFinal = southComplete[14][2]
         
         
         // Pick from the midwest/west final four teams
@@ -121,17 +99,173 @@ class BracketSolver {
             self.winner = prefs.winner
         }
         
-        
-        print("MW: \(self.mwFinal)")
-        print("W: \(self.wFinal)")
-        print("S: \(self.sFinal)")
-        print("E: \(self.eFinal)")
-        print("F1: \(self.final1)")
-        print("F2: \(self.final2)")
-        print("WIN: \(self.winner)")
-        
-        
     }
+    
+    func populateRegion(initArray: [[String]], userWinner: String) -> [[String]]
+    {
+        /*
+        REGIONAL WINNER DATA ARRANGEMENT
+        
+        Second Round Winners    -- [0-7]
+        Third Round Winners     -- [8-11]
+        Regional Semi Winners   -- [12-13]
+        Regional Winner         -- [14]
+        */
+        
+        var winnerArray : [[String]] = []
+        var firstTeamPos = 0
+        var teamSeedA = 0
+        var teamSeedB = 0
+        var seedSum = 0
+        var randomNum = 0
+        
+        /* SECOND ROUND */
+        // There are eight second round matchups in each region
+        for counter in 0...7 {
+            
+            firstTeamPos = counter * 2
+         
+            // Check if the user selected this team to win
+            if(initArray[firstTeamPos][2] == userWinner) {
+                winnerArray.append(initArray[firstTeamPos])
+            }
+            else if(initArray[firstTeamPos+1][2] == userWinner) {
+                winnerArray.append(initArray[firstTeamPos+1])
+            }
+                
+            // If not a user-selected winner, we must determine randomly
+            else {
+                //Determine winner of each game
+                teamSeedA = Int(initArray[firstTeamPos][1])!
+                teamSeedB = Int(initArray[firstTeamPos+1][1])!
+                seedSum = teamSeedA + teamSeedB
+            
+                /* 
+                /  Odds of Team A winning are equal to (teamSeedB / seedsum)
+                /  Odds of Team B winning are equal to (teamSeedA / seedsum)
+                */
+            
+                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+            
+                // If the random number is great than seed A, it is in the seedB portion, therefore teamA wins
+                if(randomNum > teamSeedA) {
+                    winnerArray.append(initArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(initArray[firstTeamPos+1])
+                }
+            }
+            
+        }
+        
+        /* THIRD ROUND */
+        // There are four third round matchups
+        for counter in 0...3 {
+            
+            firstTeamPos = counter * 2
+            
+            // Check if the user selected this team to win
+            if(winnerArray[firstTeamPos][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos])
+            }
+            else if(winnerArray[firstTeamPos+1][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos+1])
+            }
+                
+            // If not a user-selected winner, we must determine randomly
+            else {
+                //Determine winner of each game
+                teamSeedA = Int(winnerArray[firstTeamPos][1])!
+                teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
+                seedSum = teamSeedA + teamSeedB
+                
+                //Odds of Team A winning are equal to (teamSeedB / seedsum)
+                //Odds of Team B winning are equal to (teamSeedA / seedsum)
+                
+                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+                
+                if(randomNum > teamSeedA) {
+                    winnerArray.append(winnerArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(winnerArray[firstTeamPos+1])
+                }
+            }
+        }
+        
+        /* REGIONAL SEMI-FINAL */
+        // There are two semi games (teams starting in [8] in our array
+        for counter in 4...5 {
+            
+            firstTeamPos = counter * 2
+            
+            // Check if the user selected this team to win
+            if(winnerArray[firstTeamPos][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos])
+            }
+            else if(winnerArray[firstTeamPos+1][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos+1])
+            }
+                
+                // If not a user-selected winner, we must determine randomly
+            else {
+                //Determine winner of each game
+                teamSeedA = Int(winnerArray[firstTeamPos][1])!
+                teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
+                seedSum = teamSeedA + teamSeedB
+                
+                //Odds of Team A winning are equal to (teamSeedB / seedsum)
+                //Odds of Team B winning are equal to (teamSeedA / seedsum)
+                
+                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+                
+                if(randomNum > teamSeedA) {
+                    winnerArray.append(winnerArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(winnerArray[firstTeamPos+1])
+                }
+            }
+        }
+        
+        /* REGIONAL FINAL */
+            
+            firstTeamPos = 12
+            
+            // Check if the user selected this team to win
+            if(winnerArray[firstTeamPos][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos])
+            }
+            else if(winnerArray[firstTeamPos+1][2] == userWinner) {
+                winnerArray.append(winnerArray[firstTeamPos+1])
+            }
+            
+            // If not a user-selected winner, we must determine randomly
+            else {
+                //Determine winner of each game
+                teamSeedA = Int(winnerArray[firstTeamPos][1])!
+                teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
+                seedSum = teamSeedA + teamSeedB
+            
+                //Odds of Team A winning are equal to (teamSeedB / seedsum)
+                //Odds of Team B winning are equal to (teamSeedA / seedsum)
+            
+                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+            
+                if(randomNum > teamSeedA) {
+                    winnerArray.append(winnerArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(winnerArray[firstTeamPos+1])
+                }
+        }
+        
+        
+        return winnerArray
+    }
+    
+    
+    // MARK: Initializers
     
     init(masterArray: [[String]], mwArray: [[String]], wArray: [[String]], sArray: [[String]], eArray: [[String]], ph: String)
     {
