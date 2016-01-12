@@ -154,6 +154,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Create" id="xnw-aL-dmo">
                             <connections>
                                 <action selector="createButtonClicked:" destination="BYZ-38-t0r" id="IbA-EX-U7r"/>
+                                <segue destination="MNE-MN-faJ" kind="show" id="ZGG-wl-Uli"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -174,6 +175,122 @@
             </objects>
             <point key="canvasLocation" x="1215" y="371"/>
         </scene>
+        <!--Midwest-->
+        <scene sceneID="Ht7-sR-INf">
+            <objects>
+                <viewController id="Lgi-w1-x1E" customClass="TabDisplayMidwest" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yAx-8Q-gKA"/>
+                        <viewControllerLayoutGuide type="bottom" id="hDn-GP-VNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V8E-Cw-jt6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Midwest" image="Tab_Bracket" selectedImage="Tab_Bracket" id="UM9-LD-RUc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZ6-Op-GSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2557" y="-299"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Wmq-fE-vfN">
+            <objects>
+                <tabBarController id="MNE-MN-faJ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="nwB-n9-iVW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Lgi-w1-x1E" kind="relationship" relationship="viewControllers" id="EL6-eB-8yw"/>
+                        <segue destination="Y2f-8S-T6U" kind="relationship" relationship="viewControllers" id="xmA-wn-FAv"/>
+                        <segue destination="rDK-69-30u" kind="relationship" relationship="viewControllers" id="0bA-o9-XHt"/>
+                        <segue destination="SRS-BT-qM5" kind="relationship" relationship="viewControllers" id="SIT-fa-vKs"/>
+                        <segue destination="JSV-0H-7uY" kind="relationship" relationship="viewControllers" id="5Uc-oX-Q3w"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3nq-UV-Mid" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="372"/>
+        </scene>
+        <!--West-->
+        <scene sceneID="Xym-9g-dO5">
+            <objects>
+                <viewController id="Y2f-8S-T6U" customClass="TabDisplayWest" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DSe-Tm-m7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Um-U2-q1I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bfZ-3m-zpQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="West" image="Tab_Bracket" selectedImage="Tab_Bracket" id="L8B-iZ-avD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ceg-ka-nFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2557" y="371"/>
+        </scene>
+        <!--South-->
+        <scene sceneID="TId-wJ-jrz">
+            <objects>
+                <viewController id="SRS-BT-qM5" customClass="TabDisplaySouth" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qde-K1-yNK"/>
+                        <viewControllerLayoutGuide type="bottom" id="etG-Cf-j4Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wg0-Xm-hbi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="South" image="Tab_Bracket" selectedImage="Tab_Bracket" id="XSA-1e-0uj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H0f-0n-ieT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3229" y="30"/>
+        </scene>
+        <!--East-->
+        <scene sceneID="GFR-PN-LnX">
+            <objects>
+                <viewController id="rDK-69-30u" customClass="TabDisplayEast" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Ik-x6-jgH"/>
+                        <viewControllerLayoutGuide type="bottom" id="sqi-au-8lS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dRn-zV-yoU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="East" image="Tab_Bracket" selectedImage="Tab_Bracket" id="woC-RY-oGt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgB-7M-pem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2557" y="1049"/>
+        </scene>
+        <!--Champs-->
+        <scene sceneID="DxZ-Aj-EU7">
+            <objects>
+                <viewController id="JSV-0H-7uY" customClass="TabDisplayChamps" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tya-wd-5gc"/>
+                        <viewControllerLayoutGuide type="bottom" id="KYo-Sf-jN1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TXx-5m-90O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Champs" image="Tab_Trophy" selectedImage="Tab_Trophy" id="flt-c5-g4A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6k-bl-xEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3229" y="767"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fck-GJ-8Mc">
             <objects>
@@ -193,4 +310,8 @@
             <point key="canvasLocation" x="403" y="371"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tab_Bracket" width="25" height="25"/>
+        <image name="Tab_Trophy" width="24" height="24"/>
+    </resources>
 </document>

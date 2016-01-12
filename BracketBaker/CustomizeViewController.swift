@@ -604,7 +604,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Using the user preferences we fill out the bracket
         bracket.fillOutBracket(theseUserPrefs)
         
-        
+        /*
         midwestFinalTextField.text = bracket.mwFinal
         westFinalTextField.text = bracket.wFinal
         southFinalTextField.text = bracket.sFinal
@@ -615,6 +615,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         
         winnerLabel.text = "Winner is: \(bracket.winner)"
+        */
     }
     
     @IBAction func resetButtonClicked(sender: AnyObject) {

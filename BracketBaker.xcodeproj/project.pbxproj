@@ -17,6 +17,11 @@
 		1B30B8001C15EAF7008C0657 /* BracketBakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */; };
 		1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */; };
 		1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */; };
+		1BC68FF61C4468D000BD9478 /* TabDisplayWest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF51C4468D000BD9478 /* TabDisplayWest.swift */; };
+		1BC68FF81C446A2600BD9478 /* TabDisplayMidwest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF71C446A2600BD9478 /* TabDisplayMidwest.swift */; };
+		1BC68FFA1C446A4A00BD9478 /* TabDisplayEast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF91C446A4A00BD9478 /* TabDisplayEast.swift */; };
+		1BC68FFC1C446C9200BD9478 /* TabDisplaySouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FFB1C446C9200BD9478 /* TabDisplaySouth.swift */; };
+		1BC68FFE1C446CA300BD9478 /* TabDisplayChamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FFD1C446CA300BD9478 /* TabDisplayChamps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,11 @@
 		1B30B8011C15EAF7008C0657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectedPrefs.swift; sourceTree = "<group>"; };
 		1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSolver.swift; sourceTree = "<group>"; };
+		1BC68FF51C4468D000BD9478 /* TabDisplayWest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayWest.swift; sourceTree = "<group>"; };
+		1BC68FF71C446A2600BD9478 /* TabDisplayMidwest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayMidwest.swift; sourceTree = "<group>"; };
+		1BC68FF91C446A4A00BD9478 /* TabDisplayEast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayEast.swift; sourceTree = "<group>"; };
+		1BC68FFB1C446C9200BD9478 /* TabDisplaySouth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplaySouth.swift; sourceTree = "<group>"; };
+		1BC68FFD1C446CA300BD9478 /* TabDisplayChamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayChamps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,11 @@
 				1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */,
 				1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */,
 				1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */,
+				1BC68FF71C446A2600BD9478 /* TabDisplayMidwest.swift */,
+				1BC68FF51C4468D000BD9478 /* TabDisplayWest.swift */,
+				1BC68FF91C446A4A00BD9478 /* TabDisplayEast.swift */,
+				1BC68FFB1C446C9200BD9478 /* TabDisplaySouth.swift */,
+				1BC68FFD1C446CA300BD9478 /* TabDisplayChamps.swift */,
 				1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */,
 				1B30B7E31C15EAF6008C0657 /* Main.storyboard */,
 				1B30B7E61C15EAF6008C0657 /* Assets.xcassets */,
@@ -266,11 +281,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC68FFE1C446CA300BD9478 /* TabDisplayChamps.swift in Sources */,
 				1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */,
+				1BC68FFA1C446A4A00BD9478 /* TabDisplayEast.swift in Sources */,
+				1BC68FF81C446A2600BD9478 /* TabDisplayMidwest.swift in Sources */,
 				1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */,
 				1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */,
 				1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */,
 				1B30B7E01C15EAF6008C0657 /* AppDelegate.swift in Sources */,
+				1BC68FFC1C446C9200BD9478 /* TabDisplaySouth.swift in Sources */,
+				1BC68FF61C4468D000BD9478 /* TabDisplayWest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
