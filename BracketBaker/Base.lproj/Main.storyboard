@@ -295,6 +295,12 @@
                     <connections>
                         <outlet property="winner1" destination="ccx-Gu-ycU" id="eQO-Jx-BLG"/>
                         <outlet property="winner2" destination="u3Q-bW-VwF" id="xf3-QN-CIB"/>
+                        <outlet property="winner3" destination="mOt-88-B0y" id="2MC-2F-ZBM"/>
+                        <outlet property="winner4" destination="Yxc-px-eJx" id="YtI-71-YDa"/>
+                        <outlet property="winner5" destination="743-k8-mLP" id="QcF-pR-R8K"/>
+                        <outlet property="winner6" destination="gmN-OG-KNZ" id="IdM-hQ-Hfy"/>
+                        <outlet property="winner7" destination="bk6-X8-6oJ" id="rkU-0Z-9Ql"/>
+                        <outlet property="winner8" destination="NdU-sz-U9t" id="4dH-c2-kPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ6-Op-GSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
