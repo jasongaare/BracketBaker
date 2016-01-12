@@ -31,6 +31,8 @@ class BracketSolver {
     var final2 = ""
     var winner = ""
     
+    var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
+    
     // MARK: Solver Functions
     
     func fillOutBracket(prefs : UserSelectedPrefs) {
@@ -98,6 +100,20 @@ class BracketSolver {
         else {
             self.winner = prefs.winner
         }
+        
+        
+        
+        //--Compile bracket into a BracketToDisplay--//
+        
+        // Create champs array
+        var champs : [[String]] = []
+        champs.append(midwestComplete[14])
+        champs.append(westComplete[14])
+        champs.append(eastComplete[14])
+        champs.append(southComplete[14])
+        
+        // Create complete bracket, ready to segue
+        self.completeBracket = BracketToDisplay(mw: midwestComplete, w: westComplete, e: eastComplete, s: southComplete, c: champs)
         
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B04E85A1C457B5300A64085 /* BracketToDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E8591C457B5300A64085 /* BracketToDisplay.swift */; };
+		1B04E85C1C457CDC00A64085 /* TabDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */; };
 		1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */; };
 		1B30B7E01C15EAF6008C0657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */; };
 		1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B04E8591C457B5300A64085 /* BracketToDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketToDisplay.swift; sourceTree = "<group>"; };
+		1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayViewController.swift; sourceTree = "<group>"; };
 		1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSaveHelper.swift; sourceTree = "<group>"; };
 		1B30B7DC1C15EAF6008C0657 /* BracketBaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BracketBaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,8 +119,10 @@
 			children = (
 				1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */,
 				1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */,
+				1B04E8591C457B5300A64085 /* BracketToDisplay.swift */,
 				1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */,
 				1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */,
+				1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */,
 				1BC68FF71C446A2600BD9478 /* TabDisplayMidwest.swift */,
 				1BC68FF51C4468D000BD9478 /* TabDisplayWest.swift */,
 				1BC68FF91C446A4A00BD9478 /* TabDisplayEast.swift */,
@@ -282,9 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC68FFE1C446CA300BD9478 /* TabDisplayChamps.swift in Sources */,
+				1B04E85A1C457B5300A64085 /* BracketToDisplay.swift in Sources */,
 				1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */,
 				1BC68FFA1C446A4A00BD9478 /* TabDisplayEast.swift in Sources */,
 				1BC68FF81C446A2600BD9478 /* TabDisplayMidwest.swift in Sources */,
+				1B04E85C1C457CDC00A64085 /* TabDisplayViewController.swift in Sources */,
 				1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */,
 				1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */,
 				1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */,

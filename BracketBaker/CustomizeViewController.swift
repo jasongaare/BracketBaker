@@ -590,10 +590,22 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         return currentArray
     }
     
+    // MARK: Navigation/Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let completedBracket = self.createButtonClicked()
+        // This is the only place to go
+        let tabDisplayView = segue.destinationViewController as! TabDisplayViewController
+        tabDisplayView.self.bracketData = completedBracket
+        
+        
+    }
+    
     
     // MARK: Actions
 
-    @IBAction func createButtonClicked(sender: UIBarButtonItem) {
+    func createButtonClicked() -> BracketToDisplay {
         
         // When the button is clicked, we want to capture the user customization preferences
         let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!)
@@ -604,18 +616,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Using the user preferences we fill out the bracket
         bracket.fillOutBracket(theseUserPrefs)
         
-        /*
-        midwestFinalTextField.text = bracket.mwFinal
-        westFinalTextField.text = bracket.wFinal
-        southFinalTextField.text = bracket.sFinal
-        eastFinalTextField.text = bracket.eFinal
-        finalOneTextField.text = bracket.final1
-        finalTwoTextField.text = bracket.final2
-        winnerPickerTextField.text = bracket.winner
-        
-        
-        winnerLabel.text = "Winner is: \(bracket.winner)"
-        */
+        return bracket.completeBracket
     }
     
     @IBAction func resetButtonClicked(sender: AnyObject) {

@@ -153,13 +153,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" id="xnw-aL-dmo">
                             <connections>
-                                <action selector="createButtonClicked:" destination="BYZ-38-t0r" id="IbA-EX-U7r"/>
                                 <segue destination="MNE-MN-faJ" kind="show" id="ZGG-wl-Uli"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="createButton" destination="xnw-aL-dmo" id="OWU-eI-82m"/>
                         <outlet property="eastFinalTextField" destination="RkI-xP-e3Y" id="oNc-Ov-FXc"/>
                         <outlet property="finalOneTextField" destination="fu6-rx-TGH" id="L3S-CF-9Es"/>
                         <outlet property="finalTwoTextField" destination="epA-4O-TvU" id="zGq-Qz-HaQ"/>
@@ -194,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="2557" y="-299"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Display View Controller-->
         <scene sceneID="Wmq-fE-vfN">
             <objects>
-                <tabBarController id="MNE-MN-faJ" sceneMemberID="viewController">
+                <tabBarController id="MNE-MN-faJ" customClass="TabDisplayViewController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="nwB-n9-iVW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

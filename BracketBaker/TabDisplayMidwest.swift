@@ -14,8 +14,11 @@ class TabDisplayMidwest: UIViewController {
         super.viewDidLoad()
         // Do stuff here
         print("Hello from midwest")
+
+        let tdvc = self.tabBarController as! TabDisplayViewController
+        let midwestArray = tdvc.bracketData.midwest
         
-        self.tabBarController!.title = "Your Bracket"
-        
+        print("Winner of the Midwest is: \(midwestArray[14][2])")
+
     }
 }
