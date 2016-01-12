@@ -1,5 +1,5 @@
 //
-//  TabDisplayWest.swift
+//  TabDisplayWestController.swift
 //  BracketBaker
 //
 //  Created by Jason Gaare on 1/11/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabDisplayWest: UIViewController {
+class TabDisplayWestController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

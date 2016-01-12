@@ -1,5 +1,5 @@
 //
-//  TabDisplayEast.swift
+//  TabDisplaySouthContoller.swift
 //  BracketBaker
 //
 //  Created by Jason Gaare on 1/11/16.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TabDisplayEast: UIViewController {
+class TabDisplaySouthContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do stuff here
-        print("Hello from east")
+        print("Hello from south")
     }
 }

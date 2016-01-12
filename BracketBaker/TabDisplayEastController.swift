@@ -1,5 +1,5 @@
 //
-//  TabDisplayChamps.swift
+//  TabDisplayEastContoller.swift
 //  BracketBaker
 //
 //  Created by Jason Gaare on 1/11/16.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TabDisplayChamps: UIViewController {
+class TabDisplayEastContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do stuff here
-        print("Hello from champs")
+        print("Hello from east")
     }
 }
