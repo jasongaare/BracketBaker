@@ -9,7 +9,7 @@
 import UIKit
 
 class TabDisplayRegion: UIView {
-    
+   
     var team1 : UILabel
     var team2 : UILabel
     var team3 : UILabel
@@ -126,7 +126,13 @@ class TabDisplayRegion: UIView {
         CGContextAddLineToPoint(context, team14Right.x, team14Right.y)
         CGContextAddLineToPoint(context, team14Left.x, team14Left.y)
         
+        // Draw line under winner
         
+        let team15Left = CGPointMake(CGRectGetMaxX(team13.frame), CGRectGetMaxY(team15.frame) + spacer)
+        let team15Right = CGPointMake(CGRectGetMaxX(team15.frame),CGRectGetMaxY(team15.frame) + spacer)
+        
+        CGContextMoveToPoint(context, team15Left.x, team15Left.y)
+        CGContextAddLineToPoint(context, team15Right.x, team15Right.y)
         
         // Draw those lines!
         CGContextStrokePath(context)
@@ -156,4 +162,5 @@ class TabDisplayRegion: UIView {
         // Let's go up and init too
         super.init(coder: aDecoder)
     }
+
 }

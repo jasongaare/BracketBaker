@@ -8,14 +8,23 @@
 
 import UIKit
 
-class TabDisplayViewController: UITabBarController {
+class TabDisplayViewController: UITabBarController, UIGestureRecognizerDelegate {
 
     var bracketData : BracketToDisplay
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Title that nav bar!
         self.title = "Your Bracket"
+        
+        // Set up gesture delegate
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self
+    }
+    
+    // Disable the back swipe to get to the customize page.
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
     }
     
     required init?(coder aDecoder: NSCoder) {

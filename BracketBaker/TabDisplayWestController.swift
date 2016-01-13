@@ -39,23 +39,25 @@ class TabDisplayWestController: UIViewController {
         // We need to let the view know where these labels are,
         // that way we can draw the lines under the teams to make
         // the brackets
+        myBracketDisplay.team1 = winner1
+        myBracketDisplay.team2 = winner2
+        myBracketDisplay.team3 = winner3
+        myBracketDisplay.team4 = winner4
+        myBracketDisplay.team5 = winner5
+        myBracketDisplay.team6 = winner6
+        myBracketDisplay.team7 = winner7
+        myBracketDisplay.team8 = winner8
+        myBracketDisplay.team9 = winner9
+        myBracketDisplay.team10 = winner10
+        myBracketDisplay.team11 = winner11
+        myBracketDisplay.team12 = winner12
+        myBracketDisplay.team13 = winner13
+        myBracketDisplay.team14 = winner14
+        myBracketDisplay.team15 = winner15
         
-        let canvas = super.view as! TabDisplayRegion
-        canvas.team1 = winner1
-        canvas.team2 = winner2
-        canvas.team3 = winner3
-        canvas.team4 = winner4
-        canvas.team5 = winner5
-        canvas.team6 = winner6
-        canvas.team7 = winner7
-        canvas.team8 = winner8
-        canvas.team9 = winner9
-        canvas.team10 = winner10
-        canvas.team11 = winner11
-        canvas.team12 = winner12
-        canvas.team13 = winner13
-        canvas.team14 = winner14
-        canvas.team15 = winner15
+        
+        // Make it scrollable
+        bracketScroll.contentSize = myBracketDisplay.bounds.size
         
     }
     
@@ -79,4 +81,7 @@ class TabDisplayWestController: UIViewController {
     @IBOutlet weak var winner15: UILabel!
     
 
+    @IBOutlet weak var bracketScroll: UIScrollView!
+    @IBOutlet weak var myBracketDisplay: TabDisplayRegion!
+    
 }
