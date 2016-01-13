@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B04E85A1C457B5300A64085 /* BracketToDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E8591C457B5300A64085 /* BracketToDisplay.swift */; };
 		1B04E85C1C457CDC00A64085 /* TabDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */; };
-		1B04E8621C45979800A64085 /* TabDisplayMidwest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E8611C45979800A64085 /* TabDisplayMidwest.swift */; };
-		1B04E8641C46BDCB00A64085 /* TabDisplayWest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E8631C46BDCB00A64085 /* TabDisplayWest.swift */; };
+		1B04E8661C46C09900A64085 /* TabDisplayRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E8651C46C09900A64085 /* TabDisplayRegion.swift */; };
 		1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */; };
 		1B30B7E01C15EAF6008C0657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */; };
 		1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */; };
@@ -48,8 +47,7 @@
 /* Begin PBXFileReference section */
 		1B04E8591C457B5300A64085 /* BracketToDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketToDisplay.swift; sourceTree = "<group>"; };
 		1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayViewController.swift; sourceTree = "<group>"; };
-		1B04E8611C45979800A64085 /* TabDisplayMidwest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayMidwest.swift; sourceTree = "<group>"; };
-		1B04E8631C46BDCB00A64085 /* TabDisplayWest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayWest.swift; sourceTree = "<group>"; };
+		1B04E8651C46C09900A64085 /* TabDisplayRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayRegion.swift; sourceTree = "<group>"; };
 		1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSaveHelper.swift; sourceTree = "<group>"; };
 		1B30B7DC1C15EAF6008C0657 /* BracketBaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BracketBaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,9 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */,
-				1B04E8611C45979800A64085 /* TabDisplayMidwest.swift */,
+				1B04E8651C46C09900A64085 /* TabDisplayRegion.swift */,
 				1BC68FF71C446A2600BD9478 /* TabDisplayMidwestController.swift */,
-				1B04E8631C46BDCB00A64085 /* TabDisplayWest.swift */,
 				1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */,
 				1BC68FF91C446A4A00BD9478 /* TabDisplayEastController.swift */,
 				1BC68FFB1C446C9200BD9478 /* TabDisplaySouthContoller.swift */,
@@ -316,13 +313,12 @@
 				1BC68FF81C446A2600BD9478 /* TabDisplayMidwestController.swift in Sources */,
 				1B04E85C1C457CDC00A64085 /* TabDisplayViewController.swift in Sources */,
 				1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */,
-				1B04E8621C45979800A64085 /* TabDisplayMidwest.swift in Sources */,
 				1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */,
 				1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */,
 				1B30B7E01C15EAF6008C0657 /* AppDelegate.swift in Sources */,
 				1BC68FFC1C446C9200BD9478 /* TabDisplaySouthContoller.swift in Sources */,
 				1BC68FF61C4468D000BD9478 /* TabDisplayWestController.swift in Sources */,
-				1B04E8641C46BDCB00A64085 /* TabDisplayWest.swift in Sources */,
+				1B04E8661C46C09900A64085 /* TabDisplayRegion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

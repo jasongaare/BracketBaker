@@ -40,7 +40,7 @@ class TabDisplayMidwestController: UIViewController {
         // that way we can draw the lines under the teams to make
         // the brackets
         
-        let canvas = super.view as! TabDisplayMidwest
+        let canvas = super.view as! TabDisplayRegion
         canvas.team1 = winner1
         canvas.team2 = winner2
         canvas.team3 = winner3
