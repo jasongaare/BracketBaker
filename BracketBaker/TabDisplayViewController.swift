@@ -15,7 +15,6 @@ class TabDisplayViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Made it to the tab display")
         self.title = "Your Bracket"
     }
     

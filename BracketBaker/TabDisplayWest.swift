@@ -1,15 +1,15 @@
 //
-//  TabDisplayMidwest.swift
+//  TabDisplayWest.swift
 //  BracketBaker
 //
-//  Created by Jason Gaare on 1/12/16.
+//  Created by Jason Gaare on 1/13/16.
 //  Copyright © 2016 Jason Gaare. All rights reserved.
 //
 
 import UIKit
 
-class TabDisplayMidwest: UIView {
-
+class TabDisplayWest: UIView {
+    
     var team1 : UILabel
     var team2 : UILabel
     var team3 : UILabel
@@ -38,40 +38,7 @@ class TabDisplayMidwest: UIView {
         let components: [CGFloat] = [0.0, 0.0, 1.0, 1.0]
         let color = CGColorCreate(colorSpace, components)
         CGContextSetStrokeColorWithColor(context, color)
-  /*
-        
-        // Loop through pairings and draw lines for each matchup
-        // There are 4 matchups for now
-        var startTeam : Int
-        var teamA : UILabel
-        var teamB : UILabel
-        var teamALeft : CGPoint
-        var teamARight : CGPoint
-        var teamBLeft : CGPoint
-        var teamBRight : CGPoint
-        
-        for i in 0...3 {
-            startTeam = i*2
-            
-            // Get team labels from array
-            teamA = labelArray[startTeam]
-            teamB = labelArray[startTeam+1]
-            
-            // Get points for lines
-            teamALeft = CGPointMake(teamB.frame.origin.x, CGRectGetMaxY(teamA.frame) + spacer)
-            teamARight = CGPointMake(CGRectGetMaxX(teamA.frame), CGRectGetMaxY(teamA.frame) + spacer)
-            teamBRight = CGPointMake(CGRectGetMaxX(teamB.frame), CGRectGetMaxY(teamB.frame) + spacer)
-            teamBLeft = CGPointMake(teamB.frame.origin.x, CGRectGetMaxY(teamB.frame) + spacer)
-            
-            // Guide the lines
-            CGContextMoveToPoint(context, teamALeft.x, teamALeft.y)
-            CGContextAddLineToPoint(context, teamARight.x, teamARight.y)
-            CGContextAddLineToPoint(context, teamBRight.x, teamBRight.y)
-            CGContextAddLineToPoint(context, teamBLeft.x, teamBLeft.y)
-            
-            print("Loop \(i)")
-        }
-    */
+       
         
         // Lines for Matchup #1
         let team1Left = CGPointMake(team1.frame.origin.x, CGRectGetMaxY(team1.frame) + spacer)
@@ -90,7 +57,7 @@ class TabDisplayMidwest: UIView {
         let team3Right = CGPointMake(CGRectGetMaxX(team3.frame), CGRectGetMaxY(team3.frame) + spacer)
         let team4Right = CGPointMake(CGRectGetMaxX(team4.frame), CGRectGetMaxY(team4.frame) + spacer)
         let team4Left = CGPointMake(team4.frame.origin.x, CGRectGetMaxY(team4.frame) + spacer)
-
+        
         CGContextMoveToPoint(context, team3Left.x, team3Left.y)
         CGContextAddLineToPoint(context, team3Right.x, team3Right.y)
         CGContextAddLineToPoint(context, team4Right.x, team4Right.y)
@@ -107,7 +74,7 @@ class TabDisplayMidwest: UIView {
         CGContextAddLineToPoint(context, team5Right.x, team5Right.y)
         CGContextAddLineToPoint(context, team6Right.x, team6Right.y)
         CGContextAddLineToPoint(context, team6Left.x, team6Left.y)
-
+        
         // Lines for Matchup #4
         
         let team7Left = CGPointMake(team7.frame.origin.x, CGRectGetMaxY(team7.frame) + spacer)
@@ -127,7 +94,7 @@ class TabDisplayMidwest: UIView {
         let team9Right = CGPointMake(CGRectGetMaxX(team9.frame), CGRectGetMaxY(team9.frame) + spacer)
         let team10Right = CGPointMake(CGRectGetMaxX(team10.frame), CGRectGetMaxY(team10.frame) + spacer)
         let team10Left = CGPointMake(CGRectGetMaxX(team2.frame), CGRectGetMaxY(team10.frame) + spacer)
-
+        
         CGContextMoveToPoint(context, team9Left.x, team9Left.y)
         CGContextAddLineToPoint(context, team9Right.x, team9Right.y)
         CGContextAddLineToPoint(context, team10Right.x, team10Right.y)
