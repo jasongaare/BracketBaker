@@ -453,10 +453,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-th-Mgn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-th-Mgn">
                                 <rect key="frame" x="0.0" y="93" width="600" height="458"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1j-vn-KF5" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1j-vn-KF5" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="500" height="373"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Winner # 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5O-7S-c2E">
@@ -613,6 +613,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="g1j-vn-KF5" firstAttribute="centerY" secondItem="8OE-th-Mgn" secondAttribute="centerY" id="AuZ-s0-g5B"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -622,6 +625,7 @@
                             <constraint firstItem="2Um-U2-q1I" firstAttribute="top" secondItem="8OE-th-Mgn" secondAttribute="bottom" id="W0X-pa-RTs"/>
                             <constraint firstItem="ALI-5s-7Am" firstAttribute="top" secondItem="DSe-Tm-m7e" secondAttribute="bottom" constant="8" id="aLy-dM-NhO"/>
                             <constraint firstItem="ALI-5s-7Am" firstAttribute="trailing" secondItem="bfZ-3m-zpQ" secondAttribute="trailingMargin" id="cdu-Po-xZu"/>
+                            <constraint firstItem="8OE-th-Mgn" firstAttribute="top" secondItem="ALI-5s-7Am" secondAttribute="bottom" id="mdD-jE-Fqn"/>
                             <constraint firstItem="ALI-5s-7Am" firstAttribute="centerX" secondItem="bfZ-3m-zpQ" secondAttribute="centerX" id="nZT-Eu-og7"/>
                             <constraint firstItem="8OE-th-Mgn" firstAttribute="leading" secondItem="bfZ-3m-zpQ" secondAttribute="leadingMargin" constant="-20" id="s2F-8p-ikd"/>
                         </constraints>
@@ -669,10 +673,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-3T-ldR">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-3T-ldR">
                                 <rect key="frame" x="0.0" y="93" width="600" height="458"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWg-wL-MDq" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWg-wL-MDq" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="500" height="373"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Winner # 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buh-V6-5OP">
@@ -829,6 +833,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="vWg-wL-MDq" firstAttribute="centerY" secondItem="ugJ-3T-ldR" secondAttribute="centerY" id="npe-JG-4nF"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -839,6 +846,7 @@
                             <constraint firstItem="Ifb-RM-Tax" firstAttribute="top" secondItem="qde-K1-yNK" secondAttribute="bottom" constant="8" id="LYL-Hs-QxM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ugJ-3T-ldR" secondAttribute="trailing" constant="-20" id="OBc-i0-oFF"/>
                             <constraint firstItem="ugJ-3T-ldR" firstAttribute="leading" secondItem="Wg0-Xm-hbi" secondAttribute="leadingMargin" constant="-20" id="Yii-JO-Iqp"/>
+                            <constraint firstItem="ugJ-3T-ldR" firstAttribute="top" secondItem="Ifb-RM-Tax" secondAttribute="bottom" id="ekV-0t-GLA"/>
                             <constraint firstItem="Ifb-RM-Tax" firstAttribute="leading" secondItem="Wg0-Xm-hbi" secondAttribute="leadingMargin" id="o2h-Ky-gO3"/>
                         </constraints>
                     </view>
@@ -885,10 +893,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jp-98-4pm">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jp-98-4pm">
                                 <rect key="frame" x="0.0" y="93" width="600" height="458"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-Z6-Zhg" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-Z6-Zhg" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="500" height="373"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Winner # 7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x2-1J-G9T">
@@ -1045,6 +1053,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="dsf-Z6-Zhg" firstAttribute="centerY" secondItem="6Jp-98-4pm" secondAttribute="centerY" id="Ovf-df-ErI"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1056,6 +1067,7 @@
                             <constraint firstItem="6Jp-98-4pm" firstAttribute="leading" secondItem="dRn-zV-yoU" secondAttribute="leadingMargin" constant="-20" id="mxD-II-P95"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Jp-98-4pm" secondAttribute="trailing" constant="-20" id="rpo-Np-lGd"/>
                             <constraint firstItem="sqi-au-8lS" firstAttribute="top" secondItem="6Jp-98-4pm" secondAttribute="bottom" id="vcQ-bO-UcA"/>
+                            <constraint firstItem="6Jp-98-4pm" firstAttribute="top" secondItem="L7B-Or-gLW" secondAttribute="bottom" id="yAg-aV-xXL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="East" image="Tab_Bracket" selectedImage="Tab_Bracket" id="woC-RY-oGt"/>
@@ -1094,9 +1106,68 @@
                     <view key="view" contentMode="scaleToFill" id="TXx-5m-90O">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Championship" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-aM-OTM">
+                                <rect key="frame" x="20" y="72" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MW Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovd-Q7-Lvt">
+                                <rect key="frame" x="20" y="145" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-IG-hqR">
+                                <rect key="frame" x="20" y="383" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyB-wE-879">
+                                <rect key="frame" x="460" y="145" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPj-am-haH">
+                                <rect key="frame" x="460" y="383" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Final 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-6S-CVa">
+                                <rect key="frame" x="138" y="257" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Final 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-eu-bHj">
+                                <rect key="frame" x="332" y="257" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Champ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-Ef-rYk">
+                                <rect key="frame" x="240" y="451" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Champs" image="Tab_Trophy" selectedImage="Tab_Trophy" id="flt-c5-g4A"/>
+                    <connections>
+                        <outlet property="ChampLabel" destination="F7V-Ef-rYk" id="q7G-Mg-NFQ"/>
+                        <outlet property="Final1Label" destination="gEr-6S-CVa" id="vK4-6x-psC"/>
+                        <outlet property="Final2Label" destination="HeI-eu-bHj" id="Gf8-Pd-JH2"/>
+                        <outlet property="eFinalLabel" destination="UyB-wE-879" id="Yvk-YU-tQw"/>
+                        <outlet property="mwFinalLabel" destination="ovd-Q7-Lvt" id="pCC-E3-Id5"/>
+                        <outlet property="sFinalLabel" destination="TPj-am-haH" id="bH1-aC-GOU"/>
+                        <outlet property="wFinalLabel" destination="3v2-IG-hqR" id="g19-ay-KAd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6k-bl-xEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

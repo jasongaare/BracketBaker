@@ -22,14 +22,14 @@ class BracketSolver {
     var southArray : [[String]] = []
     var eastArray : [[String]] = []
     
-    var mwFinal = ""
-    var wFinal = ""
-    var eFinal = ""
-    var sFinal = ""
+    var mwFinal : [String] = []
+    var wFinal : [String] = []
+    var eFinal : [String] = []
+    var sFinal : [String] = []
     
-    var final1 = ""
-    var final2 = ""
-    var winner = ""
+    var final1 : [String] = []
+    var final2 : [String] = []
+    var winner : [String] = []
     
     var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
     
@@ -46,10 +46,10 @@ class BracketSolver {
         
         // Populate in the final four from the solved regions
         
-        self.mwFinal = midwestComplete[14][2]
-        self.wFinal = westComplete[14][2]
-        self.eFinal = eastComplete[14][2]
-        self.sFinal = southComplete[14][2]
+        self.mwFinal = midwestComplete[14]
+        self.wFinal = westComplete[14]
+        self.eFinal = eastComplete[14]
+        self.sFinal = southComplete[14]
         
         
         // Pick from the midwest/west final four teams
@@ -65,7 +65,13 @@ class BracketSolver {
             }
         }
         else {
-            self.final1 = prefs.final1
+            if prefs.final1 == self.mwFinal[2] {
+                self.final1 = self.mwFinal
+            }
+            else {
+                self.final1 = self.wFinal
+            }
+            
         }
         
         // Pick from the south/east final four teams
@@ -81,7 +87,12 @@ class BracketSolver {
             }
         }
         else {
-            self.final2 = prefs.final2
+            if prefs.final2 == self.eFinal[2] {
+                self.final2 = self.eFinal
+            }
+            else {
+                self.final2 = self.sFinal
+            }
         }
         
 
@@ -98,7 +109,17 @@ class BracketSolver {
             }
         }
         else {
-            self.winner = prefs.winner
+            switch prefs.winner {
+            case mwFinal[2]:
+                self.winner = self.mwFinal
+            case wFinal[2]:
+                self.winner = self.wFinal
+            case eFinal[2]:
+                self.winner = self.eFinal
+            case sFinal[2]:
+                self.winner = self.sFinal
+            default: break
+            }
         }
         
         
@@ -107,10 +128,14 @@ class BracketSolver {
         
         // Create champs array
         var champs : [[String]] = []
-        champs.append(midwestComplete[14])
-        champs.append(westComplete[14])
-        champs.append(eastComplete[14])
-        champs.append(southComplete[14])
+        champs.append(self.mwFinal)
+        champs.append(self.wFinal)
+        champs.append(self.eFinal)
+        champs.append(self.sFinal)
+        champs.append(self.final1)
+        champs.append(self.final2)
+        champs.append(self.winner)
+        
         
         // Create complete bracket, ready to segue
         self.completeBracket = BracketToDisplay(mw: midwestComplete, w: westComplete, e: eastComplete, s: southComplete, c: champs)
