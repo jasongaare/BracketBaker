@@ -16,134 +16,136 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Pick A Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
-                                <rect key="frame" x="20" y="343" width="112" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Midwest Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZJ-2p-C7I">
-                                <rect key="frame" x="43" y="89" width="127" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOX-rj-RaE">
-                                <rect key="frame" x="20" y="110" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuf-j4-8sn">
-                                <rect key="frame" x="20" y="175" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="South Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
-                                <rect key="frame" x="66" y="213" width="104" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-Nc-l7N">
-                                <rect key="frame" x="20" y="234" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="East Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-44-MlB">
-                                <rect key="frame" x="79" y="272" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkI-xP-e3Y">
-                                <rect key="frame" x="20" y="292" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
-                                <rect key="frame" x="142" y="343" width="438" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Finals Team #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzE-sn-KvN">
-                                <rect key="frame" x="200" y="125" width="113" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fu6-rx-TGH">
-                                <rect key="frame" x="200" y="145" width="380" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Finals Team #2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-PC-D4W">
-                                <rect key="frame" x="200" y="238" width="115" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epA-4O-TvU">
-                                <rect key="frame" x="200" y="259" width="380" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="West Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-1g-dr7">
-                                <rect key="frame" x="73" y="154" width="97" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Winner is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr9-ox-zTz">
-                                <rect key="frame" x="262" y="412" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-ej-yKl" customClass="CustomizeView" customModule="BracketBaker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOX-rj-RaE">
+                                                <rect key="frame" x="8" y="156" width="402" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-Nc-l7N">
+                                                <rect key="frame" x="28" y="427" width="264" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="East Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-44-MlB">
+                                                <rect key="frame" x="81" y="522" width="91" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkI-xP-e3Y">
+                                                <rect key="frame" x="28" y="551" width="282" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epA-4O-TvU">
+                                                <rect key="frame" x="320" y="450" width="280" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="West Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-1g-dr7">
+                                                <rect key="frame" x="16" y="347" width="97" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="South Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
+                                                <rect key="frame" x="74" y="406" width="104" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
+                                                <rect key="frame" x="162" y="630" width="438" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuf-j4-8sn">
+                                                <rect key="frame" x="16" y="368" width="150" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Midwest Winner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZJ-2p-C7I">
+                                                <rect key="frame" x="8" y="135" width="302" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Midwest/West Semi-Final" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzE-sn-KvN">
+                                                <rect key="frame" x="242" y="194" width="350" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick A Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
+                                                <rect key="frame" x="31" y="624" width="112" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finals Team #2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-PC-D4W">
+                                                <rect key="frame" x="464" y="430" width="136" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change as many or as few options as you prefer, then click create to view your customized bracket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3n-mr-kGt">
+                                                <rect key="frame" x="151" y="70" width="304" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="304" id="Aym-Cf-1om"/>
+                                                    <constraint firstAttribute="height" constant="45" id="tjK-su-h2c"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fu6-rx-TGH">
+                                                <rect key="frame" x="190" y="215" width="402" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="mOX-rj-RaE" firstAttribute="top" secondItem="TZJ-2p-C7I" secondAttribute="bottom" id="8HC-QR-Cm2"/>
+                                            <constraint firstAttribute="trailing" secondItem="gzE-sn-KvN" secondAttribute="trailing" constant="8" id="DKd-Jf-TVy"/>
+                                            <constraint firstItem="fu6-rx-TGH" firstAttribute="top" secondItem="gzE-sn-KvN" secondAttribute="bottom" id="HWw-Ee-bSc"/>
+                                            <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="U3n-mr-kGt" secondAttribute="bottom" constant="20" id="RZB-3g-Wrv"/>
+                                            <constraint firstItem="TZJ-2p-C7I" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="SLF-ya-vnA"/>
+                                            <constraint firstItem="mOX-rj-RaE" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="TDU-cD-iKB"/>
+                                            <constraint firstItem="mOX-rj-RaE" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="bpq-K4-udV"/>
+                                            <constraint firstItem="U3n-mr-kGt" firstAttribute="top" secondItem="sx2-ej-yKl" secondAttribute="top" id="ivD-qx-t5n"/>
+                                            <constraint firstItem="U3n-mr-kGt" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" constant="3" id="j9z-6x-CYJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="fu6-rx-TGH" secondAttribute="trailing" constant="8" id="k0W-dM-hGM"/>
+                                            <constraint firstItem="gzE-sn-KvN" firstAttribute="top" secondItem="mOX-rj-RaE" secondAttribute="bottom" constant="8" id="vOf-0v-3H6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sx2-ej-yKl" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="top" id="6Ka-WY-J9e"/>
+                                    <constraint firstItem="sx2-ej-yKl" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" id="YMQ-Nf-Lkj"/>
+                                    <constraint firstAttribute="trailing" secondItem="sx2-ej-yKl" secondAttribute="trailing" id="uv1-dh-iKn"/>
+                                    <constraint firstAttribute="bottom" secondItem="sx2-ej-yKl" secondAttribute="bottom" id="xkE-ot-ogh"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fu6-rx-TGH" firstAttribute="leading" secondItem="4OJ-1g-dr7" secondAttribute="trailing" constant="30" id="0km-tX-3Xg"/>
-                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="RkI-xP-e3Y" secondAttribute="bottom" constant="20" id="1ez-eS-bNy"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="top" secondItem="0qp-PC-D4W" secondAttribute="bottom" id="84G-dA-Vab"/>
-                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8Qy-kV-IHC"/>
-                            <constraint firstItem="d77-p8-bc6" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="AJJ-HG-aLG"/>
-                            <constraint firstItem="d77-p8-bc6" firstAttribute="top" secondItem="fuf-j4-8sn" secondAttribute="bottom" constant="8" id="CTY-JZ-MK2"/>
-                            <constraint firstItem="0qp-PC-D4W" firstAttribute="leading" secondItem="gzE-sn-KvN" secondAttribute="leading" id="EFc-EA-l77"/>
-                            <constraint firstItem="tii-cT-1qH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FGt-NF-CTu"/>
-                            <constraint firstItem="gzE-sn-KvN" firstAttribute="leading" secondItem="fu6-rx-TGH" secondAttribute="leading" id="FMa-Yz-7EC"/>
-                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="trailing" secondItem="KR0-44-MlB" secondAttribute="trailing" id="FNx-pt-qQX"/>
-                            <constraint firstItem="4t1-AU-kEN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hlp-8P-GGp"/>
-                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="Hsb-i0-os6"/>
-                            <constraint firstItem="mOX-rj-RaE" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="O7c-VK-MLc"/>
-                            <constraint firstItem="Tr9-ox-zTz" firstAttribute="top" secondItem="tii-cT-1qH" secondAttribute="bottom" constant="39" id="QUI-Vu-gqO"/>
-                            <constraint firstItem="fu6-rx-TGH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="TJ4-QW-MZO"/>
-                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="trailing" secondItem="d77-p8-bc6" secondAttribute="trailing" id="Txf-JD-BRd"/>
-                            <constraint firstItem="fuf-j4-8sn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Wsf-hv-Slt"/>
-                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="top" secondItem="d77-p8-bc6" secondAttribute="bottom" id="Y7P-Li-8KA"/>
-                            <constraint firstItem="Tr9-ox-zTz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZeP-6K-V1h"/>
-                            <constraint firstItem="fu6-rx-TGH" firstAttribute="top" secondItem="gzE-sn-KvN" secondAttribute="bottom" id="elq-4J-Y2W"/>
-                            <constraint firstItem="fuf-j4-8sn" firstAttribute="trailing" secondItem="4OJ-1g-dr7" secondAttribute="trailing" id="h9F-8E-OQr"/>
-                            <constraint firstItem="0qp-PC-D4W" firstAttribute="top" secondItem="fu6-rx-TGH" secondAttribute="bottom" constant="63" id="hLD-Zr-Cfy"/>
-                            <constraint firstItem="mOX-rj-RaE" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="i38-wb-JY7"/>
-                            <constraint firstItem="4OJ-1g-dr7" firstAttribute="top" secondItem="mOX-rj-RaE" secondAttribute="bottom" constant="14" id="iQH-hY-rkQ"/>
-                            <constraint firstItem="KR0-44-MlB" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="j5s-6d-w5h"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="leading" secondItem="0qp-PC-D4W" secondAttribute="leading" id="lTA-hd-0Vt"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="m8o-8x-oi4"/>
-                            <constraint firstItem="mOX-rj-RaE" firstAttribute="top" secondItem="TZJ-2p-C7I" secondAttribute="bottom" id="mPb-uj-yQi"/>
-                            <constraint firstItem="mOX-rj-RaE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mcv-Zs-kLF"/>
-                            <constraint firstItem="fuf-j4-8sn" firstAttribute="top" secondItem="4OJ-1g-dr7" secondAttribute="bottom" id="oPJ-yY-c71"/>
-                            <constraint firstItem="fu6-rx-TGH" firstAttribute="leading" secondItem="gzE-sn-KvN" secondAttribute="leading" id="oeH-He-l44"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="leading" secondItem="gzE-sn-KvN" secondAttribute="leading" id="qZc-f6-RCb"/>
-                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="top" secondItem="KR0-44-MlB" secondAttribute="bottom" id="qmG-iQ-W2o"/>
-                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tFO-YO-ic9"/>
-                            <constraint firstItem="KR0-44-MlB" firstAttribute="top" secondItem="i8Q-Nc-l7N" secondAttribute="bottom" constant="8" id="tUd-Mo-gIE"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="leading" secondItem="KR0-44-MlB" secondAttribute="trailing" constant="30" id="tcT-1h-PN5"/>
-                            <constraint firstItem="4OJ-1g-dr7" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="xjQ-8G-jUV"/>
-                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="yI2-3m-m9f"/>
-                            <constraint firstItem="fuf-j4-8sn" firstAttribute="trailing" secondItem="TZJ-2p-C7I" secondAttribute="trailing" id="za4-we-fut"/>
+                            <constraint firstItem="sx2-ej-yKl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2qi-17-TQa"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="J3p-2T-9jS"/>
+                            <constraint firstItem="epA-4O-TvU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" constant="-20" id="a0d-8T-Vlv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="bottom" id="nKj-Pw-LAO"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="20" id="o3l-29-fcf"/>
+                            <constraint firstItem="fu6-rx-TGH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="r0z-iw-Lwr"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="yrp-qe-SxU" userLabel="Scroll View.leading = leadingMargin - 20"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Customize Bracket" id="Fiy-Jb-zeS">
@@ -158,6 +160,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="eastFinalTextField" destination="RkI-xP-e3Y" id="oNc-Ov-FXc"/>
                         <outlet property="finalOneTextField" destination="fu6-rx-TGH" id="L3S-CF-9Es"/>
@@ -166,13 +170,12 @@
                         <outlet property="resetButton" destination="qnx-mF-vYc" id="uGq-EQ-rFJ"/>
                         <outlet property="southFinalTextField" destination="i8Q-Nc-l7N" id="gay-BP-XMu"/>
                         <outlet property="westFinalTextField" destination="fuf-j4-8sn" id="HcL-3Z-G5m"/>
-                        <outlet property="winnerLabel" destination="Tr9-ox-zTz" id="azp-Ft-uqu"/>
                         <outlet property="winnerPickerTextField" destination="tii-cT-1qH" id="7RC-qS-Obd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="371"/>
+            <point key="canvasLocation" x="1199" y="383"/>
         </scene>
         <!--Midwest-->
         <scene sceneID="Ht7-sR-INf">
@@ -446,7 +449,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Um-U2-q1I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bfZ-3m-zpQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="West Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALI-5s-7Am">
@@ -456,7 +459,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-th-Mgn">
-                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                                <rect key="frame" x="0.0" y="93" width="600" height="658"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1j-vn-KF5" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="560" height="373"/>
@@ -667,7 +670,7 @@
                         <viewControllerLayoutGuide type="bottom" id="etG-Cf-j4Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wg0-Xm-hbi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="South Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-RM-Tax">
@@ -677,7 +680,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-3T-ldR">
-                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                                <rect key="frame" x="0.0" y="93" width="600" height="658"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWg-wL-MDq" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="560" height="373"/>
@@ -888,7 +891,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sqi-au-8lS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dRn-zV-yoU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="East Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-Or-gLW">
@@ -898,7 +901,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jp-98-4pm">
-                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                                <rect key="frame" x="0.0" y="93" width="600" height="658"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsf-Z6-Zhg" customClass="TabDisplayRegion" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="560" height="373"/>
@@ -1109,7 +1112,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KYo-Sf-jN1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TXx-5m-90O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Championship" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-aM-OTM">
@@ -1118,8 +1121,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-yN-lth">
-                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-yN-lth">
+                                <rect key="frame" x="0.0" y="93" width="600" height="658"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8N5-TR-wLc" customClass="TabDisplayChamps" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="8" width="600" height="387"/>

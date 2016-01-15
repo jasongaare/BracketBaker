@@ -15,7 +15,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var dataLoaded = false
     
     // This is the text when there is no team selected
-    let placeholder = "---"
+    let placeholder = "-----"
     
     var masterDataArray : [[String]] = []
     
@@ -108,9 +108,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalTwoTextField.text = self.placeholder
             winnerPickerTextField.text = self.placeholder
             
-            // Made it!
-            print("Completed launch.")
-            
             
             
         // This bracket ends our "if data loaded" block
@@ -126,6 +123,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
 
+    
+    // Let the user know  if they don't have data
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
@@ -653,7 +652,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBOutlet weak var createButton: UIBarButtonItem!
     @IBOutlet weak var resetButton: UIBarButtonItem!
-    
-    @IBOutlet weak var winnerLabel: UILabel!
+
     
 }
