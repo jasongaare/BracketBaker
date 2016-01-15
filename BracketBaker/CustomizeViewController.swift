@@ -15,7 +15,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var dataLoaded = false
     
     // This is the text when there is no team selected
-    let placeholder = "-----"
+    let placeholder = "--Random--"
     
     var masterDataArray : [[String]] = []
     

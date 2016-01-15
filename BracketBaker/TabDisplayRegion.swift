@@ -33,7 +33,7 @@ class TabDisplayRegion: UIView {
         
         // This makes some settings things
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetLineWidth(context, 2.0)
+        CGContextSetLineWidth(context, 1.5)
 //        let colorSpace = CGColorSpaceCreateDeviceRGB()
 //        let components: [CGFloat] = [0.0, 0.0, 1.0, 1.0]
 //        let color = CGColorCreate(colorSpace, components)
