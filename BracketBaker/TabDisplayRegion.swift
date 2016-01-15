@@ -29,7 +29,7 @@ class TabDisplayRegion: UIView {
     //This is how we draw everything
     override func drawRect(rect: CGRect)
     {
-        let spacer : CGFloat = 5
+        let spacer : CGFloat = 1
         
         // This makes some settings things
         let context = UIGraphicsGetCurrentContext()

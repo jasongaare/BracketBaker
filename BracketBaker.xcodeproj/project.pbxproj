@@ -18,6 +18,7 @@
 		1B30B7EA1C15EAF6008C0657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B30B7E81C15EAF6008C0657 /* LaunchScreen.storyboard */; };
 		1B30B7F51C15EAF7008C0657 /* BracketBakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7F41C15EAF7008C0657 /* BracketBakerTests.swift */; };
 		1B30B8001C15EAF7008C0657 /* BracketBakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */; };
+		1B5BB7171C498E3600E0D315 /* TapDisplayChamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */; };
 		1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */; };
 		1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */; };
 		1BC68FF61C4468D000BD9478 /* TabDisplayWestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */; };
@@ -62,6 +63,7 @@
 		1B30B7FB1C15EAF7008C0657 /* BracketBakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BracketBakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketBakerUITests.swift; sourceTree = "<group>"; };
 		1B30B8011C15EAF7008C0657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapDisplayChamps.swift; sourceTree = "<group>"; };
 		1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectedPrefs.swift; sourceTree = "<group>"; };
 		1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSolver.swift; sourceTree = "<group>"; };
 		1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayWestController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				1B04E85B1C457CDC00A64085 /* TabDisplayViewController.swift */,
 				1B04E8651C46C09900A64085 /* TabDisplayRegion.swift */,
+				1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */,
 				1BC68FF71C446A2600BD9478 /* TabDisplayMidwestController.swift */,
 				1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */,
 				1BC68FF91C446A4A00BD9478 /* TabDisplayEastController.swift */,
@@ -314,6 +317,7 @@
 				1B04E85C1C457CDC00A64085 /* TabDisplayViewController.swift in Sources */,
 				1B30B7E21C15EAF6008C0657 /* CustomizeViewController.swift in Sources */,
 				1B29825D1C1B65CD0067206E /* FileSaveHelper.swift in Sources */,
+				1B5BB7171C498E3600E0D315 /* TapDisplayChamps.swift in Sources */,
 				1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */,
 				1B30B7E01C15EAF6008C0657 /* AppDelegate.swift in Sources */,
 				1BC68FFC1C446C9200BD9478 /* TabDisplaySouthContoller.swift in Sources */,

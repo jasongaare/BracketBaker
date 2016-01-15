@@ -20,21 +20,21 @@ class TabDisplaySouthContoller: UIViewController {
         let teamArray = tdvc.bracketData.south
         
         // Display the winners on the labels
-        winner1.text = "\(teamArray[0][2])"
-        winner2.text = "\(teamArray[1][2])"
-        winner3.text = "\(teamArray[2][2])"
-        winner4.text = "\(teamArray[3][2])"
-        winner5.text = "\(teamArray[4][2])"
-        winner6.text = "\(teamArray[5][2])"
-        winner7.text = "\(teamArray[6][2])"
-        winner8.text = "\(teamArray[7][2])"
-        winner9.text = "\(teamArray[8][2])"
-        winner10.text = "\(teamArray[9][2])"
-        winner11.text = "\(teamArray[10][2])"
-        winner12.text = "\(teamArray[11][2])"
-        winner13.text = "\(teamArray[12][2])"
-        winner14.text = "\(teamArray[13][2])"
-        winner15.text = "\(teamArray[14][2])"
+        winner1.text = "\(teamArray[0][1]). \(teamArray[0][2])"
+        winner2.text = "\(teamArray[1][1]). \(teamArray[1][2])"
+        winner3.text = "\(teamArray[2][1]). \(teamArray[2][2])"
+        winner4.text = "\(teamArray[3][1]). \(teamArray[3][2])"
+        winner5.text = "\(teamArray[4][1]). \(teamArray[4][2])"
+        winner6.text = "\(teamArray[5][1]). \(teamArray[5][2])"
+        winner7.text = "\(teamArray[6][1]). \(teamArray[6][2])"
+        winner8.text = "\(teamArray[7][1]). \(teamArray[7][2])"
+        winner9.text = "\(teamArray[8][1]). \(teamArray[8][2])"
+        winner10.text = "\(teamArray[9][1]). \(teamArray[9][2])"
+        winner11.text = "\(teamArray[10][1]). \(teamArray[10][2])"
+        winner12.text = "\(teamArray[11][1]). \(teamArray[11][2])"
+        winner13.text = "\(teamArray[12][1]). \(teamArray[12][2])"
+        winner14.text = "\(teamArray[13][1]). \(teamArray[13][2])"
+        winner15.text = "\(teamArray[14][1]). \(teamArray[14][2])"
         
         // We need to let the view know where these labels are,
         // that way we can draw the lines under the teams to make

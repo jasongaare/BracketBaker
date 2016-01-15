@@ -19,13 +19,25 @@ class TabDisplayChampsContoller: UIViewController {
         // Get the data
         let teamArray = tdvc.bracketData.champs
         
-        mwFinalLabel.text = teamArray[0][2]
-        wFinalLabel.text = teamArray[1][2]
-        eFinalLabel.text = teamArray[2][2]
-        sFinalLabel.text = teamArray[3][2]
-        Final1Label.text = teamArray[4][2]
-        Final2Label.text = teamArray[5][2]
+        // Display the winners on the labels
+        mwFinalLabel.text = "\(teamArray[0][1]). \(teamArray[0][2])"
+        wFinalLabel.text = "\(teamArray[1][1]). \(teamArray[1][2])"
+        eFinalLabel.text = "\(teamArray[2][1]). \(teamArray[2][2])"
+        sFinalLabel.text = "\(teamArray[3][1]). \(teamArray[3][2])"
+        Final1Label.text = "\(teamArray[4][1]). \(teamArray[4][2])"
+        Final2Label.text = "\(teamArray[5][1]). \(teamArray[5][2])"
         ChampLabel.text = teamArray[6][2]
+        
+        // We need to let the view know where these labels are,
+        // that way we can draw the lines under the teams to make
+        // the brackets
+        myBracketDisplay.mwFinal = mwFinalLabel
+        myBracketDisplay.wFinal = wFinalLabel
+        myBracketDisplay.eFinal = eFinalLabel
+        myBracketDisplay.sFinal = sFinalLabel
+        myBracketDisplay.final1 = Final1Label
+        myBracketDisplay.final2 = Final2Label
+        myBracketDisplay.champion = ChampLabel
     }
     
     
@@ -40,5 +52,7 @@ class TabDisplayChampsContoller: UIViewController {
     @IBOutlet weak var Final2Label: UILabel!
     @IBOutlet weak var ChampLabel: UILabel!
     
+    
+    @IBOutlet weak var myBracketDisplay: TabDisplayChamps!
     
 }
