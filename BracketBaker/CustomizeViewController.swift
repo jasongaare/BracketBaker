@@ -109,6 +109,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.text = self.placeholder
             
             
+
+            
             
         // This bracket ends our "if data loaded" block
         }
@@ -597,7 +599,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // This is the only place to go
         let tabDisplayView = segue.destinationViewController as! TabDisplayViewController
         tabDisplayView.self.bracketData = completedBracket
-        
+
         
     }
     
@@ -650,7 +652,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var finalOneTextField: UITextField!
     @IBOutlet weak var finalTwoTextField: UITextField!
     
-    @IBOutlet weak var createButton: UIBarButtonItem!
+    @IBOutlet weak var createBracketButton: UIButton!
     @IBOutlet weak var resetButton: UIBarButtonItem!
 
     

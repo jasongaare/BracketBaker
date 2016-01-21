@@ -7,7 +7,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Customize Bracket-->
+        <!--Bracket Baker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CustomizeViewController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,87 +16,100 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-ej-yKl" customClass="CustomizeView" customModule="BracketBaker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-ej-yKl" customClass="CustomizeView" customModule="BracketBaker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="830"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOX-rj-RaE">
-                                                <rect key="frame" x="8" y="156" width="402" height="30"/>
+                                                <rect key="frame" x="8" y="281" width="402" height="30"/>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="HCR-hC-XF4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-Nc-l7N">
-                                                <rect key="frame" x="28" y="427" width="264" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-Nc-l7N">
+                                                <rect key="frame" x="190" y="603" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="East Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-44-MlB">
-                                                <rect key="frame" x="81" y="522" width="91" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-44-MlB">
+                                                <rect key="frame" x="242" y="464" width="350" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkI-xP-e3Y">
-                                                <rect key="frame" x="28" y="551" width="282" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkI-xP-e3Y">
+                                                <rect key="frame" x="190" y="485" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epA-4O-TvU">
-                                                <rect key="frame" x="320" y="450" width="280" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epA-4O-TvU">
+                                                <rect key="frame" x="8" y="544" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="West Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-1g-dr7">
-                                                <rect key="frame" x="8" y="253" width="284" height="21"/>
+                                                <rect key="frame" x="8" y="378" width="284" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="South Finalist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
-                                                <rect key="frame" x="74" y="406" width="104" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="South Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
+                                                <rect key="frame" x="242" y="582" width="350" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
-                                                <rect key="frame" x="162" y="630" width="438" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
+                                                <rect key="frame" x="96" y="698" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Midwest Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZJ-2p-C7I">
-                                                <rect key="frame" x="8" y="135" width="302" height="21"/>
+                                                <rect key="frame" x="8" y="260" width="302" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Average" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAw-Li-F4L">
+                                                <rect key="frame" x="269" y="208" width="63" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="More" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrS-hO-sIT">
+                                                <rect key="frame" x="552" y="208" width="40" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fu6-rx-TGH">
-                                                <rect key="frame" x="190" y="215" width="402" height="30"/>
+                                                <rect key="frame" x="190" y="340" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Midwest/West Semi-Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzE-sn-KvN">
-                                                <rect key="frame" x="242" y="194" width="350" height="21"/>
+                                                <rect key="frame" x="242" y="319" width="350" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick A Winner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
-                                                <rect key="frame" x="31" y="624" width="112" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pick a Champion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
+                                                <rect key="frame" x="234" y="668" width="133" height="30"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finals Team #2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-PC-D4W">
-                                                <rect key="frame" x="464" y="430" width="136" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East/South Semi-Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-PC-D4W">
+                                                <rect key="frame" x="8" y="523" width="284" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -107,36 +120,100 @@
                                                     <constraint firstAttribute="height" constant="45" id="tjK-su-h2c"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuf-j4-8sn">
-                                                <rect key="frame" x="8" y="274" width="402" height="30"/>
+                                                <rect key="frame" x="8" y="399" width="402" height="30"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-gz-vCu">
+                                                <rect key="frame" x="20" y="758" width="560" height="44"/>
+                                                <color key="backgroundColor" red="0.12156862745098039" green="0.396078431372549" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="HjD-gN-00A"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="22"/>
+                                                <state key="normal" title="Create Bracket">
+                                                    <color key="titleColor" red="0.93333333333333335" green="0.50588235294117645" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="MNE-MN-faJ" kind="show" id="sEh-ZR-9LY"/>
+                                                </connections>
+                                            </button>
+                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-tf-p7Y">
+                                                <rect key="frame" x="6" y="170" width="588" height="31"/>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Amount of Upsets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maq-Cu-nIP">
+                                                <rect key="frame" x="205" y="141" width="191" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Less" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-Ye-pZn">
+                                                <rect key="frame" x="8" y="208" width="36" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="tii-cT-1qH" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="3mA-Zt-nH2"/>
+                                            <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="60" id="5gs-Q0-Qvy"/>
                                             <constraint firstItem="4OJ-1g-dr7" firstAttribute="top" secondItem="fu6-rx-TGH" secondAttribute="bottom" constant="8" id="5rI-cF-B2i"/>
+                                            <constraint firstAttribute="trailing" secondItem="KR0-44-MlB" secondAttribute="trailing" constant="8" id="6jF-yb-FQK"/>
+                                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="top" secondItem="d77-p8-bc6" secondAttribute="bottom" id="7fw-OU-WJA"/>
                                             <constraint firstItem="mOX-rj-RaE" firstAttribute="top" secondItem="TZJ-2p-C7I" secondAttribute="bottom" id="8HC-QR-Cm2"/>
                                             <constraint firstItem="4OJ-1g-dr7" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="8mJ-bH-cSv"/>
+                                            <constraint firstAttribute="trailing" secondItem="i8Q-Nc-l7N" secondAttribute="trailing" constant="8" id="BoC-9g-4HW"/>
                                             <constraint firstItem="fuf-j4-8sn" firstAttribute="top" secondItem="4OJ-1g-dr7" secondAttribute="bottom" id="CYO-BJ-Yge"/>
                                             <constraint firstAttribute="trailing" secondItem="gzE-sn-KvN" secondAttribute="trailing" constant="8" id="DKd-Jf-TVy"/>
+                                            <constraint firstItem="P1v-tf-p7Y" firstAttribute="top" secondItem="maq-Cu-nIP" secondAttribute="bottom" constant="8" id="GUR-cD-341"/>
+                                            <constraint firstItem="tii-cT-1qH" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="Gvm-X6-tGp"/>
                                             <constraint firstItem="fu6-rx-TGH" firstAttribute="top" secondItem="gzE-sn-KvN" secondAttribute="bottom" id="HWw-Ee-bSc"/>
-                                            <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="U3n-mr-kGt" secondAttribute="bottom" constant="20" id="RZB-3g-Wrv"/>
+                                            <constraint firstAttribute="trailing" secondItem="RkI-xP-e3Y" secondAttribute="trailing" constant="8" id="JVu-r2-al4"/>
+                                            <constraint firstAttribute="trailing" secondItem="P1v-tf-p7Y" secondAttribute="trailing" constant="8" id="N6T-9v-cdH"/>
+                                            <constraint firstItem="DaQ-gz-vCu" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="20" id="NxR-Do-GGr"/>
+                                            <constraint firstItem="4t1-AU-kEN" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="PRH-69-PuC"/>
+                                            <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="U3n-mr-kGt" secondAttribute="bottom" constant="145" id="RZB-3g-Wrv"/>
                                             <constraint firstItem="TZJ-2p-C7I" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="SLF-ya-vnA"/>
+                                            <constraint firstItem="d77-p8-bc6" firstAttribute="top" secondItem="epA-4O-TvU" secondAttribute="bottom" constant="8" id="SYO-yo-SNv"/>
                                             <constraint firstItem="fuf-j4-8sn" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="T5w-tb-Vax"/>
                                             <constraint firstItem="mOX-rj-RaE" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="TDU-cD-iKB"/>
+                                            <constraint firstItem="tbv-Ye-pZn" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="TkI-LN-qKR"/>
+                                            <constraint firstItem="DaQ-gz-vCu" firstAttribute="top" secondItem="tii-cT-1qH" secondAttribute="bottom" constant="30" id="Trg-VS-zCd"/>
+                                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="UZZ-SZ-Vbz"/>
+                                            <constraint firstItem="P1v-tf-p7Y" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="WyC-5D-j04"/>
+                                            <constraint firstItem="0qp-PC-D4W" firstAttribute="top" secondItem="RkI-xP-e3Y" secondAttribute="bottom" constant="8" id="Zi5-KZ-BwK"/>
+                                            <constraint firstItem="NAw-Li-F4L" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="as6-0Z-k5Q"/>
+                                            <constraint firstItem="maq-Cu-nIP" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="bLD-Ht-G6D"/>
                                             <constraint firstItem="mOX-rj-RaE" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="bpq-K4-udV"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZrS-hO-sIT" secondAttribute="trailing" constant="8" id="dc1-s3-kAD"/>
+                                            <constraint firstItem="0qp-PC-D4W" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="ghW-Wv-kMK"/>
                                             <constraint firstItem="U3n-mr-kGt" firstAttribute="top" secondItem="sx2-ej-yKl" secondAttribute="top" constant="1" id="ivD-qx-t5n"/>
                                             <constraint firstItem="U3n-mr-kGt" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" constant="3" id="j9z-6x-CYJ"/>
                                             <constraint firstAttribute="trailing" secondItem="fu6-rx-TGH" secondAttribute="trailing" constant="8" id="k0W-dM-hGM"/>
+                                            <constraint firstItem="KR0-44-MlB" firstAttribute="top" secondItem="fuf-j4-8sn" secondAttribute="bottom" constant="35" id="ksT-FL-faY"/>
+                                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="mcz-eP-AI7"/>
+                                            <constraint firstItem="tbv-Ye-pZn" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="8" id="ng2-Zd-wjF"/>
                                             <constraint firstItem="fuf-j4-8sn" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="nv9-gL-fJz"/>
+                                            <constraint firstItem="epA-4O-TvU" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="ogc-Ck-LJd"/>
+                                            <constraint firstAttribute="trailing" secondItem="DaQ-gz-vCu" secondAttribute="trailing" constant="20" id="qbz-yL-Ser"/>
+                                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="top" secondItem="KR0-44-MlB" secondAttribute="bottom" id="qkS-rM-NxN"/>
+                                            <constraint firstItem="ZrS-hO-sIT" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="8" id="rrW-r9-CUf"/>
+                                            <constraint firstAttribute="bottom" secondItem="DaQ-gz-vCu" secondAttribute="bottom" constant="10" id="tfO-FT-hID"/>
+                                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="i8Q-Nc-l7N" secondAttribute="bottom" constant="35" id="uSN-Kn-lVr"/>
+                                            <constraint firstItem="tii-cT-1qH" firstAttribute="top" secondItem="4t1-AU-kEN" secondAttribute="bottom" id="v4N-7j-qo1"/>
+                                            <constraint firstAttribute="trailing" secondItem="d77-p8-bc6" secondAttribute="trailing" constant="8" id="v8b-RJ-vLd"/>
                                             <constraint firstItem="gzE-sn-KvN" firstAttribute="top" secondItem="mOX-rj-RaE" secondAttribute="bottom" constant="8" id="vOf-0v-3H6"/>
+                                            <constraint firstItem="epA-4O-TvU" firstAttribute="top" secondItem="0qp-PC-D4W" secondAttribute="bottom" id="zcv-8e-4UL"/>
+                                            <constraint firstItem="NAw-Li-F4L" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="8" id="zzQ-tZ-F69"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.12156862745098039" green="0.396078431372549" blue="0.6705882352941176" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="top" id="6Ka-WY-J9e"/>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" id="YMQ-Nf-Lkj"/>
@@ -145,32 +222,28 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sx2-ej-yKl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2qi-17-TQa"/>
+                            <constraint firstItem="sx2-ej-yKl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="5" id="2qi-17-TQa"/>
                             <constraint firstItem="vsK-3r-YV3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="J3p-2T-9jS"/>
-                            <constraint firstItem="epA-4O-TvU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" constant="-20" id="a0d-8T-Vlv"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="bottom" id="nKj-Pw-LAO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="bottom" id="Xx8-2M-odd"/>
+                            <constraint firstItem="epA-4O-TvU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="a0d-8T-Vlv"/>
                             <constraint firstItem="vsK-3r-YV3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="20" id="o3l-29-fcf"/>
                             <constraint firstItem="fu6-rx-TGH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="r0z-iw-Lwr"/>
                             <constraint firstItem="vsK-3r-YV3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="yrp-qe-SxU" userLabel="Scroll View.leading = leadingMargin - 20"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Customize Bracket" id="Fiy-Jb-zeS">
+                    <navigationItem key="navigationItem" title="Bracket Baker" id="Fiy-Jb-zeS">
                         <barButtonItem key="leftBarButtonItem" title="Reset" id="qnx-mF-vYc" userLabel="Reset">
                             <connections>
                                 <action selector="resetButtonClicked:" destination="BYZ-38-t0r" id="OVK-5B-rth"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="xnw-aL-dmo">
-                            <connections>
-                                <segue destination="MNE-MN-faJ" kind="show" id="ZGG-wl-Uli"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="800"/>
+                    <size key="freeformSize" width="600" height="1200"/>
                     <connections>
+                        <outlet property="createBracketButton" destination="DaQ-gz-vCu" id="tTW-Sy-mCX"/>
                         <outlet property="eastFinalTextField" destination="RkI-xP-e3Y" id="oNc-Ov-FXc"/>
                         <outlet property="finalOneTextField" destination="fu6-rx-TGH" id="L3S-CF-9Es"/>
                         <outlet property="finalTwoTextField" destination="epA-4O-TvU" id="zGq-Qz-HaQ"/>
@@ -425,12 +498,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ6-Op-GSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2557" y="-413"/>
+            <point key="canvasLocation" x="2557" y="-302"/>
         </scene>
         <!--Tab Display View Controller-->
         <scene sceneID="Wmq-fE-vfN">
             <objects>
                 <tabBarController id="MNE-MN-faJ" customClass="TabDisplayViewController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="nwB-n9-iVW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -457,7 +532,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Um-U2-q1I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bfZ-3m-zpQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="West Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALI-5s-7Am">
@@ -645,6 +720,8 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="West" image="Tab_Bracket" selectedImage="Tab_Bracket" id="L8B-iZ-avD"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="bracketScroll" destination="8OE-th-Mgn" id="6Kj-hs-sHp"/>
                         <outlet property="myBracketDisplay" destination="g1j-vn-KF5" id="ddO-Cz-eVV"/>
@@ -678,7 +755,7 @@
                         <viewControllerLayoutGuide type="bottom" id="etG-Cf-j4Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wg0-Xm-hbi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="South Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-RM-Tax">
@@ -888,7 +965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H0f-0n-ieT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3488" y="-41"/>
+            <point key="canvasLocation" x="3327" y="57"/>
         </scene>
         <!--East-->
         <scene sceneID="GFR-PN-LnX">
@@ -899,7 +976,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sqi-au-8lS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dRn-zV-yoU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-Or-gLW">
@@ -1109,7 +1186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LgB-7M-pem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2557" y="1329"/>
+            <point key="canvasLocation" x="2557" y="1152"/>
         </scene>
         <!--Champs-->
         <scene sceneID="DxZ-Aj-EU7">
@@ -1120,7 +1197,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KYo-Sf-jN1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TXx-5m-90O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Championship" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-aM-OTM">
@@ -1138,43 +1215,43 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Champ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7V-Ef-rYk">
                                                 <rect key="frame" x="240" y="352" width="120" height="19"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="W Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-IG-hqR">
                                                 <rect key="frame" x="20" y="284" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="S Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPj-am-haH">
                                                 <rect key="frame" x="460" y="284" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Final 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-eu-bHj">
                                                 <rect key="frame" x="240" y="223" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Final 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-6S-CVa">
                                                 <rect key="frame" x="240" y="117" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="E Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyB-wE-879">
                                                 <rect key="frame" x="460" y="46" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MW Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovd-Q7-Lvt">
                                                 <rect key="frame" x="20" y="46" width="120" height="15"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="13"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Champion:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eti-0s-RFd">
@@ -1185,7 +1262,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="vs." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHO-om-0Yd">
                                                 <rect key="frame" x="283" y="167" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1242,12 +1319,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6k-bl-xEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3500" y="920"/>
+            <point key="canvasLocation" x="3332" y="824"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Bar Controller-->
         <scene sceneID="Fck-GJ-8Mc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fl4-BU-KPv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fl4-BU-KPv" customClass="NavBarController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c9I-FA-ODq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1255,6 +1332,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="navBar" destination="c9I-FA-ODq" id="0fx-54-4Dl"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hqU-lm-sL9"/>
                     </connections>
                 </navigationController>

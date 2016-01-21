@@ -22,6 +22,7 @@
 		1B5BB7191C499FE600E0D315 /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7181C499FE600E0D315 /* CustomizeView.swift */; };
 		1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */; };
 		1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */; };
+		1BBD5FCE1C517F7100265CB3 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD5FCD1C517F7000265CB3 /* NavBarController.swift */; };
 		1BC68FF61C4468D000BD9478 /* TabDisplayWestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */; };
 		1BC68FF81C446A2600BD9478 /* TabDisplayMidwestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF71C446A2600BD9478 /* TabDisplayMidwestController.swift */; };
 		1BC68FFA1C446A4A00BD9478 /* TabDisplayEastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC68FF91C446A4A00BD9478 /* TabDisplayEastController.swift */; };
@@ -68,6 +69,7 @@
 		1B5BB7181C499FE600E0D315 /* CustomizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
 		1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectedPrefs.swift; sourceTree = "<group>"; };
 		1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSolver.swift; sourceTree = "<group>"; };
+		1BBD5FCD1C517F7000265CB3 /* NavBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		1BC68FF51C4468D000BD9478 /* TabDisplayWestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayWestController.swift; sourceTree = "<group>"; };
 		1BC68FF71C446A2600BD9478 /* TabDisplayMidwestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayMidwestController.swift; sourceTree = "<group>"; };
 		1BC68FF91C446A4A00BD9478 /* TabDisplayEastController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDisplayEastController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */,
 				1B5BB7181C499FE600E0D315 /* CustomizeView.swift */,
 				1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */,
+				1BBD5FCD1C517F7000265CB3 /* NavBarController.swift */,
 				1B29825C1C1B65CD0067206E /* FileSaveHelper.swift */,
 				1B30B7E31C15EAF6008C0657 /* Main.storyboard */,
 				1B30B7E61C15EAF6008C0657 /* Assets.xcassets */,
@@ -327,6 +330,7 @@
 				1BC68FFC1C446C9200BD9478 /* TabDisplaySouthContoller.swift in Sources */,
 				1BC68FF61C4468D000BD9478 /* TabDisplayWestController.swift in Sources */,
 				1B04E8661C46C09900A64085 /* TabDisplayRegion.swift in Sources */,
+				1BBD5FCE1C517F7100265CB3 /* NavBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
