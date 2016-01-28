@@ -109,8 +109,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.text = self.placeholder
             
             
-
             
+            // Change appearance of resetButton
+            resetButton.tintColor = UIColor.whiteColor()
+            let bb_font = UIFont(name: "Optima", size: 16.0)
+            resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
+
             
         // This bracket ends our "if data loaded" block
         }
@@ -609,7 +613,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func createButtonClicked() -> BracketToDisplay {
         
         // When the button is clicked, we want to capture the user customization preferences
-        let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!)
+        let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!, upsets: upsetsSlider.value)
         
         // Then we create the bracket, starting by sending the raw data over to the solver
         let bracket = BracketSolver(masterArray: masterDataArray, mwArray: midwestRegionArray, wArray: westRegionArray, sArray: southRegionArray, eArray: eastRegionArray, ph: placeholder)
@@ -639,6 +643,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         finalPicker1.selectRow(0, inComponent: 0, animated: false)
         finalPicker2.selectRow(0, inComponent: 0, animated: false)
         winnerPicker.selectRow(0, inComponent: 0, animated: false)
+        
+        // Sliders to the middle
+        upsetsSlider.value = 0.5
     }
 
     // MARK: Outlets and Connections
@@ -655,5 +662,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var createBracketButton: UIButton!
     @IBOutlet weak var resetButton: UIBarButtonItem!
 
+    @IBOutlet weak var upsetsSlider: UISlider!
     
 }

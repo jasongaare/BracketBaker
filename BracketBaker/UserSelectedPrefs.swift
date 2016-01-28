@@ -19,7 +19,9 @@ class UserSelectedPrefs : NSObject {
     var final2 = ""
     var winner = ""
     
-    init(mwFinal:String, wFinal: String, sFinal: String, eFinal:String, final1: String, final2: String, winner: String) {
+    var upsets : Float = 0
+    
+    init(mwFinal:String, wFinal: String, sFinal: String, eFinal:String, final1: String, final2: String, winner: String, upsets: Float) {
         
         self.midwestFinal = mwFinal
         self.westFinal = wFinal
@@ -29,6 +31,8 @@ class UserSelectedPrefs : NSObject {
         self.final1 = final1
         self.final2 = final2
         self.winner = winner
+        
+        self.upsets = upsets
         
     }
     

@@ -31,11 +31,18 @@ class BracketSolver {
     var final2 : [String] = []
     var winner : [String] = []
     
+    var upsetCounter : Int = 0
+    var upsetCoeffecient : Float = 0
+    
     var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
     
     // MARK: Solver Functions
     
     func fillOutBracket(prefs : UserSelectedPrefs) {
+        
+        self.upsetCounter = 0
+        self.upsetCoeffecient = prefs.upsets
+        print("Upsets: \(self.upsetCoeffecient)")
         
         // Populate each region of the bracket
         
@@ -43,6 +50,8 @@ class BracketSolver {
         var westComplete = populateRegion(westArray, userWinner: prefs.westFinal)
         var eastComplete = populateRegion(eastArray, userWinner: prefs.eastFinal)
         var southComplete = populateRegion(southArray, userWinner: prefs.southFinal)
+        
+        print("Number of round of 64 upsets = \(self.upsetCounter)")
         
         // Populate in the final four from the solved regions
         
@@ -155,15 +164,30 @@ class BracketSolver {
         
         var winnerArray : [[String]] = []
         var firstTeamPos = 0
+        
         var teamSeedA = 0
         var teamSeedB = 0
         var seedSum = 0
-        var randomNum = 0
+        
+        var teamRpiA = 0
+        var teamRpiB = 0
+        var rpiSum = 0
+        
+        var temp = 0
+        var swap = false
+        
+        var sumA = 0
+        var overallSum = 0
+        
+        var randomNum : Float = 0
+        var threshold: Float = 0
+        
         
         /* SECOND ROUND */
         // There are eight second round matchups in each region
         for counter in 0...7 {
             
+            swap = false
             firstTeamPos = counter * 2
          
             // Check if the user selected this team to win
@@ -180,20 +204,68 @@ class BracketSolver {
                 teamSeedA = Int(initArray[firstTeamPos][1])!
                 teamSeedB = Int(initArray[firstTeamPos+1][1])!
                 seedSum = teamSeedA + teamSeedB
-            
-                /* 
-                /  Odds of Team A winning are equal to (teamSeedB / seedsum)
-                /  Odds of Team B winning are equal to (teamSeedA / seedsum)
-                */
-            
-                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
-            
-                // If the random number is great than seed A, it is in the seedB portion, therefore teamA wins
-                if(randomNum > teamSeedA) {
-                    winnerArray.append(initArray[firstTeamPos])
+                
+                teamRpiA = Int(initArray[firstTeamPos][3])!
+                teamRpiB = Int(initArray[firstTeamPos+1][3])!
+                rpiSum = teamRpiA + teamRpiB
+                
+                //We need to swap so that the highest seed (and lowest prob) is team A (for the upset coef to work)
+                if(teamSeedB > teamSeedA) {
+                    temp = teamSeedA
+                    teamSeedA = teamSeedB
+                    teamSeedB = temp
+                    
+                    temp = teamRpiA
+                    teamRpiA = teamRpiB
+                    teamRpiB = temp
+                    
+                    swap = true
                 }
+                
+                sumA = teamSeedA + teamRpiA
+                overallSum = seedSum + rpiSum
+                
+                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
+                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
+                
+                // Threshold is
+                threshold = Float(sumA) / Float(overallSum)
+                
+                // Multiply by twice the upset coeffienct (ranged 0-1)
+                threshold /= (2 * self.upsetCoeffecient)
+                
+                // Get random decimal between 0 and 1
+                randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                // Is it an upset?
+                if(randomNum > threshold) {
+                    // If yes, then did we swap?
+                    
+                    if(swap){
+                        //Original Team B
+                        winnerArray.append(initArray[firstTeamPos+1])
+                    }
+                    else {
+                        //Original Team A
+                        winnerArray.append(initArray[firstTeamPos])
+                    }
+                    
+                    self.upsetCounter++
+                    //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    
+                }
+                    
+                // NOT AN UPSET
                 else {
-                    winnerArray.append(initArray[firstTeamPos+1])
+                    // If we swapped, and it's not an upset
+                    if(swap){
+                        //Original Team A
+                        winnerArray.append(initArray[firstTeamPos])
+                    }
+                    else {
+                        //Original Team B
+                        winnerArray.append(initArray[firstTeamPos+1])
+                    }
                 }
             }
             
@@ -220,16 +292,39 @@ class BracketSolver {
                 teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
                 seedSum = teamSeedA + teamSeedB
                 
-                //Odds of Team A winning are equal to (teamSeedB / seedsum)
-                //Odds of Team B winning are equal to (teamSeedA / seedsum)
+                teamRpiA = Int(winnerArray[firstTeamPos][3])!
+                teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
+                rpiSum = teamRpiA + teamRpiB
                 
-                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+                sumA = teamSeedA + teamRpiA
+                overallSum = seedSum + rpiSum
                 
-                if(randomNum > teamSeedA) {
+                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
+                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
+                
+                // Threshold is
+                threshold = Float(sumA) / Float(overallSum)
+                
+                // Get random decimal between 0 and 1
+                randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                if(randomNum > threshold) {
                     winnerArray.append(winnerArray[firstTeamPos])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedB < teamSeedA) {
+                        //self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
                 else {
                     winnerArray.append(winnerArray[firstTeamPos+1])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedA < teamSeedB) {
+                        //self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
             }
         }
@@ -255,16 +350,39 @@ class BracketSolver {
                 teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
                 seedSum = teamSeedA + teamSeedB
                 
-                //Odds of Team A winning are equal to (teamSeedB / seedsum)
-                //Odds of Team B winning are equal to (teamSeedA / seedsum)
+                teamRpiA = Int(winnerArray[firstTeamPos][3])!
+                teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
+                rpiSum = teamRpiA + teamRpiB
                 
-                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
+                sumA = teamSeedA + teamRpiA
+                overallSum = seedSum + rpiSum
                 
-                if(randomNum > teamSeedA) {
+                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
+                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
+                
+                // Threshold is
+                threshold = Float(sumA) / Float(overallSum)
+                
+                // Get random decimal between 0 and 1
+                randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                if(randomNum > threshold) {
                     winnerArray.append(winnerArray[firstTeamPos])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedB < teamSeedA) {
+                        //self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
                 else {
                     winnerArray.append(winnerArray[firstTeamPos+1])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedA < teamSeedB) {
+                        //self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
             }
         }
@@ -287,17 +405,40 @@ class BracketSolver {
                 teamSeedA = Int(winnerArray[firstTeamPos][1])!
                 teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
                 seedSum = teamSeedA + teamSeedB
-            
-                //Odds of Team A winning are equal to (teamSeedB / seedsum)
-                //Odds of Team B winning are equal to (teamSeedA / seedsum)
-            
-                randomNum = Int(arc4random_uniform(UInt32(seedSum)))
-            
-                if(randomNum > teamSeedA) {
+                
+                teamRpiA = Int(winnerArray[firstTeamPos][3])!
+                teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
+                rpiSum = teamRpiA + teamRpiB
+                
+                sumA = teamSeedA + teamRpiA
+                overallSum = seedSum + rpiSum
+                
+                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
+                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
+                
+                // Threshold is
+                threshold = Float(sumA) / Float(overallSum)
+
+                // Get random decimal between 0 and 1
+                randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                if(randomNum > threshold) {
                     winnerArray.append(winnerArray[firstTeamPos])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedB < teamSeedA) {
+                        self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
                 else {
                     winnerArray.append(winnerArray[firstTeamPos+1])
+                    
+                    //if it's an upset, let's look under the hood
+                    if(teamSeedA < teamSeedB) {
+                        //self.upsetCounter++
+                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    }
                 }
         }
         
