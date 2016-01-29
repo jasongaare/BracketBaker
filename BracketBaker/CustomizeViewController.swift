@@ -41,6 +41,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // South & East Winner
     let finalPicker2 = UIPickerView()
     
+    var activeTF : UITextField = UITextField()
+    
     
     // MARK: View Load/Unload Functions
     
@@ -76,6 +78,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             // Sort the master into the regions
             populateInitialArrays()
             
+            
+            // Delegates for Pickers
             winnerPicker.delegate = self
             southPicker.delegate = self
             eastPicker.delegate = self
@@ -85,6 +89,17 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalPicker2.delegate = self
             cinderellaPicker.delegate = self
             
+            
+            // Delegates for TextFields
+            cinderellaTF.delegate = self
+            eastFinalTextField.delegate = self
+            southFinalTextField.delegate = self
+            westFinalTextField.delegate = self
+            midwestFinalTextField.delegate = self
+            finalOneTextField.delegate = self
+            finalTwoTextField.delegate = self
+            winnerPickerTextField.delegate = self
+            cinderellaTF.delegate = self
             
             // Let's open the picker, instead of a keyboard, for these fields
             eastFinalTextField.inputView = eastPicker
@@ -111,14 +126,38 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalTwoTextField.text = self.placeholder
             winnerPickerTextField.text = self.placeholder
             
+            // Add toolbar to the pickers
+            let toolBar = UIToolbar()
+            toolBar.barStyle = UIBarStyle.Default
+            toolBar.translucent = false
+            toolBar.barTintColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            toolBar.tintColor = UIColor(red: 238/255, green: 129/255, blue: 47/255, alpha: 1)
+            toolBar.sizeToFit()
+            
+            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let cancelButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
+            
+            toolBar.setItems([cancelButton, spaceButton], animated: false)
+            toolBar.userInteractionEnabled = true
+            
+            
+            cinderellaTF.inputAccessoryView = toolBar
+            eastFinalTextField.inputAccessoryView = toolBar
+            southFinalTextField.inputAccessoryView = toolBar
+            westFinalTextField.inputAccessoryView = toolBar
+            midwestFinalTextField.inputAccessoryView = toolBar
+            finalOneTextField.inputAccessoryView = toolBar
+            finalTwoTextField.inputAccessoryView = toolBar
+            winnerPickerTextField.inputAccessoryView = toolBar
+
         
         // *----4----*
         // We need to fix the appearance a little bit
             
             // Change appearance of resetButton
             resetButton.tintColor = UIColor.whiteColor()
-            let bb_font = UIFont(name: "Optima", size: 19.0)
-            resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
+            //let bb_font = UIFont(name: "Optima", size: 19.0)
+            //resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
 
             
             
@@ -249,6 +288,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
     }
 
+    // MARK: TextField Delegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeTF = textField
+    }
+    
+    
     
     // MARK: UIPickerView Delegate
     
@@ -701,6 +747,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         upsetsSlider.value = 0.5
     }
 
+    func donePicker() {
+        
+        // Close the picker for the active text field (set in DidBeginEdit)
+        activeTF.resignFirstResponder()
+    }
+    
     // MARK: Outlets and Connections
     
     @IBOutlet weak var winnerPickerTextField: UITextField!
