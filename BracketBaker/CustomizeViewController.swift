@@ -15,7 +15,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var dataLoaded = false
     
     // This is the text when there is no team selected
-    let placeholder = "--Random--"
+    let placeholder = "Random"
     
     var masterDataArray : [[String]] = []
     
@@ -34,6 +34,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let eastPicker = UIPickerView()
     let westPicker = UIPickerView()
     let midwestPicker = UIPickerView()
+    let cinderellaPicker = UIPickerView()
     
     // Midwest & West Winner
     let finalPicker1 = UIPickerView()
@@ -82,6 +83,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             midwestPicker.delegate = self
             finalPicker1.delegate = self
             finalPicker2.delegate = self
+            cinderellaPicker.delegate = self
             
             
             // Let's open the picker, instead of a keyboard, for these fields
@@ -92,6 +94,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalOneTextField.inputView = finalPicker1
             finalTwoTextField.inputView = finalPicker2
             winnerPickerTextField.inputView = winnerPicker
+            cinderellaTF.inputView = cinderellaPicker
             
             // Sort arrays by seeding
             southSorted = southRegionArray.sort {Int($0[1]) < Int($1[1])}
@@ -108,13 +111,16 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalTwoTextField.text = self.placeholder
             winnerPickerTextField.text = self.placeholder
             
-            
+        
+        // *----4----*
+        // We need to fix the appearance a little bit
             
             // Change appearance of resetButton
             resetButton.tintColor = UIColor.whiteColor()
-            let bb_font = UIFont(name: "Optima", size: 16.0)
+            let bb_font = UIFont(name: "Optima", size: 19.0)
             resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
 
+            
             
         // This bracket ends our "if data loaded" block
         }
@@ -257,6 +263,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         var thisPickerArray : [[String]] = []
         
         switch pickerView {
+        case cinderellaPicker:
+            thisPickerArray = masterDataArray
         case southPicker:
             thisPickerArray = southSorted
         case eastPicker:
@@ -275,7 +283,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             thisPickerArray = masterDataArray
         }
         
-        return (thisPickerArray.count + 1)
+        if(pickerView == cinderellaPicker) {
+            return (thisPickerArray.count + 2)
+        }
+        else {
+            return (thisPickerArray.count + 1)
+        }
     }
     
     // The data to return for the row and component (column) that's being passed in
@@ -285,6 +298,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         var thisPickerArray : [[String]] = []
         
         switch pickerView {
+            case cinderellaPicker:
+                thisPickerArray = masterDataArray
             case southPicker:
                 thisPickerArray = southSorted
             case eastPicker:
@@ -302,16 +317,32 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             default:
                 thisPickerArray = masterDataArray
         }
+        if(pickerView == cinderellaPicker) {
+            // If Sort by seed DESCENDING
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) > Int($1[1])}
         
-        // Sort by seed
-        thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
-        
-        if row == 0 {
-            return self.placeholder
+            if row == 0 {
+                return "None"
+            }
+            if row == 1 {
+                return self.placeholder
+            }
+            else {
+                // [Seed]. [Team Name]
+                return "\(thisPickerArray[row-2][1]). \(thisPickerArray[row-2][2])"
+            }
         }
         else {
-            // [Seed]. [Team Name]
-            return "\(thisPickerArray[row-1][1]). \(thisPickerArray[row-1][2])"
+            // If Sort by seed
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
+            
+            if row == 0 {
+                return self.placeholder
+            }
+            else {
+                // [Seed]. [Team Name]
+                return "\(thisPickerArray[row-1][1]). \(thisPickerArray[row-1][2])"
+            }
         }
     }
     
@@ -323,6 +354,10 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         var thisPickerArray : [[String]] = []
         
         switch pickerView {
+            
+        case cinderellaPicker:
+            thisPickerTextField = cinderellaTF
+            thisPickerArray = masterDataArray
             
         case southPicker:
             thisPickerTextField = southFinalTextField
@@ -361,62 +396,80 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             thisPickerArray = masterDataArray
         }
         
-        
-        // Sort by seed
-        thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
-        
-        //Assign value
-        if row == 0 {
-            thisPickerTextField.text = self.placeholder
+        if(pickerView == cinderellaPicker) {
+            // Sort by seed DESCENDING
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) > Int($1[1])}
+            
+            //Assign value
+            if row == 0 {
+                thisPickerTextField.text = "None"
+            }
+            else if row == 1 {
+                thisPickerTextField.text = self.placeholder
+            }
+            else {
+                thisPickerTextField.text = thisPickerArray[row-2][2]
+            }
+            
         }
         else {
-            let teamName = thisPickerArray[row-1][2]
-            thisPickerTextField.text = teamName
+            // Sort by seed
+            thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
             
-            // If this is the winner, we need to populate UPWARDS
-            if(pickerView == winnerPicker) {
-                // Get region of winner
-                switch Int(thisPickerArray[row-1][0])! {
-                case 1:
-                    midwestFinalTextField.text = teamName
-                    finalOneTextField.text = teamName
-                case 2:
-                    westFinalTextField.text = teamName
-                    finalOneTextField.text = teamName
-                case 3:
-                    eastFinalTextField.text = teamName
-                    finalTwoTextField.text = teamName
-                case 4:
-                    southFinalTextField.text = teamName
-                    finalTwoTextField.text = teamName
-                default : break
-                }
+            //Assign value
+            if row == 0 {
+                thisPickerTextField.text = self.placeholder
             }
-            
-            // If this is the first final, we need to populate UPWARDS
-            else if(pickerView == finalPicker1) {
-                // Get region of winner
-                switch Int(thisPickerArray[row-1][0])! {
-                case 1:
-                    midwestFinalTextField.text = teamName
-                case 2:
-                    westFinalTextField.text = teamName
-                default: break
+            else {
+                let teamName = thisPickerArray[row-1][2]
+                thisPickerTextField.text = teamName
+                
+                // If this is the winner, we need to populate UPWARDS
+                if(pickerView == winnerPicker) {
+                    // Get region of winner
+                    switch Int(thisPickerArray[row-1][0])! {
+                    case 1:
+                        midwestFinalTextField.text = teamName
+                        finalOneTextField.text = teamName
+                    case 2:
+                        westFinalTextField.text = teamName
+                        finalOneTextField.text = teamName
+                    case 3:
+                        eastFinalTextField.text = teamName
+                        finalTwoTextField.text = teamName
+                    case 4:
+                        southFinalTextField.text = teamName
+                        finalTwoTextField.text = teamName
+                    default : break
+                    }
                 }
-            }
-        
-            // If this is the second final, we need to populate UPWARDS
-            else if(pickerView == finalPicker2) {
-                //Get region of winner
-                switch Int(thisPickerArray[row-1][0])! {
-                case 3:
-                    eastFinalTextField.text = teamName
-                case 4:
-                    southFinalTextField.text = teamName
-                default: break
+                    
+                    // If this is the first final, we need to populate UPWARDS
+                else if(pickerView == finalPicker1) {
+                    // Get region of winner
+                    switch Int(thisPickerArray[row-1][0])! {
+                    case 1:
+                        midwestFinalTextField.text = teamName
+                    case 2:
+                        westFinalTextField.text = teamName
+                    default: break
+                    }
+                }
+                    
+                    // If this is the second final, we need to populate UPWARDS
+                else if(pickerView == finalPicker2) {
+                    //Get region of winner
+                    switch Int(thisPickerArray[row-1][0])! {
+                    case 3:
+                        eastFinalTextField.text = teamName
+                    case 4:
+                        southFinalTextField.text = teamName
+                    default: break
+                    }
                 }
             }
         }
+        
         
         // Close the picker
         thisPickerTextField.resignFirstResponder()
@@ -662,6 +715,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var createBracketButton: UIButton!
     @IBOutlet weak var resetButton: UIBarButtonItem!
 
+    @IBOutlet weak var cinderellaTF: UITextField!
     @IBOutlet weak var upsetsSlider: UISlider!
     
 }

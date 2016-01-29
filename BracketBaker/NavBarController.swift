@@ -12,17 +12,14 @@ class NavBarController: UINavigationController, UINavigationBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let bb_Orange = UIColor(red: 240/256, green: 131/256, blue: 49/256, alpha: 1)
+        let bb_font22 = UIFont(name: "Optima-Bold", size: 22.0)
         
-        let bb_Blue = UIColor(red: 31/256, green: 101/256, blue: 171/256, alpha: 1)
-        let bb_Orange = UIColor(red: 238/256, green: 129/256, blue: 47/256, alpha: 1)
-        let bb_font = UIFont(name: "Optima-Bold", size: 22.0)
-        
-        navBar.barTintColor = bb_Blue
-        navBar.titleTextAttributes = [NSForegroundColorAttributeName: bb_Orange, NSFontAttributeName: bb_font!]
+        navBar.titleTextAttributes = [NSForegroundColorAttributeName: bb_Orange, NSFontAttributeName: bb_font22!]
         
         // For the back buttons
         navBar.tintColor = UIColor.whiteColor()
-        
     }
     
 
