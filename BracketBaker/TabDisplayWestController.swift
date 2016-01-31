@@ -15,7 +15,7 @@ class TabDisplayWestController: UIViewController {
         
         // Let's get our parent view controller, that's where our data is sitting
         let tdvc = self.tabBarController as! TabDisplayViewController
-        
+
         // Get the data
         let teamArray = tdvc.bracketData.west
         
@@ -58,9 +58,7 @@ class TabDisplayWestController: UIViewController {
         
         // Make it scrollable
         bracketScroll.contentSize = myBracketDisplay.bounds.size
-        
     }
-    
     
     
     // MARK : Outlets (galore!)

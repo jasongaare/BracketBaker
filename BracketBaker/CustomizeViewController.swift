@@ -159,7 +159,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             //let bb_font = UIFont(name: "Optima", size: 19.0)
             //resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
 
-            
+            // Change the status bar
+            UIApplication.sharedApplication().statusBarStyle = .LightContent
             
         // This bracket ends our "if data loaded" block
         }
@@ -173,7 +174,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             // Alert presents in viewDidAppear
         }
     }
-
+    
     
     // Let the user know  if they don't have data
     override func viewDidAppear(animated: Bool)
@@ -712,7 +713,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func createButtonClicked() -> BracketToDisplay {
         
         // When the button is clicked, we want to capture the user customization preferences
-        let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!, upsets: upsetsSlider.value)
+        let theseUserPrefs = UserSelectedPrefs(mwFinal: midwestFinalTextField.text!, wFinal: westFinalTextField.text!, sFinal: southFinalTextField.text!, eFinal: eastFinalTextField.text!, final1: finalOneTextField.text!, final2: finalTwoTextField.text!, winner: winnerPickerTextField.text!, upsets: upsetsSlider.value, cinderella: cinderellaTF.text!)
         
         // Then we create the bracket, starting by sending the raw data over to the solver
         let bracket = BracketSolver(masterArray: masterDataArray, mwArray: midwestRegionArray, wArray: westRegionArray, sArray: southRegionArray, eArray: eastRegionArray, ph: placeholder)
@@ -725,26 +726,49 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func resetButtonClicked(sender: AnyObject) {
         
-        // Change the text back to the placeholder
-        midwestFinalTextField.text = self.placeholder
-        westFinalTextField.text = self.placeholder
-        southFinalTextField.text = self.placeholder
-        eastFinalTextField.text = self.placeholder
-        finalOneTextField.text = self.placeholder
-        finalTwoTextField.text = self.placeholder
-        winnerPickerTextField.text = self.placeholder
         
-        // Spin the pickers back to the top
-        midwestPicker.selectRow(0, inComponent: 0, animated: false)
-        westPicker.selectRow(0, inComponent: 0, animated: false)
-        southPicker.selectRow(0, inComponent: 0, animated: false)
-        eastPicker.selectRow(0, inComponent: 0, animated: false)
-        finalPicker1.selectRow(0, inComponent: 0, animated: false)
-        finalPicker2.selectRow(0, inComponent: 0, animated: false)
-        winnerPicker.selectRow(0, inComponent: 0, animated: false)
+        // Pop up to confirm reset
+        let alert = UIAlertController(title: "Reset", message: "Reset Back to Default Settings?", preferredStyle: UIAlertControllerStyle.Alert)
         
-        // Sliders to the middle
-        upsetsSlider.value = 0.5
+        // if they want to reset
+        let resetAction = UIAlertAction(title: "Reset", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+            
+            // Change the text back to the placeholder
+            self.self.midwestFinalTextField.text = self.placeholder
+            self.westFinalTextField.text = self.placeholder
+            self.southFinalTextField.text = self.placeholder
+            self.eastFinalTextField.text = self.placeholder
+            self.finalOneTextField.text = self.placeholder
+            self.finalTwoTextField.text = self.placeholder
+            self.winnerPickerTextField.text = self.placeholder
+            self.cinderellaTF.text = "None"
+            
+            // Spin the pickers back to the top
+            self.midwestPicker.selectRow(0, inComponent: 0, animated: false)
+            self.westPicker.selectRow(0, inComponent: 0, animated: false)
+            self.southPicker.selectRow(0, inComponent: 0, animated: false)
+            self.eastPicker.selectRow(0, inComponent: 0, animated: false)
+            self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
+            self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
+            self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+            self.cinderellaPicker.selectRow(0, inComponent: 0, animated: false)
+            
+            // Sliders to the middle
+            self.upsetsSlider.value = 0.5
+            
+        }
+        
+        // for cancel we won't do anything
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (UIAlertAction) -> Void in }
+        
+        // Add actions to alert and show
+        alert.addAction(resetAction)
+        alert.addAction(cancelAction)
+        alert.preferredAction = resetAction
+        presentViewController(alert, animated: true) { () -> Void in }
+        
+        
+        
     }
 
     func donePicker() {

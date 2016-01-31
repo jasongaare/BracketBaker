@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="1136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1136"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-ej-yKl" customClass="CustomizeView" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1007"/>
@@ -35,25 +35,25 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-Nc-l7N">
-                                                <rect key="frame" x="190" y="759" width="402" height="30"/>
+                                                <rect key="frame" x="8" y="759" width="402" height="30"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-44-MlB">
-                                                <rect key="frame" x="242" y="620" width="350" height="21"/>
+                                                <rect key="frame" x="8" y="620" width="350" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkI-xP-e3Y">
-                                                <rect key="frame" x="190" y="641" width="402" height="30"/>
+                                                <rect key="frame" x="8" y="641" width="402" height="30"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epA-4O-TvU">
-                                                <rect key="frame" x="8" y="700" width="402" height="30"/>
+                                                <rect key="frame" x="190" y="700" width="402" height="30"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -64,14 +64,8 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="South Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
-                                                <rect key="frame" x="242" y="738" width="350" height="21"/>
-                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tii-cT-1qH">
-                                                <rect key="frame" x="96" y="860" width="402" height="30"/>
+                                                <rect key="frame" x="96" y="871" width="402" height="30"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -107,7 +101,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pick a Champion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-AU-kEN">
-                                                <rect key="frame" x="234" y="830" width="133" height="30"/>
+                                                <rect key="frame" x="234" y="841" width="133" height="30"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -119,7 +113,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East/South Semi-Final" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qp-PC-D4W">
-                                                <rect key="frame" x="8" y="679" width="284" height="21"/>
+                                                <rect key="frame" x="308" y="679" width="284" height="21"/>
                                                 <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -161,7 +155,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-gz-vCu">
-                                                <rect key="frame" x="20" y="920" width="560" height="44"/>
+                                                <rect key="frame" x="20" y="931" width="560" height="44"/>
                                                 <color key="backgroundColor" red="0.12156862745098039" green="0.396078431372549" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="HjD-gN-00A"/>
@@ -197,12 +191,18 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finally..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiD-GX-1zE">
-                                                <rect key="frame" x="183" y="804" width="235" height="25"/>
+                                                <rect key="frame" x="183" y="815" width="235" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="3Hh-Fg-UB5"/>
                                                     <constraint firstAttribute="width" constant="235" id="Xq0-Xz-MEm"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="South Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d77-p8-bc6">
+                                                <rect key="frame" x="8" y="738" width="350" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -213,6 +213,7 @@
                                             <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="95" id="5gs-Q0-Qvy"/>
                                             <constraint firstItem="4OJ-1g-dr7" firstAttribute="top" secondItem="fu6-rx-TGH" secondAttribute="bottom" constant="8" id="5rI-cF-B2i"/>
                                             <constraint firstAttribute="trailing" secondItem="KR0-44-MlB" secondAttribute="trailing" constant="8" id="6jF-yb-FQK"/>
+                                            <constraint firstItem="i8Q-Nc-l7N" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="7aa-I2-vw6"/>
                                             <constraint firstItem="i8Q-Nc-l7N" firstAttribute="top" secondItem="d77-p8-bc6" secondAttribute="bottom" id="7fw-OU-WJA"/>
                                             <constraint firstItem="mOX-rj-RaE" firstAttribute="top" secondItem="TZJ-2p-C7I" secondAttribute="bottom" id="8HC-QR-Cm2"/>
                                             <constraint firstItem="4OJ-1g-dr7" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="8mJ-bH-cSv"/>
@@ -222,12 +223,14 @@
                                             <constraint firstAttribute="trailing" secondItem="gzE-sn-KvN" secondAttribute="trailing" constant="8" id="DKd-Jf-TVy"/>
                                             <constraint firstItem="P1v-tf-p7Y" firstAttribute="top" secondItem="maq-Cu-nIP" secondAttribute="bottom" constant="8" id="GUR-cD-341"/>
                                             <constraint firstItem="tii-cT-1qH" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="Gvm-X6-tGp"/>
+                                            <constraint firstItem="RkI-xP-e3Y" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="H5j-3g-FA5"/>
                                             <constraint firstItem="fu6-rx-TGH" firstAttribute="top" secondItem="gzE-sn-KvN" secondAttribute="bottom" id="HWw-Ee-bSc"/>
                                             <constraint firstItem="4we-rg-RN1" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="HaM-Wp-dit"/>
                                             <constraint firstAttribute="trailing" secondItem="RkI-xP-e3Y" secondAttribute="trailing" constant="8" id="JVu-r2-al4"/>
                                             <constraint firstItem="maq-Cu-nIP" firstAttribute="top" secondItem="STJ-lg-z8o" secondAttribute="bottom" constant="20" id="Krt-oL-xf0"/>
                                             <constraint firstAttribute="trailing" secondItem="P1v-tf-p7Y" secondAttribute="trailing" constant="16" id="N6T-9v-cdH"/>
                                             <constraint firstItem="DaQ-gz-vCu" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="20" id="NxR-Do-GGr"/>
+                                            <constraint firstAttribute="trailing" secondItem="0qp-PC-D4W" secondAttribute="trailing" constant="8" id="PG5-Cf-2kd"/>
                                             <constraint firstItem="4t1-AU-kEN" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="PRH-69-PuC"/>
                                             <constraint firstItem="TZJ-2p-C7I" firstAttribute="top" secondItem="U3n-mr-kGt" secondAttribute="bottom" constant="250" id="RZB-3g-Wrv"/>
                                             <constraint firstItem="TZJ-2p-C7I" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="SLF-ya-vnA"/>
@@ -248,16 +251,19 @@
                                             <constraint firstItem="mOX-rj-RaE" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="bpq-K4-udV"/>
                                             <constraint firstItem="XiD-GX-1zE" firstAttribute="top" secondItem="i8Q-Nc-l7N" secondAttribute="bottom" constant="8" id="dNr-C6-XmY"/>
                                             <constraint firstAttribute="trailing" secondItem="ZrS-hO-sIT" secondAttribute="trailing" constant="16" id="dc1-s3-kAD"/>
+                                            <constraint firstItem="KR0-44-MlB" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="evt-7v-22p"/>
                                             <constraint firstItem="0qp-PC-D4W" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="ghW-Wv-kMK"/>
                                             <constraint firstItem="Kfb-0K-4O4" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="hZi-cA-zGe"/>
                                             <constraint firstItem="U3n-mr-kGt" firstAttribute="top" secondItem="sx2-ej-yKl" secondAttribute="top" constant="1" id="ivD-qx-t5n"/>
                                             <constraint firstItem="U3n-mr-kGt" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" constant="3" id="j9z-6x-CYJ"/>
                                             <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="XiD-GX-1zE" secondAttribute="bottom" id="jTd-Mi-JW8"/>
                                             <constraint firstAttribute="trailing" secondItem="fu6-rx-TGH" secondAttribute="trailing" constant="8" id="k0W-dM-hGM"/>
+                                            <constraint firstAttribute="trailing" secondItem="epA-4O-TvU" secondAttribute="trailing" constant="8" id="kQg-Cc-nfL"/>
                                             <constraint firstItem="KR0-44-MlB" firstAttribute="top" secondItem="fuf-j4-8sn" secondAttribute="bottom" constant="75" id="ksT-FL-faY"/>
                                             <constraint firstItem="RkI-xP-e3Y" firstAttribute="width" secondItem="sx2-ej-yKl" secondAttribute="width" multiplier="0.67" id="mcz-eP-AI7"/>
                                             <constraint firstItem="STJ-lg-z8o" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="nDH-Ps-T3j"/>
                                             <constraint firstItem="brH-cG-bgb" firstAttribute="centerX" secondItem="sx2-ej-yKl" secondAttribute="centerX" id="nHj-Me-Psc"/>
+                                            <constraint firstItem="d77-p8-bc6" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="nSV-FF-tyx"/>
                                             <constraint firstItem="tbv-Ye-pZn" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="8" id="ng2-Zd-wjF"/>
                                             <constraint firstItem="fuf-j4-8sn" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="nv9-gL-fJz"/>
                                             <constraint firstItem="epA-4O-TvU" firstAttribute="leading" secondItem="sx2-ej-yKl" secondAttribute="leading" constant="8" id="ogc-Ck-LJd"/>
@@ -266,7 +272,7 @@
                                             <constraint firstItem="KR0-44-MlB" firstAttribute="top" secondItem="4we-rg-RN1" secondAttribute="bottom" constant="8" id="qvT-hD-VxX"/>
                                             <constraint firstItem="ZrS-hO-sIT" firstAttribute="top" secondItem="P1v-tf-p7Y" secondAttribute="bottom" constant="8" id="rrW-r9-CUf"/>
                                             <constraint firstAttribute="bottom" secondItem="DaQ-gz-vCu" secondAttribute="bottom" constant="10" id="tfO-FT-hID"/>
-                                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="i8Q-Nc-l7N" secondAttribute="bottom" constant="40" id="uSN-Kn-lVr"/>
+                                            <constraint firstItem="4t1-AU-kEN" firstAttribute="top" secondItem="i8Q-Nc-l7N" secondAttribute="bottom" constant="52" id="uSN-Kn-lVr"/>
                                             <constraint firstItem="tii-cT-1qH" firstAttribute="top" secondItem="4t1-AU-kEN" secondAttribute="bottom" id="v4N-7j-qo1"/>
                                             <constraint firstAttribute="trailing" secondItem="d77-p8-bc6" secondAttribute="trailing" constant="8" id="v8b-RJ-vLd"/>
                                             <constraint firstItem="gzE-sn-KvN" firstAttribute="top" secondItem="mOX-rj-RaE" secondAttribute="bottom" constant="8" id="vOf-0v-3H6"/>
@@ -275,6 +281,12 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="6jF-yb-FQK"/>
+                                                <exclude reference="JVu-r2-al4"/>
+                                                <exclude reference="ogc-Ck-LJd"/>
+                                                <exclude reference="v8b-RJ-vLd"/>
+                                                <exclude reference="ghW-Wv-kMK"/>
+                                                <exclude reference="BoC-9g-4HW"/>
                                                 <exclude reference="dNr-C6-XmY"/>
                                                 <exclude reference="YhJ-Wa-zpT"/>
                                             </mask>
@@ -338,7 +350,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hDn-GP-VNs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V8E-Cw-jt6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Midwest Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-fp-eEh">
@@ -605,7 +617,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Um-U2-q1I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bfZ-3m-zpQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="West Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALI-5s-7Am">
@@ -830,7 +842,7 @@
                         <viewControllerLayoutGuide type="bottom" id="etG-Cf-j4Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wg0-Xm-hbi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="South Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-RM-Tax">
@@ -1053,7 +1065,7 @@
                         <viewControllerLayoutGuide type="bottom" id="sqi-au-8lS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dRn-zV-yoU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="East Region Winners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-Or-gLW">
@@ -1276,7 +1288,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KYo-Sf-jN1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TXx-5m-90O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Championship" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-aM-OTM">
@@ -1407,11 +1419,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fl4-BU-KPv" customClass="NavBarController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c9I-FA-ODq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="c9I-FA-ODq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.090196078431372548" green="0.36470588235294116" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.12156862745098039" green="0.396078431372549" blue="0.6705882352941176" alpha="0.5" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

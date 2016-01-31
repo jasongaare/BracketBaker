@@ -34,6 +34,8 @@ class BracketSolver {
     var upsetCounter : Int = 0
     var upsetCoeffecient : Float = 0
     
+    var cinderella = ""
+    
     var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
     
     // MARK: Solver Functions
@@ -43,6 +45,9 @@ class BracketSolver {
         self.upsetCounter = 0
         self.upsetCoeffecient = prefs.upsets
         print("Upsets: \(self.upsetCoeffecient)")
+        
+        self.cinderella = prefs.cinderella
+        print("Cinderella Team: \(self.cinderella)")
         
         // Populate each region of the bracket
         
