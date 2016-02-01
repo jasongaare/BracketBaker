@@ -391,6 +391,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Our data depends on which picker we have, so let's determine that first
         var thisPickerTextField = UITextField()
         var thisPickerArray : [[String]] = []
+        var rowCounter : Int = 0
         
         switch pickerView {
             
@@ -493,10 +494,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                         midwestFinalTextField.text = teamName
                         // Select row that is the seed of the team in the picker below
                         self.midwestPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker1.reloadAllComponents()
                     case 2:
                         westFinalTextField.text = teamName
                         // Select row that is the seed of the team in the picker below
                         self.westPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker1.reloadAllComponents()
                     default: break
                     }
                     
@@ -515,10 +518,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                         eastFinalTextField.text = teamName
                         // Select row that is the seed of the team in the picker below
                         self.eastPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker2.reloadAllComponents()
                     case 4:
                         southFinalTextField.text = teamName
                         // Select row that is the seed of the team in the picker below
                         self.southPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker2.reloadAllComponents()
                     default: break
                     }
                     

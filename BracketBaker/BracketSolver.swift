@@ -204,10 +204,24 @@ class BracketSolver {
          
             // Check if the user selected this team to win
             if(initArray[firstTeamPos][2] == userWinner || initArray[firstTeamPos][2] == cinderella) {
-                winnerArray.append(initArray[firstTeamPos])
+                
+                //Make sure cinderella doesn't beat finalist
+                if(initArray[firstTeamPos+1][2] != userWinner) {
+                    winnerArray.append(initArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(initArray[firstTeamPos+1])
+                }
             }
             else if(initArray[firstTeamPos+1][2] == userWinner || initArray[firstTeamPos+1][2] == cinderella) {
-                winnerArray.append(initArray[firstTeamPos+1])
+                
+                //Make sure cinderella doesn't beat finalist
+                if(initArray[firstTeamPos][2] != userWinner) {
+                    winnerArray.append(initArray[firstTeamPos+1])
+                }
+                else {
+                    winnerArray.append(initArray[firstTeamPos])
+                }
             }
                 
             // If not a user-selected winner, we must determine randomly
@@ -292,10 +306,24 @@ class BracketSolver {
             
             // Check if the user selected this team to win
             if(winnerArray[firstTeamPos][2] == userWinner || winnerArray[firstTeamPos][2] == cinderella) {
-                winnerArray.append(winnerArray[firstTeamPos])
+                
+                //Make sure cinderella doesn't beat finalist
+                if(winnerArray[firstTeamPos+1][2] != userWinner) {
+                    winnerArray.append(winnerArray[firstTeamPos])
+                }
+                else {
+                    winnerArray.append(winnerArray[firstTeamPos+1])
+                }
             }
             else if(winnerArray[firstTeamPos+1][2] == userWinner || winnerArray[firstTeamPos+1][2] == cinderella) {
-                winnerArray.append(winnerArray[firstTeamPos+1])
+                
+                //Make sure cinderella doesn't beat finalist
+                if(winnerArray[firstTeamPos][2] != userWinner) {
+                    winnerArray.append(winnerArray[firstTeamPos+1])
+                }
+                else {
+                    winnerArray.append(winnerArray[firstTeamPos])
+                }
             }
                 
             // If not a user-selected winner, we must determine randomly
