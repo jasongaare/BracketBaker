@@ -58,7 +58,6 @@ class BracketSolver {
             } while (Int(masterArray[teamNum-1][1])! <= 8)
             
             cinderella = masterArray[teamNum-1][2]
-            print("Random cinderella: \(masterArray[teamNum-1][1]). \(cinderella)")
         }
         
         // Populate each region of the bracket
