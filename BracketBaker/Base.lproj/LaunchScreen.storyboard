@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BB_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="mLp-Lm-kws">
-                                <rect key="frame" x="178" y="128" width="244" height="247"/>
+                                <rect key="frame" x="178" y="128" width="249" height="249"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mLp-Lm-kws" secondAttribute="height" multiplier="1:1" id="RoH-0l-h2G"/>
                                 </constraints>

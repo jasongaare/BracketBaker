@@ -55,9 +55,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // If we don't have the file, create it
         if !seedingFile.fileExists {
             do {
-                // This is just a placeholder
+                // This is creating a placeholder file containing JDG (first load only, generally)
                 try seedingFile.saveFile(string: "JDG")
-                print("Creating file")
             }
             catch {
                 print(error)
@@ -67,17 +66,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // *----2----*
         // Let's get the data we need
         if retreiveData(seedingFile) {
-            print("Data loaded.")
-            dataLoaded = true
-            
-            
+            dataLoaded = true // This is a flag for the viewDidAppear function
             
         // *----3----*
         // Set up our regional arrays and populate the various pickers
             
             // Sort the master into the regions
             populateInitialArrays()
-            
             
             // Delegates for Pickers
             winnerPicker.delegate = self
@@ -88,7 +83,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalPicker1.delegate = self
             finalPicker2.delegate = self
             cinderellaPicker.delegate = self
-            
             
             // Delegates for TextFields
             cinderellaTF.delegate = self
@@ -101,7 +95,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.delegate = self
             cinderellaTF.delegate = self
             
-            // Let's open the picker, instead of a keyboard, for these fields
+            // Let's open a picker, instead of a keyboard, for these fields
             eastFinalTextField.inputView = eastPicker
             southFinalTextField.inputView = southPicker
             westFinalTextField.inputView = westPicker
@@ -125,8 +119,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalOneTextField.text = self.placeholder
             finalTwoTextField.text = self.placeholder
             winnerPickerTextField.text = self.placeholder
+            cinderellaTF.text = "None"
             
-            // Add toolbar to the pickers
+            // Add toolbar to the pickers (with Close button)
             let toolBar = UIToolbar()
             toolBar.barStyle = UIBarStyle.Default
             toolBar.translucent = false
@@ -134,13 +129,15 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             toolBar.tintColor = UIColor(red: 238/255, green: 129/255, blue: 47/255, alpha: 1)
             toolBar.sizeToFit()
             
+            // Close Button
+            let closeButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
+            // space after button
             let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
             
-            toolBar.setItems([cancelButton, spaceButton], animated: false)
+            toolBar.setItems([closeButton, spaceButton], animated: false)
             toolBar.userInteractionEnabled = true
             
-            
+            // Add the close button to each of the pickers
             cinderellaTF.inputAccessoryView = toolBar
             eastFinalTextField.inputAccessoryView = toolBar
             southFinalTextField.inputAccessoryView = toolBar
@@ -154,10 +151,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // *----4----*
         // We need to fix the appearance a little bit
             
-            // Change appearance of resetButton
+            // Change color of resetButton
             resetButton.tintColor = UIColor.whiteColor()
-            //let bb_font = UIFont(name: "Optima", size: 19.0)
-            //resetButton.setTitleTextAttributes([NSFontAttributeName: bb_font!], forState: .Normal)
 
             // Change the status bar
             UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -181,6 +176,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     {
         super.viewDidAppear(animated)
         
+        // If we didn't find the data stored on the phone, or online
         if(!dataLoaded)
         {
             let alert = UIAlertController(title: "No Data", message: "Functionality limited due to lack of data. Try again with working network connection.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -188,8 +184,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             alert.addAction(okayAction)
             presentViewController(alert, animated: true) { () -> Void in }
         }
-
-        
     }
     
 
@@ -197,20 +191,18 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     func retreiveData(seedingFile: FileSaveHelper) -> Bool {
         
-        // Local variables (we want this to be equal in the end)
+        // Local variables (we want these to be equal in the end)
         var currentSaveFile = ""
         var rawDataString = ""
         
-        // Get the string of the current save file
+        // Get the string of the current save file on the phone (we should have created one before if it didn't exist)
         do {
             currentSaveFile = try seedingFile.getContentsOfFile()
-            print("Found the file")
         }
         catch
         {
             print(error)
         }
-        
         
         // Dropbox: 2015seedings.txt
         // Line information: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
@@ -218,7 +210,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Fetch data from 'pathURL' and put it in a the master data array
         do {
-            
             let rawBracketData = try NSData(contentsOfURL: NSURL(string: pathURL)!, options: NSDataReadingOptions())
             rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
             print("Got the file online")
@@ -229,7 +220,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // If the saved data and live data are not the same, figure out why!
         if currentSaveFile != rawDataString
         {
-            print("Uh oh! The files are different")
+            //print("Uh oh! The files are different")
             // Maybe we don't have a data connection (can't access URL)
             if rawDataString == ""
             {
@@ -237,12 +228,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 // Initial file would == "JDG"
                 if currentSaveFile == "JDG"
                 {
-                    print("No data found on device or online.")
+                    //print("No data found on device or online.")
                     return false;
                 }
             }
             else {
-                print("Better set the save file to the one online")
+                //print("Better set the save file to the one online")
                 // If they are not equal, BUT we have retreived a file from URL, then update save file
                 do {
                     print("Updating File")
@@ -292,13 +283,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // MARK: TextField Delegate
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        // We update a variable so when user clicks "Close" we know which picker to close
         activeTF = textField
     }
     
-    
-    
     // MARK: UIPickerView Delegate
     
+    // We only have one column in each picker
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -331,6 +322,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
         
         if(pickerView == cinderellaPicker) {
+            // Cinderella has optional "None")
             return (thisPickerArray.count + 2)
         }
         else {
@@ -429,10 +421,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         case finalPicker1:
             thisPickerTextField = finalOneTextField
             thisPickerArray = finalPicker1Helper()
+            winnerPicker.reloadAllComponents()
             
         case finalPicker2:
             thisPickerTextField = finalTwoTextField
             thisPickerArray = finalPicker2Helper()
+            winnerPicker.reloadAllComponents()
 
         case winnerPicker:
             thisPickerTextField = winnerPickerTextField
@@ -491,27 +485,88 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     }
                 }
                     
-                    // If this is the first final, we need to populate UPWARDS
+                // If this is the first final, we need to populate UPWARDS
                 else if(pickerView == finalPicker1) {
                     // Get region of winner
                     switch Int(thisPickerArray[row-1][0])! {
                     case 1:
                         midwestFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.midwestPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
                     case 2:
                         westFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.westPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
                     default: break
+                    }
+                    
+                    // If the team they picked to win is not the team winning champ (or the team from the other final)
+                    if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalTwoTextField.text) {
+                        winnerPickerTextField.text = placeholder
+                        self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
                     }
                 }
                     
-                    // If this is the second final, we need to populate UPWARDS
+                // If this is the second final, we need to populate UPWARDS
                 else if(pickerView == finalPicker2) {
                     //Get region of winner
                     switch Int(thisPickerArray[row-1][0])! {
                     case 3:
                         eastFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.eastPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
                     case 4:
                         southFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.southPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
                     default: break
+                    }
+                    
+                    // If the team they picked to win is not the team winning champ (or the team from the other final)
+                    if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalOneTextField.text) {
+                        winnerPickerTextField.text = placeholder
+                        self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+                    }
+                }
+                
+                // If this is a region winner, we need to make sure to recent the teams above
+                else if(pickerView == midwestPicker) {
+                    
+                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+                    if (finalOneTextField.text != teamName && finalOneTextField.text != westFinalTextField.text) {
+                        finalOneTextField.text = placeholder
+                        self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
+                        winnerPicker.reloadAllComponents()
+                    }
+                }
+                
+                else if(pickerView == westPicker) {
+                    
+                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+                    if (finalOneTextField.text != teamName && finalOneTextField.text != midwestFinalTextField.text) {
+                        finalOneTextField.text = placeholder
+                        self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
+                        winnerPicker.reloadAllComponents()
+                    }
+                }
+                
+                else if(pickerView == southPicker) {
+                    
+                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+                    if (finalTwoTextField.text != teamName && finalTwoTextField.text != eastFinalTextField.text) {
+                        finalTwoTextField.text = placeholder
+                        self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
+                        winnerPicker.reloadAllComponents()
+                    }
+                }
+                
+                else if(pickerView == eastPicker) {
+                    
+                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+                    if (finalTwoTextField.text != teamName && finalTwoTextField.text != southFinalTextField.text) {
+                        finalTwoTextField.text = placeholder
+                        self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
+                        winnerPicker.reloadAllComponents()
                     }
                 }
             }
@@ -691,22 +746,22 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
             
         }
-        
         return currentArray
     }
     
     // MARK: Navigation/Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let completedBracket = self.createButtonClicked()
-        // This is the only place to go
-        let tabDisplayView = segue.destinationViewController as! TabDisplayViewController
-        tabDisplayView.self.bracketData = completedBracket
 
+        // Run the function below to fill out the whole
+        let completedBracket = self.createButtonClicked()
         
+        // This is the only place to go (for now)
+        let tabDisplayView = segue.destinationViewController as! TabDisplayViewController
+        
+        // Pass the bracket to the tabDisplayView
+        tabDisplayView.self.bracketData = completedBracket
     }
-    
     
     // MARK: Actions
 
@@ -726,9 +781,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func resetButtonClicked(sender: AnyObject) {
         
-        
         // Pop up to confirm reset
-        let alert = UIAlertController(title: "Reset", message: "Reset Back to Default Settings?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Reset", message: "Reset back to Default Settings?", preferredStyle: UIAlertControllerStyle.Alert)
         
         // if they want to reset
         let resetAction = UIAlertAction(title: "Reset", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
@@ -766,32 +820,24 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         alert.addAction(cancelAction)
         alert.preferredAction = resetAction
         presentViewController(alert, animated: true) { () -> Void in }
-        
-        
-        
     }
 
+    // Function for the done button on the pickerView
     func donePicker() {
-        
         // Close the picker for the active text field (set in DidBeginEdit)
         activeTF.resignFirstResponder()
     }
     
     // MARK: Outlets and Connections
-    
     @IBOutlet weak var winnerPickerTextField: UITextField!
-    
     @IBOutlet weak var midwestFinalTextField: UITextField!
     @IBOutlet weak var westFinalTextField: UITextField!
     @IBOutlet weak var southFinalTextField: UITextField!
     @IBOutlet weak var eastFinalTextField: UITextField!
     @IBOutlet weak var finalOneTextField: UITextField!
     @IBOutlet weak var finalTwoTextField: UITextField!
-    
     @IBOutlet weak var createBracketButton: UIButton!
     @IBOutlet weak var resetButton: UIBarButtonItem!
-
     @IBOutlet weak var cinderellaTF: UITextField!
     @IBOutlet weak var upsetsSlider: UISlider!
-    
 }

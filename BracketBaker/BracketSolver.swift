@@ -44,10 +44,22 @@ class BracketSolver {
         
         self.upsetCounter = 0
         self.upsetCoeffecient = prefs.upsets
-        print("Upsets: \(self.upsetCoeffecient)")
+        //print("Upsets: \(self.upsetCoeffecient)")
         
         self.cinderella = prefs.cinderella
-        print("Cinderella Team: \(self.cinderella)")
+        
+        // If the user wants a random cinderella team, then pick one
+        if(cinderella == self.placeholder) {
+            
+            var teamNum : Int = 0
+            // We want the cinderella team to have a seed greater than 8
+            repeat {
+                teamNum = Int(arc4random_uniform(64))
+            } while (Int(masterArray[teamNum-1][1])! <= 8)
+            
+            cinderella = masterArray[teamNum-1][2]
+            print("Random cinderella: \(masterArray[teamNum-1][1]). \(cinderella)")
+        }
         
         // Populate each region of the bracket
         
@@ -56,8 +68,6 @@ class BracketSolver {
         var eastComplete = populateRegion(eastArray, userWinner: prefs.eastFinal)
         var southComplete = populateRegion(southArray, userWinner: prefs.southFinal)
         
-        print("Number of round of 64 upsets = \(self.upsetCounter)")
-        
         // Populate in the final four from the solved regions
         
         self.mwFinal = midwestComplete[14]
@@ -65,12 +75,10 @@ class BracketSolver {
         self.eFinal = eastComplete[14]
         self.sFinal = southComplete[14]
         
-        
         // Pick from the midwest/west final four teams
         if(prefs.final1 == placeholder)
         {
-            // If the user has no preference, pick randomly
-            
+            // If the user has no preference, pick randomly (50/50 at this point)
             if(Int(arc4random_uniform(2)) == 1) {
                 self.final1 = self.mwFinal
             }
@@ -196,10 +204,10 @@ class BracketSolver {
             firstTeamPos = counter * 2
          
             // Check if the user selected this team to win
-            if(initArray[firstTeamPos][2] == userWinner) {
+            if(initArray[firstTeamPos][2] == userWinner || initArray[firstTeamPos][2] == cinderella) {
                 winnerArray.append(initArray[firstTeamPos])
             }
-            else if(initArray[firstTeamPos+1][2] == userWinner) {
+            else if(initArray[firstTeamPos+1][2] == userWinner || initArray[firstTeamPos+1][2] == cinderella) {
                 winnerArray.append(initArray[firstTeamPos+1])
             }
                 
@@ -243,7 +251,7 @@ class BracketSolver {
                 randomNum = Float(arc4random()) / Float(UINT32_MAX)
                 
                 // Is it an upset?
-                if(randomNum > threshold) {
+                if(randomNum > threshold && teamSeedA != 16) {
                     // If yes, then did we swap?
                     
                     if(swap){
@@ -280,6 +288,97 @@ class BracketSolver {
         // There are four third round matchups
         for counter in 0...3 {
             
+            swap = false
+            firstTeamPos = counter * 2
+            
+            // Check if the user selected this team to win
+            if(winnerArray[firstTeamPos][2] == userWinner || winnerArray[firstTeamPos][2] == cinderella) {
+                winnerArray.append(winnerArray[firstTeamPos])
+            }
+            else if(winnerArray[firstTeamPos+1][2] == userWinner || winnerArray[firstTeamPos+1][2] == cinderella) {
+                winnerArray.append(winnerArray[firstTeamPos+1])
+            }
+                
+            // If not a user-selected winner, we must determine randomly
+            else {
+                //Determine winner of each game
+                teamSeedA = Int(winnerArray[firstTeamPos][1])!
+                teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
+                seedSum = teamSeedA + teamSeedB
+                
+                teamRpiA = Int(winnerArray[firstTeamPos][3])!
+                teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
+                rpiSum = teamRpiA + teamRpiB
+                
+                //We need to swap so that the highest seed (and lowest prob) is team A (for the upset coef to work)
+                if(teamSeedB > teamSeedA) {
+                    temp = teamSeedA
+                    teamSeedA = teamSeedB
+                    teamSeedB = temp
+                    
+                    temp = teamRpiA
+                    teamRpiA = teamRpiB
+                    teamRpiB = temp
+                    
+                    swap = true
+                }
+                
+                sumA = teamSeedA + teamRpiA
+                overallSum = seedSum + rpiSum
+                
+                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
+                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
+                
+                // Threshold is
+                threshold = Float(sumA) / Float(overallSum)
+
+                // Multiply by twice the upset coeffienct (ranged 0-1)
+                threshold /= (2 * self.upsetCoeffecient)
+                
+                // Adjust for MADNESS
+                threshold *= 0.92
+                
+                // Get random decimal between 0 and 1
+                randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                // Is it an upset?
+                if(randomNum > threshold) {
+                    // If yes, then did we swap?
+                    
+                    if(swap){
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
+                    }
+                    else {
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
+                    
+                    self.upsetCounter++
+                    //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    
+                }
+                    
+                // NOT AN UPSET
+                else {
+                    // If we swapped, and it's not an upset
+                    if(swap){
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
+                    else {
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
+                    }
+                }
+            }
+        }
+        
+        /* REGIONAL SEMI-FINAL */
+        // There are two semi games (teams starting in [8] in our array
+        for counter in 4...5 {
+            
+            swap = false
             firstTeamPos = counter * 2
             
             // Check if the user selected this team to win
@@ -301,6 +400,19 @@ class BracketSolver {
                 teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
                 rpiSum = teamRpiA + teamRpiB
                 
+                //We need to swap so that the highest seed (and lowest prob) is team A (for the upset coef to work)
+                if(teamSeedB > teamSeedA) {
+                    temp = teamSeedA
+                    teamSeedA = teamSeedB
+                    teamSeedB = temp
+                    
+                    temp = teamRpiA
+                    teamRpiA = teamRpiB
+                    teamRpiB = temp
+                    
+                    swap = true
+                }
+                
                 sumA = teamSeedA + teamRpiA
                 overallSum = seedSum + rpiSum
                 
@@ -309,36 +421,53 @@ class BracketSolver {
                 
                 // Threshold is
                 threshold = Float(sumA) / Float(overallSum)
+
+                // Multiple by upset coeffecent
+                threshold /= (2 * self.upsetCoeffecient)
+                
+                // Adjust for MADNESS
+                threshold *= 0.84
                 
                 // Get random decimal between 0 and 1
                 randomNum = Float(arc4random()) / Float(UINT32_MAX)
                 
+                // Is it an upset?
                 if(randomNum > threshold) {
-                    winnerArray.append(winnerArray[firstTeamPos])
+                    // If yes, then did we swap?
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedB < teamSeedA) {
-                        //self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    if(swap){
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
                     }
-                }
-                else {
-                    winnerArray.append(winnerArray[firstTeamPos+1])
+                    else {
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedA < teamSeedB) {
-                        //self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    self.upsetCounter++
+                    //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    
+                }
+                    
+                    // NOT AN UPSET
+                else {
+                    // If we swapped, and it's not an upset
+                    if(swap){
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
+                    else {
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
                     }
                 }
             }
         }
         
-        /* REGIONAL SEMI-FINAL */
-        // There are two semi games (teams starting in [8] in our array
-        for counter in 4...5 {
-            
-            firstTeamPos = counter * 2
+        /* REGIONAL FINAL */
+        
+            swap = false
+            firstTeamPos = 12
             
             // Check if the user selected this team to win
             if(winnerArray[firstTeamPos][2] == userWinner) {
@@ -347,7 +476,7 @@ class BracketSolver {
             else if(winnerArray[firstTeamPos+1][2] == userWinner) {
                 winnerArray.append(winnerArray[firstTeamPos+1])
             }
-                
+            
                 // If not a user-selected winner, we must determine randomly
             else {
                 //Determine winner of each game
@@ -359,61 +488,18 @@ class BracketSolver {
                 teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
                 rpiSum = teamRpiA + teamRpiB
                 
-                sumA = teamSeedA + teamRpiA
-                overallSum = seedSum + rpiSum
-                
-                //Odds of Team A winning are equal to (teamSeedB + teamRpiB / seedsum + rpiSum)
-                //Odds of Team B winning are equal to (teamSeedA + teamRpiA / seedsum + rpiSum)
-                
-                // Threshold is
-                threshold = Float(sumA) / Float(overallSum)
-                
-                // Get random decimal between 0 and 1
-                randomNum = Float(arc4random()) / Float(UINT32_MAX)
-                
-                if(randomNum > threshold) {
-                    winnerArray.append(winnerArray[firstTeamPos])
+                //We need to swap so that the highest seed (and lowest prob) is team A (for the upset coef to work)
+                if(teamSeedB > teamSeedA) {
+                    temp = teamSeedA
+                    teamSeedA = teamSeedB
+                    teamSeedB = temp
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedB < teamSeedA) {
-                        //self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
-                    }
-                }
-                else {
-                    winnerArray.append(winnerArray[firstTeamPos+1])
+                    temp = teamRpiA
+                    teamRpiA = teamRpiB
+                    teamRpiB = temp
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedA < teamSeedB) {
-                        //self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
-                    }
+                    swap = true
                 }
-            }
-        }
-        
-        /* REGIONAL FINAL */
-            
-            firstTeamPos = 12
-            
-            // Check if the user selected this team to win
-            if(winnerArray[firstTeamPos][2] == userWinner) {
-                winnerArray.append(winnerArray[firstTeamPos])
-            }
-            else if(winnerArray[firstTeamPos+1][2] == userWinner) {
-                winnerArray.append(winnerArray[firstTeamPos+1])
-            }
-            
-            // If not a user-selected winner, we must determine randomly
-            else {
-                //Determine winner of each game
-                teamSeedA = Int(winnerArray[firstTeamPos][1])!
-                teamSeedB = Int(winnerArray[firstTeamPos+1][1])!
-                seedSum = teamSeedA + teamSeedB
-                
-                teamRpiA = Int(winnerArray[firstTeamPos][3])!
-                teamRpiB = Int(winnerArray[firstTeamPos+1][3])!
-                rpiSum = teamRpiA + teamRpiB
                 
                 sumA = teamSeedA + teamRpiA
                 overallSum = seedSum + rpiSum
@@ -424,25 +510,44 @@ class BracketSolver {
                 // Threshold is
                 threshold = Float(sumA) / Float(overallSum)
 
+                
+                // Multiple by upset coeffecent
+                threshold /= (2 * self.upsetCoeffecient)
+
+                // Adjust for MADNESS
+                threshold *= 0.76
+                
                 // Get random decimal between 0 and 1
                 randomNum = Float(arc4random()) / Float(UINT32_MAX)
                 
+                // Is it an upset?
                 if(randomNum > threshold) {
-                    winnerArray.append(winnerArray[firstTeamPos])
+                    // If yes, then did we swap?
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedB < teamSeedA) {
-                        self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    if(swap){
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
                     }
-                }
-                else {
-                    winnerArray.append(winnerArray[firstTeamPos+1])
+                    else {
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
                     
-                    //if it's an upset, let's look under the hood
-                    if(teamSeedA < teamSeedB) {
-                        //self.upsetCounter++
-                        //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    self.upsetCounter++
+                    //print("Random: \(randomNum)    Threshold: \(threshold)")
+                    
+                }
+                    
+                    // NOT AN UPSET
+                else {
+                    // If we swapped, and it's not an upset
+                    if(swap){
+                        //Original Team A
+                        winnerArray.append(winnerArray[firstTeamPos])
+                    }
+                    else {
+                        //Original Team B
+                        winnerArray.append(winnerArray[firstTeamPos+1])
                     }
                 }
         }
