@@ -36,7 +36,7 @@ class BracketSolver {
     
     var cinderella = ""
     
-    var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
+    var completeBracket : BracketToDisplay = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [], ella: "")
     
     // MARK: Solver Functions
     
@@ -52,10 +52,10 @@ class BracketSolver {
         if(cinderella == self.placeholder) {
             
             var teamNum : Int = 0
-            // We want the cinderella team to have a seed greater than 8
+            // We want the cinderella team to have a seed greater than 8 (and not equal to 16)
             repeat {
                 teamNum = Int(arc4random_uniform(64))
-            } while (Int(masterArray[teamNum-1][1])! <= 8)
+            } while (Int(masterArray[teamNum-1][1])! <= 8 || Int(masterArray[teamNum-1][1])! == 16)
             
             cinderella = masterArray[teamNum-1][2]
         }
@@ -159,7 +159,7 @@ class BracketSolver {
         
         
         // Create complete bracket, ready to segue
-        self.completeBracket = BracketToDisplay(mw: midwestComplete, w: westComplete, e: eastComplete, s: southComplete, c: champs)
+        self.completeBracket = BracketToDisplay(mw: midwestComplete, w: westComplete, e: eastComplete, s: southComplete, c: champs, ella: self.cinderella)
         
     }
     

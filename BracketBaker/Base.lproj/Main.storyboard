@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fl4-BU-KPv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fl4-BU-KPv">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -1362,12 +1361,37 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Midwest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAq-lt-F6p">
+                                                <rect key="frame" x="48" y="61" width="65" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="West" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgn-V8-QbT">
+                                                <rect key="frame" x="48" y="299" width="65" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="South" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-fG-R2G">
+                                                <rect key="frame" x="488" y="299" width="65" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="East" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1g-Jn-IeM">
+                                                <rect key="frame" x="488" y="61" width="65" height="21"/>
+                                                <fontDescription key="fontDescription" name="Optima-Italic" family="Optima" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="F7V-Ef-rYk" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.7" id="2HB-28-98t"/>
                                             <constraint firstItem="TPj-am-haH" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.33" id="3ES-cJ-DJg"/>
                                             <constraint firstItem="eti-0s-RFd" firstAttribute="top" secondItem="HeI-eu-bHj" secondAttribute="bottom" constant="71" id="5gD-R1-ha1"/>
+                                            <constraint firstItem="RAq-lt-F6p" firstAttribute="top" secondItem="ovd-Q7-Lvt" secondAttribute="bottom" id="6Ul-Pf-g60"/>
                                             <constraint firstItem="ovd-Q7-Lvt" firstAttribute="leading" secondItem="8N5-TR-wLc" secondAttribute="leading" id="8VD-K6-7cM"/>
                                             <constraint firstItem="HeI-eu-bHj" firstAttribute="centerX" secondItem="8N5-TR-wLc" secondAttribute="centerX" id="Bnm-yU-zk8"/>
                                             <constraint firstAttribute="trailing" secondItem="UyB-wE-879" secondAttribute="trailing" id="BpX-ED-6Zz"/>
@@ -1377,10 +1401,17 @@
                                             <constraint firstAttribute="trailing" secondItem="TPj-am-haH" secondAttribute="trailing" id="OsM-aF-brA"/>
                                             <constraint firstItem="eti-0s-RFd" firstAttribute="centerX" secondItem="8N5-TR-wLc" secondAttribute="centerX" id="W0S-uM-vdN"/>
                                             <constraint firstItem="gEr-6S-CVa" firstAttribute="centerX" secondItem="8N5-TR-wLc" secondAttribute="centerX" id="W6c-t0-7Nx"/>
+                                            <constraint firstItem="PoG-fG-R2G" firstAttribute="centerX" secondItem="TPj-am-haH" secondAttribute="centerX" id="c2w-Zq-xzT"/>
                                             <constraint firstItem="F7V-Ef-rYk" firstAttribute="centerX" secondItem="8N5-TR-wLc" secondAttribute="centerX" id="cbK-Er-geS"/>
+                                            <constraint firstItem="Sgn-V8-QbT" firstAttribute="top" secondItem="3v2-IG-hqR" secondAttribute="bottom" id="eB1-fr-vz1"/>
                                             <constraint firstItem="3v2-IG-hqR" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.33" id="ew7-6f-hMC"/>
                                             <constraint firstItem="UyB-wE-879" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.33" id="gdI-qa-N7r"/>
+                                            <constraint firstItem="Y1g-Jn-IeM" firstAttribute="top" secondItem="UyB-wE-879" secondAttribute="bottom" id="ge9-jD-z8D"/>
+                                            <constraint firstItem="PoG-fG-R2G" firstAttribute="top" secondItem="TPj-am-haH" secondAttribute="bottom" id="lVj-rD-p86"/>
+                                            <constraint firstItem="Y1g-Jn-IeM" firstAttribute="centerX" secondItem="UyB-wE-879" secondAttribute="centerX" id="oJf-hX-jwt"/>
                                             <constraint firstItem="3v2-IG-hqR" firstAttribute="leading" secondItem="8N5-TR-wLc" secondAttribute="leading" id="rtO-Dh-xBl"/>
+                                            <constraint firstItem="Sgn-V8-QbT" firstAttribute="centerX" secondItem="3v2-IG-hqR" secondAttribute="centerX" id="sHx-W6-CzO"/>
+                                            <constraint firstItem="RAq-lt-F6p" firstAttribute="centerX" secondItem="ovd-Q7-Lvt" secondAttribute="centerX" id="sjT-sx-av2"/>
                                             <constraint firstItem="gEr-6S-CVa" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.33" id="yiv-ds-o08"/>
                                             <constraint firstItem="ovd-Q7-Lvt" firstAttribute="width" secondItem="8N5-TR-wLc" secondAttribute="width" multiplier="0.33" id="z8t-9M-Drh"/>
                                         </constraints>

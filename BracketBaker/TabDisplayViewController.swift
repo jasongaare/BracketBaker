@@ -11,6 +11,7 @@ import UIKit
 class TabDisplayViewController: UITabBarController, UIGestureRecognizerDelegate {
 
     var bracketData : BracketToDisplay
+    var randomCinder : Bool
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,19 @@ class TabDisplayViewController: UITabBarController, UIGestureRecognizerDelegate 
         self.tabBar.tintColor = UIColor(red: 31/255, green: 101/255, blue: 171/255, alpha: 1)
         self.tabBar.translucent = false
         
+        // Display the random cinderella if there is one
+        if (randomCinder) {
+            // Pop up to confirm reset
+            let alert = UIAlertController(title: "Random Cinderella", message: "Selected team: \(bracketData.cinderella)", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // for cancel we won't do anything
+            let contAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Cancel) { (UIAlertAction) -> Void in }
+            
+            // Add actions to alert and show
+            alert.addAction(contAction)
+            alert.preferredAction = contAction
+            presentViewController(alert, animated: true) { () -> Void in }
+        }
  
 
         
@@ -38,7 +52,8 @@ class TabDisplayViewController: UITabBarController, UIGestureRecognizerDelegate 
     
     required init?(coder aDecoder: NSCoder) {
         
-        self.bracketData = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [])
+        self.bracketData = BracketToDisplay(mw: [], w: [], e: [], s: [], c: [], ella: "")
+        self.randomCinder = false
         
         super.init(coder: aDecoder)
     }

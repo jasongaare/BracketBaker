@@ -391,7 +391,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Our data depends on which picker we have, so let's determine that first
         var thisPickerTextField = UITextField()
         var thisPickerArray : [[String]] = []
-        var rowCounter : Int = 0
         
         switch pickerView {
             
@@ -766,6 +765,11 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Pass the bracket to the tabDisplayView
         tabDisplayView.self.bracketData = completedBracket
+
+        // If we have a random cinderella, tell the tabDisplay. We want to show the user with a pop up there
+        if(cinderellaTF.text == self.placeholder) {
+            tabDisplayView.self.randomCinder = true
+        }
     }
     
     // MARK: Actions
@@ -780,6 +784,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Using the user preferences we fill out the bracket
         bracket.fillOutBracket(theseUserPrefs)
+        
         
         return bracket.completeBracket
     }

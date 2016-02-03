@@ -15,14 +15,16 @@ class BracketToDisplay : NSObject {
     var east : [[String]] = []
     var south : [[String]] = []
     var champs : [[String]] = []
+    var cinderella : String = ""
     
-    init(mw: [[String]], w: [[String]], e: [[String]], s: [[String]], c: [[String]]) {
+    init(mw: [[String]], w: [[String]], e: [[String]], s: [[String]], c: [[String]], ella: String) {
         
         self.midwest = mw
         self.west = w
         self.east = e
         self.south = s
         self.champs = c
+        self.cinderella = ella
         
     }
     
