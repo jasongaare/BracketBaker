@@ -42,6 +42,14 @@ class BracketSolver {
     
     func fillOutBracket(prefs : UserSelectedPrefs) {
         
+        var threshold : Float = 0
+        var seedMW : Int = 0
+        var seedW : Int = 0
+        var seedE : Int = 0
+        var seedS : Int = 0
+        var diff : Int = 0
+        var randomNum : Float = 0
+        
         self.upsetCounter = 0
         self.upsetCoeffecient = prefs.upsets
         //print("Upsets: \(self.upsetCoeffecient)")
@@ -77,14 +85,38 @@ class BracketSolver {
         // Pick from the midwest/west final four teams
         if(prefs.final1 == placeholder)
         {
-            // If the user has no preference, pick randomly (50/50 at this point)
-            if(Int(arc4random_uniform(2)) == 1) {
+            // Start at fifty/fifty
+            threshold = 0.5
+            seedMW = Int(self.mwFinal[1])!
+            seedW = Int(self.wFinal[1])!
+
+            
+            if(seedMW < seedW) {
+                diff = seedW - seedMW
+                
+                // The greater the seed difference, we add a litte more favor to the lower seed
+                threshold += (Float(diff) * 0.05)
+            }
+            else {
+                diff = seedMW - seedW
+                
+                threshold -= (Float(diff) * 0.05)
+            }
+            
+            // Get random decimal between 0 and 1
+            randomNum = Float(arc4random()) / Float(UINT32_MAX)
+            
+            
+            if (randomNum < threshold) {
                 self.final1 = self.mwFinal
             }
             else {
                 self.final1 = self.wFinal
             }
+
         }
+            
+        // If user selected winner
         else {
             if prefs.final1 == self.mwFinal[2] {
                 self.final1 = self.mwFinal
@@ -98,15 +130,38 @@ class BracketSolver {
         // Pick from the south/east final four teams
         if(prefs.final2 == placeholder)
         {
-            // If the user has no preference, pick randomly
-            
-            if(Int(arc4random_uniform(2)) == 1) {
-                self.final2 = self.sFinal
+            // Start at fifty/fifty
+            threshold = 0.5
+            seedE = Int(self.eFinal[1])!
+            seedS = Int(self.sFinal[1])!
+                
+                
+            if(seedE < seedS) {
+                diff = seedS - seedE
+                    
+                // The greater the seed difference, we add a litte more favor to the lower seed
+                threshold += (Float(diff) * 0.05)
             }
             else {
+                diff = seedE - seedS
+                    
+                threshold -= (Float(diff) * 0.05)
+            }
+                
+            // Get random decimal between 0 and 1
+            randomNum = Float(arc4random()) / Float(UINT32_MAX)
+                
+                
+            if (randomNum < threshold) {
                 self.final2 = self.eFinal
             }
+            else {
+                self.final2 = self.sFinal
+            }
+                
         }
+            
+        // If user selected a winner, determine which team it was
         else {
             if prefs.final2 == self.eFinal[2] {
                 self.final2 = self.eFinal
