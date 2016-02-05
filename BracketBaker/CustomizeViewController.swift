@@ -16,6 +16,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     // This is the text when there is no team selected
     let placeholder = "Random"
+    var year = ""
     
     var masterDataArray : [[String]] = []
     
@@ -67,6 +68,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // Let's get the data we need
         if retreiveData(seedingFile) {
             dataLoaded = true // This is a flag for the viewDidAppear function
+            
+            currentYearLabel.text = "Data loaded from \(self.year) tournament"
             
         // *----3----*
         // Set up our regional arrays and populate the various pickers
@@ -206,7 +209,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Dropbox: 2015seedings.txt
         // Line information: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
-        let pathURL = "https://www.dropbox.com/s/wzempl4ani1gt9c/2015seeding.txt?dl=1"
+        let pathURL = "https://www.dropbox.com/s/y9l25ir50jgsa3r/1seeding.txt?dl=1"
         
         // Fetch data from 'pathURL' and put it in a the master data array
         do {
@@ -254,8 +257,13 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         //Separate by lines, then separate lines into the master data array
         let linesOfData = currentSaveFile.componentsSeparatedByString("\n")
-        for ix in linesOfData {
-            masterDataArray.append(ix.componentsSeparatedByString("/"))
+        
+        // Get year from first line
+        self.year = linesOfData[0]
+        
+        // Populate array from remaining lines
+        for line in 1...(linesOfData.count-1) {
+            masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
         }
         
         return true
@@ -850,4 +858,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var resetButton: UIBarButtonItem!
     @IBOutlet weak var cinderellaTF: UITextField!
     @IBOutlet weak var upsetsSlider: UISlider!
+    
+    @IBOutlet weak var currentYearLabel: UILabel!
 }

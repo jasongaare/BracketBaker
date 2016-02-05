@@ -291,14 +291,29 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Test Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owm-xS-9NA">
+                                        <rect key="frame" x="8" y="-29" width="584" height="21"/>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="top" id="6Ka-WY-J9e"/>
+                                    <constraint firstItem="sx2-ej-yKl" firstAttribute="top" secondItem="Owm-xS-9NA" secondAttribute="bottom" constant="8" id="DPT-6M-ax6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Owm-xS-9NA" secondAttribute="trailing" constant="8" id="SvG-Uy-USG"/>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" id="YMQ-Nf-Lkj"/>
+                                    <constraint firstItem="Owm-xS-9NA" firstAttribute="centerX" secondItem="vsK-3r-YV3" secondAttribute="centerX" id="cYY-mx-lxY"/>
+                                    <constraint firstItem="Owm-xS-9NA" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" constant="8" id="oyo-XG-fa3"/>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="trailing" secondItem="vsK-3r-YV3" secondAttribute="trailing" id="uv1-dh-iKn"/>
                                     <constraint firstAttribute="bottom" secondItem="sx2-ej-yKl" secondAttribute="bottom" id="xkE-ot-ogh"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cYY-mx-lxY"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -325,6 +340,7 @@
                     <connections>
                         <outlet property="cinderellaTF" destination="STJ-lg-z8o" id="FG2-lm-J5w"/>
                         <outlet property="createBracketButton" destination="DaQ-gz-vCu" id="tTW-Sy-mCX"/>
+                        <outlet property="currentYearLabel" destination="Owm-xS-9NA" id="mYP-SY-8jF"/>
                         <outlet property="eastFinalTextField" destination="RkI-xP-e3Y" id="oNc-Ov-FXc"/>
                         <outlet property="finalOneTextField" destination="fu6-rx-TGH" id="L3S-CF-9Es"/>
                         <outlet property="finalTwoTextField" destination="epA-4O-TvU" id="zGq-Qz-HaQ"/>
