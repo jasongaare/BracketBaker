@@ -317,6 +317,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             return false
         }
         
+        
         if (rawDataString != "") {
             do {
                 // Save file to phone
