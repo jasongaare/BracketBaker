@@ -293,7 +293,7 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Test Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owm-xS-9NA">
                                         <rect key="frame" x="8" y="-29" width="584" height="21"/>
-                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

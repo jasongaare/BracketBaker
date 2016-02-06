@@ -51,8 +51,10 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         super.viewDidLoad()
 
         // *----1----*
-        // We want to ensure we have a file on device with the bracket seedings
+        
+        // We want to have a file on device with the bracket seedings
         let seedingFile = FileSaveHelper(fileName: "currentSeedings", fileExtension: .TXT, subDirectory: "SaveFiles", directory: .DocumentDirectory)
+        
         // If we don't have the file, create it
         if !seedingFile.fileExists {
             do {
@@ -62,14 +64,57 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             catch {
                 print(error)
             }
+            
+            // We don't have data on the phone, so let's try to get it from online
+            dataLoaded = retreiveData(seedingFile)
+
         }
+        
+        // If we have a file with data, let's use that first
+        else {
+            print("file exists on phone")
+            dataLoaded = true
+            
+            // Let's look online in the background, to see if we need to update a new file
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+                
+                // Run retreive data, will return true if we updated the file
+                let updateFile = self.updateData(seedingFile)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    if (updateFile) {
+                        print("Updated file")
+                    }
+                    else {
+                        print("File is up-to-date")
+                    }
+                }
+            }
+            
+            do {
+                //Separate by lines, then separate lines into the master data array
+                let linesOfData = try seedingFile.getContentsOfFile().componentsSeparatedByString("\n")
+            
+                // Get year from first line
+                self.year = linesOfData[0]
+                
+                currentYearLabel.text = "Data loaded from \(self.year) tournament"
+                
+                // Populate array from remaining lines
+                for line in 1...(linesOfData.count-1) {
+                    masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
+                }
+            }
+            catch
+            {
+                print(error)
+            }
+        }
+        
         
         // *----2----*
         // Let's get the data we need
-        if retreiveData(seedingFile) {
-            dataLoaded = true // This is a flag for the viewDidAppear function
-            
-            currentYearLabel.text = "Data loaded from \(self.year) tournament"
+        if (dataLoaded) {
             
         // *----3----*
         // Set up our regional arrays and populate the various pickers
@@ -162,15 +207,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
         // This bracket ends our "if data loaded" block
         }
-            
-            
-        // If we couldn't find data anywhere, then this app is worthless
-        // Should rarely get here, however.
-        else {
-            dataLoaded = false
-            // Do nothing 
-            // Alert presents in viewDidAppear
-        }
     }
     
     
@@ -192,7 +228,69 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
     // MARK: Data Manipulation
     
+    // Only called when we don't have the data on the phone
     func retreiveData(seedingFile: FileSaveHelper) -> Bool {
+        
+        // Local variables (we want these to be equal in the end)
+        var currentSaveFile = ""
+        var rawDataString = ""
+        
+        // Get the string of the current save file on the phone (we should have created one before if it didn't exist)
+        do {
+            currentSaveFile = try seedingFile.getContentsOfFile()
+        }
+        catch
+        {
+            print(error)
+        }
+        
+        // Dropbox: 2015seedings.txt
+        // Line information: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
+        let pathURL = "https://www.dropbox.com/s/y9l25ir50jgsa3r/1seeding.txt?dl=1"
+        
+        // Fetch data from 'pathURL' and put it in a the master data array
+        do {
+            let rawBracketData = try NSData(contentsOfURL: NSURL(string: pathURL)!, options: NSDataReadingOptions())
+            rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
+            print("Got the file online")
+        } catch {
+            print(error)
+            return false
+        }
+        
+        
+        if (rawDataString != "") {
+            do {
+                // Save file to phone
+                try seedingFile.saveFile(string: rawDataString)
+                
+                //Separate by lines, then separate lines into the master data array
+                let linesOfData = try seedingFile.getContentsOfFile().componentsSeparatedByString("\n")
+                
+                // Get year from first line
+                self.year = linesOfData[0]
+                
+                currentYearLabel.text = "Data loaded from \(self.year) tournament"
+                
+                // Populate array from remaining lines
+                for line in 1...(linesOfData.count-1) {
+                    masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
+                }
+                
+                return true
+            }
+            catch {
+                print(error)
+                return false;
+            }
+        }
+        else {
+            return false
+        }
+    }
+    
+    
+    func updateData(seedingFile: FileSaveHelper) -> Bool {
         
         // Local variables (we want these to be equal in the end)
         var currentSaveFile = ""
@@ -220,54 +318,26 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             print(error)
         }
         
-        // If the saved data and live data are not the same, figure out why!
+        // If the saved data and online data are different
         if currentSaveFile != rawDataString
         {
-            //print("Uh oh! The files are different")
-            // Maybe we don't have a data connection (can't access URL)
-            if rawDataString == ""
-            {
-                // As long as our save file is not the initial file, we can proceed
-                // Initial file would == "JDG"
-                if currentSaveFile == "JDG"
-                {
-                    //print("No data found on device or online.")
-                    return false;
-                }
-            }
-            else {
-                //print("Better set the save file to the one online")
-                // If they are not equal, BUT we have retreived a file from URL, then update save file
                 do {
                     print("Updating File")
-                    
                     // Try to save to disk (long term)
                     try seedingFile.saveFile(string: rawDataString)
 
-                    // Also update our current working (short term) string
-                    currentSaveFile = rawDataString
+                    return true
                 }
                 catch {
                     print(error)
+                    return false
                 }
-            }
+            
         }
-        
-        // Unless we returned without data, we can proceed to populate masterDataArray
-        
-        //Separate by lines, then separate lines into the master data array
-        let linesOfData = currentSaveFile.componentsSeparatedByString("\n")
-        
-        // Get year from first line
-        self.year = linesOfData[0]
-        
-        // Populate array from remaining lines
-        for line in 1...(linesOfData.count-1) {
-            masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
-        }
-        
-        return true
+
+        return false
     }
+    
     
     // This is just to organize the data in different ways, for easier accessability
     func populateInitialArrays() {
