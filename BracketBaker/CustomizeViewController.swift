@@ -57,7 +57,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // If we don't have the file, create it
         if !seedingFile.fileExists {
-            print("no file on phone")
+           
             do {
                 // This is creating a placeholder file containing JDG (first load only, generally)
                 try seedingFile.saveFile(string: "JDG")
@@ -73,7 +73,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // If we have a file, let's use that first
         else {
-            print("file exists on phone")
             
             // Initialize with place holder
             var currentFileContents = "JDG"
@@ -89,8 +88,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
             // Let's check if the file has data
             if(currentFileContents == "JDG") {
-                
-                print("No data in file, looking online")
                 
                 // If this is true, we've never received any data yet, only created a file on the phone
                 // So let's retreive the data
@@ -111,7 +108,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         if (updateFile) {
-                            print("Updated file")
                             
                             let alert = UIAlertController(title: "New data", message: "Updated tournament information found online. Would you like to refresh with new data?", preferredStyle: UIAlertControllerStyle.Alert)
                             let noAction = UIAlertAction(title: "Not now", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
@@ -167,7 +163,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                             self.self.presentViewController(alert, animated: true) { () -> Void in }
                         }
                         else {
-                            print("File is up to date")
+                            // Do nothing
                         }
                     }
                 }
@@ -189,7 +185,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
             
         }
-        
         
         // *----2----*
         // Let's get the data we need
@@ -273,7 +268,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             finalOneTextField.inputAccessoryView = toolBar
             finalTwoTextField.inputAccessoryView = toolBar
             winnerPickerTextField.inputAccessoryView = toolBar
-
         
         // *----4----*
         // We need to fix the appearance a little bit
@@ -287,7 +281,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // This bracket ends our "if data loaded" block
         }
     }
-    
     
     // Let the user know  if they don't have data
     override func viewDidAppear(animated: Bool)
@@ -304,7 +297,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
     
-
     // MARK: Data Manipulation
     
     // Only called when we don't have the data on the phone
@@ -324,7 +316,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             print(error)
             return false
         }
-        
         
         if (rawDataString != "") {
             do {
