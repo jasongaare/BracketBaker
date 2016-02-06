@@ -57,6 +57,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // If we don't have the file, create it
         if !seedingFile.fileExists {
+            print("no file on phone")
             do {
                 // This is creating a placeholder file containing JDG (first load only, generally)
                 try seedingFile.saveFile(string: "JDG")
@@ -70,45 +71,123 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
         }
         
-        // If we have a file with data, let's use that first
+        // If we have a file, let's use that first
         else {
             print("file exists on phone")
-            dataLoaded = true
             
-            // Let's look online in the background, to see if we need to update a new file
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
-                
-                // Run retreive data, will return true if we updated the file
-                let updateFile = self.updateData(seedingFile)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    if (updateFile) {
-                        print("Updated file")
-                    }
-                    else {
-                        print("File is up-to-date")
-                    }
-                }
-            }
+            // Initialize with place holder
+            var currentFileContents = "JDG"
             
             do {
-                //Separate by lines, then separate lines into the master data array
-                let linesOfData = try seedingFile.getContentsOfFile().componentsSeparatedByString("\n")
+                // Get contents of file on the phone
+                currentFileContents = try seedingFile.getContentsOfFile()
+            }
+            catch {
+                print(error)
+                dataLoaded = false
+            }
             
+            // Let's check if the file has data
+            if(currentFileContents == "JDG") {
+                
+                print("No data in file, looking online")
+                
+                // If this is true, we've never received any data yet, only created a file on the phone
+                // So let's retreive the data
+                dataLoaded = retreiveData(seedingFile)
+            }
+            // If it does has data, we can proceed
+            else{
+                dataLoaded = true
+                
+                // Let's look online in the background, to see if we need to update a new file
+                
+                //* BACKGROUND
+                //* ___________
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+                    
+                    // Run retreive data, will return true if we updated the file
+                    let updateFile = self.updateData(seedingFile)
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if (updateFile) {
+                            print("Updated file")
+                            
+                            let alert = UIAlertController(title: "New data", message: "Updated tournament information found online. Would you like to refresh with new data?", preferredStyle: UIAlertControllerStyle.Alert)
+                            let noAction = UIAlertAction(title: "Not now", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+                            let rAction = UIAlertAction(title: "Refesh", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+                                
+                                // Load data from updated save file
+                                var newData = ""
+                                do {
+                                    newData = try seedingFile.getContentsOfFile()
+                                }
+                                catch {
+                                    print(error)
+                                }
+                                
+                                //Separate by lines, then separate lines into the master data array
+                                let linesOfData = newData.componentsSeparatedByString("\n")
+                                
+                                // Get year from first line
+                                self.year = linesOfData[0]
+                                
+                                self.currentYearLabel.text = "Data loaded from \(self.year) tournament"
+                                
+                                // Empty arrays
+                                self.masterDataArray.removeAll()
+                                self.southRegionArray.removeAll()
+                                self.eastRegionArray.removeAll()
+                                self.westRegionArray.removeAll()
+                                self.midwestRegionArray.removeAll()
+                                self.southSorted.removeAll()
+                                self.eastSorted.removeAll()
+                                self.westSorted.removeAll()
+                                self.midwestSorted.removeAll()
+                                
+                                // Populate array from remaining lines
+                                for line in 1...(linesOfData.count-1) {
+                                    self.masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
+                                }
+                                
+                                // Sort into regions
+                                self.populateInitialArrays()
+                                
+                                // Sorted arrays by seeding
+                                self.southSorted = self.southRegionArray.sort {Int($0[1]) < Int($1[1])}
+                                self.eastSorted = self.eastRegionArray.sort {Int($0[1]) < Int($1[1])}
+                                self.westSorted = self.westRegionArray.sort {Int($0[1]) < Int($1[1])}
+                                self.midwestSorted = self.midwestRegionArray.sort {Int($0[1]) < Int($1[1])}
+                                
+                            
+                            }
+                            alert.addAction(noAction)
+                            alert.addAction(rAction)
+                            alert.preferredAction = rAction
+                            self.self.presentViewController(alert, animated: true) { () -> Void in }
+                        }
+                        else {
+                            print("File is up to date")
+                        }
+                    }
+                }
+                //*____________
+                
+                //Separate by lines, then separate lines into the master data array
+                let linesOfData = currentFileContents.componentsSeparatedByString("\n")
+                    
                 // Get year from first line
                 self.year = linesOfData[0]
-                
+                    
                 currentYearLabel.text = "Data loaded from \(self.year) tournament"
-                
+                    
                 // Populate array from remaining lines
                 for line in 1...(linesOfData.count-1) {
                     masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
                 }
+                
             }
-            catch
-            {
-                print(error)
-            }
+            
         }
         
         
@@ -218,7 +297,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // If we didn't find the data stored on the phone, or online
         if(!dataLoaded)
         {
-            let alert = UIAlertController(title: "No Data", message: "Functionality limited due to lack of data. Try again with working network connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "No Connection!", message: "App will not work under current conditions. Try again with working network connection.", preferredStyle: UIAlertControllerStyle.Alert)
             let okayAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
             alert.addAction(okayAction)
             presentViewController(alert, animated: true) { () -> Void in }
@@ -231,18 +310,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // Only called when we don't have the data on the phone
     func retreiveData(seedingFile: FileSaveHelper) -> Bool {
         
-        // Local variables (we want these to be equal in the end)
-        var currentSaveFile = ""
         var rawDataString = ""
-        
-        // Get the string of the current save file on the phone (we should have created one before if it didn't exist)
-        do {
-            currentSaveFile = try seedingFile.getContentsOfFile()
-        }
-        catch
-        {
-            print(error)
-        }
         
         // Dropbox: 2015seedings.txt
         // Line information: [bracket region] / [regional seeding] / [team name] / [RPI ranking]
@@ -252,7 +320,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         do {
             let rawBracketData = try NSData(contentsOfURL: NSURL(string: pathURL)!, options: NSDataReadingOptions())
             rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
-            print("Got the file online")
         } catch {
             print(error)
             return false
@@ -313,7 +380,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         do {
             let rawBracketData = try NSData(contentsOfURL: NSURL(string: pathURL)!, options: NSDataReadingOptions())
             rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
-            print("Got the file online")
         } catch {
             print(error)
         }
@@ -322,7 +388,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if currentSaveFile != rawDataString
         {
                 do {
-                    print("Updating File")
                     // Try to save to disk (long term)
                     try seedingFile.saveFile(string: rawDataString)
 
@@ -332,9 +397,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     print(error)
                     return false
                 }
-            
         }
 
+        // If we made it here, we didn't find a difference between the online file and the one on the computer
         return false
     }
     
