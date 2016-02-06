@@ -9,7 +9,7 @@
         <!--Bracket Baker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CustomizeViewController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Custom" id="BYZ-38-t0r" customClass="CustomizeViewController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -1474,7 +1474,7 @@
         <!--Nav Bar Controller-->
         <scene sceneID="Fck-GJ-8Mc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fl4-BU-KPv" customClass="NavBarController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavBar" automaticallyAdjustsScrollViewInsets="NO" id="Fl4-BU-KPv" customClass="NavBarController" customModule="BracketBaker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="c9I-FA-ODq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
