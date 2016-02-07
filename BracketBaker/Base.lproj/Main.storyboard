@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="1136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="1136"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-3r-YV3">
+                                <rect key="frame" x="20" y="0.0" width="600" height="1136"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sx2-ej-yKl" customClass="CustomizeView" customModule="BracketBaker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1007"/>
@@ -294,7 +294,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Test Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owm-xS-9NA">
                                         <rect key="frame" x="8" y="-29" width="584" height="21"/>
                                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -305,6 +305,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Owm-xS-9NA" secondAttribute="trailing" constant="8" id="SvG-Uy-USG"/>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" id="YMQ-Nf-Lkj"/>
                                     <constraint firstItem="Owm-xS-9NA" firstAttribute="centerX" secondItem="vsK-3r-YV3" secondAttribute="centerX" id="cYY-mx-lxY"/>
+                                    <constraint firstItem="sx2-ej-yKl" firstAttribute="centerX" secondItem="vsK-3r-YV3" secondAttribute="centerX" id="myw-w1-5eG"/>
                                     <constraint firstItem="Owm-xS-9NA" firstAttribute="leading" secondItem="vsK-3r-YV3" secondAttribute="leading" constant="8" id="oyo-XG-fa3"/>
                                     <constraint firstItem="sx2-ej-yKl" firstAttribute="trailing" secondItem="vsK-3r-YV3" secondAttribute="trailing" id="uv1-dh-iKn"/>
                                     <constraint firstAttribute="bottom" secondItem="sx2-ej-yKl" secondAttribute="bottom" id="xkE-ot-ogh"/>
@@ -318,14 +319,22 @@
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sx2-ej-yKl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="8" id="2qi-17-TQa"/>
+                            <constraint firstItem="sx2-ej-yKl" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2qi-17-TQa"/>
                             <constraint firstItem="vsK-3r-YV3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="J3p-2T-9jS"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="M0U-P0-1h6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vsK-3r-YV3" secondAttribute="bottom" id="Xx8-2M-odd"/>
                             <constraint firstItem="epA-4O-TvU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="a0d-8T-Vlv"/>
-                            <constraint firstItem="vsK-3r-YV3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="20" id="o3l-29-fcf"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="o3l-29-fcf"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qoH-Ho-BlS"/>
                             <constraint firstItem="fu6-rx-TGH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="r0z-iw-Lwr"/>
-                            <constraint firstItem="vsK-3r-YV3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="yrp-qe-SxU" userLabel="Scroll View.leading = leadingMargin - 20"/>
+                            <constraint firstItem="vsK-3r-YV3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yrp-qe-SxU" userLabel="Scroll View.leading = leadingMargin - 20"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="o3l-29-fcf"/>
+                                <exclude reference="yrp-qe-SxU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Bracket Baker" id="Fiy-Jb-zeS">
                         <barButtonItem key="backBarButtonItem" title="Back" id="n3L-yD-kCq"/>
