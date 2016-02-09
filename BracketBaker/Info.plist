@@ -18,8 +18,35 @@
 	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.jasongaare.BracketBaker</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>bracketbaker</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>4</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>c1c45eaef41aeb52d064826321a310146d9f3009</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Answers</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

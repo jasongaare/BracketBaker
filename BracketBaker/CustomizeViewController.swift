@@ -17,6 +17,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // This is the text when there is no team selected
     let placeholder = "Random"
     var year = ""
+    var labelButton = UIBarButtonItem()
     
     var masterDataArray : [[String]] = []
     
@@ -43,6 +44,10 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let finalPicker2 = UIPickerView()
     
     var activeTF : UITextField = UITextField()
+    var textEnteringTF : String = ""
+    var rowEnteringTF : Int = 0
+    var selectedRow : Int = 0
+    var pickerArrayEnteringTF : [[String]] = []
     
     
     // MARK: View Load/Unload Functions
@@ -252,11 +257,20 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             toolBar.sizeToFit()
             
             // Close Button
-            let closeButton = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicker")
             // space after button
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let spaceButtonL = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            // Label for title
+            self.labelButton = UIBarButtonItem(title: "Label", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+            // space after button
+            self.labelButton.tintColor = UIColor(red: 31/255, green: 71/255, blue: 131/255, alpha: 1)
+            self.labelButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Helvetica-Bold", size: 17)!], forState: .Normal)
             
-            toolBar.setItems([closeButton, spaceButton], animated: false)
+            let spaceButtonR = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            // Close Button
+            let selectButton = UIBarButtonItem(title: "Select", style: UIBarButtonItemStyle.Plain, target: self, action: "selectPicker")
+            
+            toolBar.setItems([cancelButton, spaceButtonL, self.labelButton, spaceButtonR, selectButton], animated: false)
             toolBar.userInteractionEnabled = true
             
             // Add the close button to each of the pickers
@@ -418,8 +432,43 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // MARK: TextField Delegate
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        // We update a variable so when user clicks "Close" we know which picker to close
+        
+        // Get the team when we clicked in case user hits cancel
+        textEnteringTF = textField.text!
+        
+        // Make sure we know which TF we are in later
         activeTF = textField
+        
+        // Get the selected row in the picker in case we need to go back on a cancel
+        switch textField {
+        case cinderellaTF :
+            rowEnteringTF = cinderellaPicker.selectedRowInComponent(0)
+            self.labelButton.title = "Cinderella Team"
+        case midwestFinalTextField:
+            rowEnteringTF = midwestPicker.selectedRowInComponent(0)
+            self.labelButton.title = "Midwest Winner"
+        case westFinalTextField:
+            rowEnteringTF = westPicker.selectedRowInComponent(0)
+            self.labelButton.title = "West Winner"
+        case southFinalTextField:
+            rowEnteringTF = southPicker.selectedRowInComponent(0)
+            self.labelButton.title = "South Winner"
+        case eastFinalTextField:
+            rowEnteringTF = eastPicker.selectedRowInComponent(0)
+            self.labelButton.title = "East Winner"
+        case finalOneTextField:
+            rowEnteringTF = finalPicker1.selectedRowInComponent(0)
+            self.labelButton.title = "Midwest/West Winner"
+        case finalTwoTextField:
+            rowEnteringTF = finalPicker2.selectedRowInComponent(0)
+            self.labelButton.title = "East/South Winner"
+        case winnerPickerTextField:
+            rowEnteringTF = winnerPicker.selectedRowInComponent(0)
+            self.labelButton.title = "Overall Winner"
+        default:
+            rowEnteringTF = 0
+            self.labelButton.title = ""
+        }
     }
     
     // MARK: UIPickerView Delegate
@@ -491,6 +540,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             default:
                 thisPickerArray = masterDataArray
         }
+        
         if(pickerView == cinderellaPicker) {
             // If Sort by seed DESCENDING
             thisPickerArray = thisPickerArray.sort {Int($0[1]) > Int($1[1])}
@@ -514,8 +564,14 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 return self.placeholder
             }
             else {
-                // [Seed]. [Team Name]
-                return "\(thisPickerArray[row-1][1]). \(thisPickerArray[row-1][2])"
+                // TODO: Figure out why this if statement is neccesary
+                if(thisPickerArray.count >= row) {
+                                    // [Seed]. [Team Name]
+                    return "\(thisPickerArray[row-1][1]). \(thisPickerArray[row-1][2])"
+                }
+                else {
+                    return ""
+                }
             }
         }
     }
@@ -523,6 +579,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     // Catpure the picker view selection
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
+        // This helps in our refresh pickers function
+        self.selectedRow = row
+        
         // Our data depends on which picker we have, so let's determine that first
         var thisPickerTextField = UITextField()
         var thisPickerArray : [[String]] = []
@@ -536,32 +595,26 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         case southPicker:
             thisPickerTextField = southFinalTextField
             thisPickerArray = southSorted
-            finalPicker2.reloadAllComponents()
             
         case eastPicker:
             thisPickerTextField = eastFinalTextField
             thisPickerArray = eastSorted
-            finalPicker2.reloadAllComponents()
             
         case westPicker:
             thisPickerTextField = westFinalTextField
             thisPickerArray = westSorted
-            finalPicker1.reloadAllComponents()
             
         case midwestPicker:
             thisPickerTextField = midwestFinalTextField
             thisPickerArray = midwestSorted
-            finalPicker1.reloadAllComponents()
             
         case finalPicker1:
             thisPickerTextField = finalOneTextField
             thisPickerArray = finalPicker1Helper()
-            winnerPicker.reloadAllComponents()
             
         case finalPicker2:
             thisPickerTextField = finalTwoTextField
             thisPickerArray = finalPicker2Helper()
-            winnerPicker.reloadAllComponents()
 
         case winnerPicker:
             thisPickerTextField = winnerPickerTextField
@@ -569,12 +622,16 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
         default:
             thisPickerTextField = winnerPickerTextField
-            thisPickerArray = masterDataArray
+            thisPickerArray = winnerPickerHelper()
         }
+        
+
         
         if(pickerView == cinderellaPicker) {
             // Sort by seed DESCENDING
             thisPickerArray = thisPickerArray.sort {Int($0[1]) > Int($1[1])}
+
+                    pickerArrayEnteringTF = thisPickerArray
             
             //Assign value
             if row == 0 {
@@ -592,6 +649,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             // Sort by seed
             thisPickerArray = thisPickerArray.sort {Int($0[1]) < Int($1[1])}
             
+                    pickerArrayEnteringTF = thisPickerArray
+            
             //Assign value
             if row == 0 {
                 thisPickerTextField.text = self.placeholder
@@ -599,121 +658,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             else {
                 let teamName = thisPickerArray[row-1][2]
                 thisPickerTextField.text = teamName
-                
-                // If this is the winner, we need to populate UPWARDS
-                if(pickerView == winnerPicker) {
-                    // Get region of winner
-                    switch Int(thisPickerArray[row-1][0])! {
-                    case 1:
-                        midwestFinalTextField.text = teamName
-                        finalOneTextField.text = teamName
-                    case 2:
-                        westFinalTextField.text = teamName
-                        finalOneTextField.text = teamName
-                    case 3:
-                        eastFinalTextField.text = teamName
-                        finalTwoTextField.text = teamName
-                    case 4:
-                        southFinalTextField.text = teamName
-                        finalTwoTextField.text = teamName
-                    default : break
-                    }
-                }
-                    
-                // If this is the first final, we need to populate UPWARDS
-                else if(pickerView == finalPicker1) {
-                    // Get region of winner
-                    switch Int(thisPickerArray[row-1][0])! {
-                    case 1:
-                        midwestFinalTextField.text = teamName
-                        // Select row that is the seed of the team in the picker below
-                        self.midwestPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
-                        finalPicker1.reloadAllComponents()
-                    case 2:
-                        westFinalTextField.text = teamName
-                        // Select row that is the seed of the team in the picker below
-                        self.westPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
-                        finalPicker1.reloadAllComponents()
-                    default: break
-                    }
-                    
-                    // If the team they picked to win is not the team winning champ (or the team from the other final)
-                    if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalTwoTextField.text) {
-                        winnerPickerTextField.text = placeholder
-                        self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
-                    }
-                }
-                    
-                // If this is the second final, we need to populate UPWARDS
-                else if(pickerView == finalPicker2) {
-                    //Get region of winner
-                    switch Int(thisPickerArray[row-1][0])! {
-                    case 3:
-                        eastFinalTextField.text = teamName
-                        // Select row that is the seed of the team in the picker below
-                        self.eastPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
-                        finalPicker2.reloadAllComponents()
-                    case 4:
-                        southFinalTextField.text = teamName
-                        // Select row that is the seed of the team in the picker below
-                        self.southPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
-                        finalPicker2.reloadAllComponents()
-                    default: break
-                    }
-                    
-                    // If the team they picked to win is not the team winning champ (or the team from the other final)
-                    if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalOneTextField.text) {
-                        winnerPickerTextField.text = placeholder
-                        self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
-                    }
-                }
-                
-                // If this is a region winner, we need to make sure to recent the teams above
-                else if(pickerView == midwestPicker) {
-                    
-                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
-                    if (finalOneTextField.text != teamName && finalOneTextField.text != westFinalTextField.text) {
-                        finalOneTextField.text = placeholder
-                        self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
-                        winnerPicker.reloadAllComponents()
-                    }
-                }
-                
-                else if(pickerView == westPicker) {
-                    
-                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
-                    if (finalOneTextField.text != teamName && finalOneTextField.text != midwestFinalTextField.text) {
-                        finalOneTextField.text = placeholder
-                        self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
-                        winnerPicker.reloadAllComponents()
-                    }
-                }
-                
-                else if(pickerView == southPicker) {
-                    
-                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
-                    if (finalTwoTextField.text != teamName && finalTwoTextField.text != eastFinalTextField.text) {
-                        finalTwoTextField.text = placeholder
-                        self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
-                        winnerPicker.reloadAllComponents()
-                    }
-                }
-                
-                else if(pickerView == eastPicker) {
-                    
-                    // If the team they picked to win the midwest is not the team winning next (or the team from the west)
-                    if (finalTwoTextField.text != teamName && finalTwoTextField.text != southFinalTextField.text) {
-                        finalTwoTextField.text = placeholder
-                        self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
-                        winnerPicker.reloadAllComponents()
-                    }
-                }
             }
         }
-        
-        
-        // Close the picker
-        thisPickerTextField.resignFirstResponder()
     }
    
     // MARK: Picker View Helpers
@@ -888,6 +834,362 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         return currentArray
     }
     
+    
+    /*
+     *  Basically here we want to make sure that we don't have any conflicts before we create
+     *  the bracket, so we need to refresh the options after each user decision so they cannot
+     *  select a team that does not make sense logically
+     */
+    
+    func refreshAllPickers() {
+        
+        
+        
+        // This has already been updated by pickerView(didSelectRow)
+        let teamName = self.activeTF.text!
+        let row = self.selectedRow
+        var thisPickerArray = self.pickerArrayEnteringTF
+        var semiPickerArray : [[String]] = []
+
+        
+        switch activeTF {
+            
+            // The cinderella picker is on an island, so we don't need to do anything
+        case cinderellaTF: break
+            
+            // For the midwest final we need to remove all non-selected teams from
+            // the picker for final one
+        case midwestFinalTextField:
+            self.midwestPicker.reloadAllComponents()
+            
+            // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+            if (finalOneTextField.text != teamName && finalOneTextField.text != westFinalTextField.text) {
+                finalOneTextField.text = placeholder
+                self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
+                
+                if(winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalTwoTextField.text) {
+                    winnerPickerTextField.text = placeholder
+                    self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+                }
+            }
+            // If we didn't refresh the final 1 picker, we need to make sure it is spun to the correct row
+            else {
+                semiPickerArray = finalPicker1Helper()
+                // Sort like the picker
+                semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                
+                // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                var semiRow = 1
+                for item in semiPickerArray {
+                    // If the name of the row matches the team
+                    if (item[2] == finalOneTextField.text!) {
+                        self.finalPicker1.selectRow(semiRow, inComponent: 0, animated: false)
+                        break
+                    }
+                    semiRow++
+                }
+            }
+            
+            
+        case westFinalTextField:
+            self.westPicker.reloadAllComponents()
+            
+            // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+            if (finalOneTextField.text != teamName && finalOneTextField.text != midwestFinalTextField.text) {
+                finalOneTextField.text = placeholder
+                self.finalPicker1.selectRow(0, inComponent: 0, animated: false)
+
+                if(winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalTwoTextField.text) {
+                    winnerPickerTextField.text = placeholder
+                    self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+                }
+            }
+            else {
+                semiPickerArray = finalPicker1Helper()
+                // Sort like the picker
+                semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                
+                // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                var semiRow = 1
+                for item in semiPickerArray {
+                    // If the name of the row matches the team
+                    if (item[2] == finalOneTextField.text!) {
+                        self.finalPicker1.selectRow(semiRow, inComponent: 0, animated: false)
+                        break
+                    }
+                    semiRow++
+                }
+            }
+            
+            
+        case eastFinalTextField:
+            self.eastPicker.reloadAllComponents()
+            
+            // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+            if (finalTwoTextField.text != teamName && finalTwoTextField.text != southFinalTextField.text) {
+                finalTwoTextField.text = placeholder
+                self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
+
+                if(winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalOneTextField.text) {
+                    winnerPickerTextField.text = placeholder
+                    self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+                }
+            }
+            else {
+                semiPickerArray = finalPicker2Helper()
+                // Sort like the picker
+                semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                
+                // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                var semiRow = 1
+                for item in semiPickerArray {
+                    // If the name of the row matches the team
+                    if (item[2] == finalTwoTextField.text!) {
+                        self.finalPicker2.selectRow(semiRow, inComponent: 0, animated: false)
+                        break
+                    }
+                    semiRow++
+                }
+            }
+            
+            
+        case southFinalTextField:
+            self.southPicker.reloadAllComponents()
+            
+            // If the team they picked to win the midwest is not the team winning next (or the team from the west)
+            if (finalTwoTextField.text != teamName && finalTwoTextField.text != eastFinalTextField.text) {
+                finalTwoTextField.text = placeholder
+                self.finalPicker2.selectRow(0, inComponent: 0, animated: false)
+
+                if(winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalOneTextField.text) {
+                    winnerPickerTextField.text = placeholder
+                    self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+                }
+            }
+            else {
+                semiPickerArray = finalPicker2Helper()
+                // Sort like the picker
+                semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                
+                // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                var semiRow = 1
+                for item in semiPickerArray {
+                    // If the name of the row matches the team
+                    if (item[2] == finalTwoTextField.text!) {
+                        self.finalPicker2.selectRow(semiRow, inComponent: 0, animated: false)
+                        break
+                    }
+                    semiRow++
+                }
+            }
+            
+            
+        // If we've selected the final 1 team, we need to populate upwards to the games prior to this
+        case finalOneTextField:
+            
+            // If the user picked a team (NOT the placeholder)
+            if (row > 0) {
+                // FIXME: There's something fishy going on if we pick the team selected in another region
+                if(teamName != midwestFinalTextField.text! && teamName != westFinalTextField.text!) {
+                    // Get region of winner
+                    switch Int(thisPickerArray[row-1][0])! {
+                    case 1:
+                        midwestFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.midwestPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker1.reloadAllComponents()
+                    case 2:
+                        westFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.westPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker1.reloadAllComponents()
+                    default: break
+                    }
+                }
+            }
+            
+            semiPickerArray = finalPicker1Helper()
+            // Sort like the picker
+            semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+            
+            // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+            var semiRow = 1
+            for item in semiPickerArray {
+                // If the name of the row matches the team
+                if (item[2] == finalOneTextField.text!) {
+                    self.finalPicker1.selectRow(semiRow, inComponent: 0, animated: false)
+                    break
+                }
+                semiRow++
+            }
+
+            
+            // If the team they picked to win is not the team winning champ (or the team from the other final)
+            if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalTwoTextField.text) {
+                winnerPickerTextField.text = placeholder
+                self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+            }
+            
+            // Call pickerView(titleforRow)
+            self.finalPicker1.reloadAllComponents()
+            
+        case finalTwoTextField:
+            
+            // If the user picked a team (NOT the placeholder)
+            if (row > 0) {
+                // FIXME: Ditto
+                if(teamName != eastFinalTextField.text! && teamName != southFinalTextField.text!) {
+                    //Get region of winner
+                    switch Int(thisPickerArray[row-1][0])! {
+                    case 3:
+                        eastFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.eastPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker2.reloadAllComponents()
+                    case 4:
+                        southFinalTextField.text = teamName
+                        // Select row that is the seed of the team in the picker below
+                        self.southPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                        finalPicker2.reloadAllComponents()
+                    default: break
+                    }
+                }
+            }
+            
+            // Fix ourself
+            semiPickerArray = finalPicker2Helper()
+            // Sort like the picker
+            semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+            
+            // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+            var semiRow = 1
+            for item in semiPickerArray {
+                // If the name of the row matches the team
+                if (item[2] == finalTwoTextField.text!) {
+                    self.finalPicker2.selectRow(semiRow, inComponent: 0, animated: false)
+                    break
+                }
+                semiRow++
+            }
+
+            
+            // If the team they picked to win is not the team winning champ (or the team from the other final)
+            if (winnerPickerTextField.text != teamName && winnerPickerTextField.text != finalOneTextField.text) {
+                winnerPickerTextField.text = placeholder
+                self.winnerPicker.selectRow(0, inComponent: 0, animated: false)
+            }
+        
+        
+        case winnerPickerTextField:
+
+            // If the user picked a team (NOT the placeholder)
+            if (row > 0) {
+                // Get region of winner
+                switch Int(thisPickerArray[row-1][0])! {
+                case 1:
+                    midwestFinalTextField.text = teamName
+                    self.midwestPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                    
+                    finalOneTextField.text = teamName
+                    semiPickerArray = finalPicker1Helper()
+                    // Sort like the picker
+                    semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                        
+                    // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                    var semiRow = 1
+                    for item in semiPickerArray {
+                        // If the name of the row matches the team
+                        if (item[2] == teamName) {
+                            self.finalPicker1.selectRow(semiRow, inComponent: 0, animated: false)
+                            break
+                        }
+                        semiRow++
+                    }
+                    
+                case 2:
+                    westFinalTextField.text = teamName
+                    self.westPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                    
+                    finalOneTextField.text = teamName
+                    semiPickerArray = finalPicker1Helper()
+                    // Sort like the picker
+                    semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                    
+                    // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                    var semiRow = 1
+                    for item in semiPickerArray {
+                        // If the name of the row matches the team
+                        if (item[2] == teamName) {
+                            self.finalPicker1.selectRow(semiRow, inComponent: 0, animated: false)
+                            break
+                        }
+                        semiRow++
+                    }
+                case 3:
+                    eastFinalTextField.text = teamName
+                    self.eastPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                    
+                    finalTwoTextField.text = teamName
+                    semiPickerArray = finalPicker2Helper()
+                    // Sort like the picker
+                    semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                    
+                    // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                    var semiRow = 1
+                    for item in semiPickerArray {
+                        // If the name of the row matches the team
+                        if (item[2] == teamName) {
+                            self.finalPicker2.selectRow(semiRow, inComponent: 0, animated: false)
+                            break
+                        }
+                        semiRow++
+                    }
+                case 4:
+                    southFinalTextField.text = teamName
+                    self.southPicker.selectRow(Int(thisPickerArray[row-1][1])!, inComponent: 0, animated: false)
+                    
+                    finalTwoTextField.text = teamName
+                    semiPickerArray = finalPicker2Helper()
+                    // Sort like the picker
+                    semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+                    
+                    // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+                    var semiRow = 1
+                    for item in semiPickerArray {
+                        // If the name of the row matches the team
+                        if (item[2] == teamName) {
+                            self.finalPicker2.selectRow(semiRow, inComponent: 0, animated: false)
+                            break
+                        }
+                        semiRow++
+                    }
+                default : break
+                }
+            }
+            
+        default:
+            break
+        }
+        
+        
+        // ACTUALLY WINNER
+        semiPickerArray = winnerPickerHelper()
+        // Sort like the picker
+        semiPickerArray = semiPickerArray.sort {Int($0[1]) < Int($1[1])}
+        
+        // Set semirow to 1, and find the row we should select (accounting for the placeholder at row zero
+        var semiRow = 1
+        for item in semiPickerArray {
+            // If the name of the row matches the team
+            if (item[2] == winnerPickerTextField.text!) {
+                self.winnerPicker.selectRow(semiRow, inComponent: 0, animated: false)
+                break
+            }
+            semiRow++
+        }
+        
+    }
+    
     // MARK: Navigation/Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -968,10 +1270,46 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
 
     // Function for the done button on the pickerView
-    func donePicker() {
+    func cancelPicker() {
+        
+        
+        // Change team in text field back to previous team (when user clicked)
+        activeTF.text = self.textEnteringTF
+        
+        // Roll back the picker to that row
+        switch activeTF {
+        case cinderellaTF:
+            self.cinderellaPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case midwestFinalTextField:
+            self.midwestPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case westFinalTextField:
+            self.westPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case eastFinalTextField:
+            self.eastPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case southFinalTextField:
+            self.southPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case finalOneTextField:
+            self.finalPicker1.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case finalTwoTextField:
+            self.finalPicker2.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        case winnerPickerTextField:
+            self.winnerPicker.selectRow(self.rowEnteringTF, inComponent: 0, animated: false)
+        default:
+            break
+        }
+        
         // Close the picker for the active text field (set in DidBeginEdit)
         activeTF.resignFirstResponder()
     }
+    
+    func selectPicker() {
+        
+        // Update possible teams
+        self.refreshAllPickers()
+        
+        activeTF.resignFirstResponder()
+    }
+    
     
     // MARK: Outlets and Connections
     @IBOutlet weak var winnerPickerTextField: UITextField!

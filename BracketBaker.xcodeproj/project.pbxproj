@@ -20,6 +20,8 @@
 		1B30B8001C15EAF7008C0657 /* BracketBakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */; };
 		1B5BB7171C498E3600E0D315 /* TapDisplayChamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */; };
 		1B5BB7191C499FE600E0D315 /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7181C499FE600E0D315 /* CustomizeView.swift */; };
+		1B5F87111C692D260052B75A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5F870F1C692D260052B75A /* Fabric.framework */; };
+		1B5F87121C692D260052B75A /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5F87101C692D260052B75A /* Answers.framework */; };
 		1BAA31091C36FF0E0063E2C3 /* UserSelectedPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */; };
 		1BAA310B1C3702FE0063E2C3 /* BracketSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */; };
 		1BBD5FCE1C517F7100265CB3 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD5FCD1C517F7000265CB3 /* NavBarController.swift */; };
@@ -67,6 +69,8 @@
 		1B30B8011C15EAF7008C0657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapDisplayChamps.swift; sourceTree = "<group>"; };
 		1B5BB7181C499FE600E0D315 /* CustomizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
+		1B5F870F1C692D260052B75A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		1B5F87101C692D260052B75A /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		1BAA31081C36FF0E0063E2C3 /* UserSelectedPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectedPrefs.swift; sourceTree = "<group>"; };
 		1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSolver.swift; sourceTree = "<group>"; };
 		1BBD5FCD1C517F7000265CB3 /* NavBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5F87121C692D260052B75A /* Answers.framework in Frameworks */,
+				1B5F87111C692D260052B75A /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +139,8 @@
 				1B30B7F31C15EAF7008C0657 /* BracketBakerTests */,
 				1B30B7FE1C15EAF7008C0657 /* BracketBakerUITests */,
 				1B30B7DD1C15EAF6008C0657 /* Products */,
+				1B5F870F1C692D260052B75A /* Fabric.framework */,
+				1B5F87101C692D260052B75A /* Answers.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +201,7 @@
 				1B30B7D81C15EAF6008C0657 /* Sources */,
 				1B30B7D91C15EAF6008C0657 /* Frameworks */,
 				1B30B7DA1C15EAF6008C0657 /* Resources */,
+				1B5F870E1C692C070052B75A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -309,6 +318,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B5F870E1C692C070052B75A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c1c45eaef41aeb52d064826321a310146d9f3009 c81a2f9b3ad02eb94745148cd0a10bcd9ef6df96b541fa41e96d4ac430f5cd44";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B30B7D81C15EAF6008C0657 /* Sources */ = {
@@ -473,6 +498,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Gaare (WMRN875AGJ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BracketBaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -488,6 +517,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Gaare (WMRN875AGJ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BracketBaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
