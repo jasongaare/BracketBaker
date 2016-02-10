@@ -28,11 +28,6 @@ class TabDisplayChamps: UIView {
         // This makes some settings things
         let context = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(context, 1.5)
-        //        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        //        let components: [CGFloat] = [0.0, 0.0, 1.0, 1.0]
-        //        let color = CGColorCreate(colorSpace, components)
-        //        CGContextSetStrokeColorWithColor(context, color)
-        
         
         // Lines for Matchup #1
         let mwfLeft = CGPointMake(mwFinal.frame.origin.x, CGRectGetMaxY(mwFinal.frame) + spacer)
@@ -45,7 +40,7 @@ class TabDisplayChamps: UIView {
         CGContextAddLineToPoint(context, wfRight.x, wfRight.y)
         CGContextAddLineToPoint(context, wfLeft.x, wfLeft.y)
         
-        // Draw line under Final1 winner
+        // Line under Final1 winner
         
         let f1Left = CGPointMake(CGRectGetMaxX(mwFinal.frame), CGRectGetMaxY(final1.frame) + spacer)
         let f1Right = CGPointMake(CGRectGetMaxX(final1.frame) - spacerLR,CGRectGetMaxY(final1.frame) + spacer)
@@ -64,15 +59,13 @@ class TabDisplayChamps: UIView {
         CGContextAddLineToPoint(context, sfLeft.x, sfLeft.y)
         CGContextAddLineToPoint(context, sfRight.x, sfRight.y)
         
-        // Draw line under winner
+        // Line under winner
         
         let f2Left = CGPointMake(CGRectGetMinX(final2.frame) + spacerLR, CGRectGetMaxY(final2.frame) + spacer)
         let f2Right = CGPointMake(CGRectGetMinX(eFinal.frame),CGRectGetMaxY(final2.frame) + spacer)
         
         CGContextMoveToPoint(context, f2Right.x, f2Right.y)
         CGContextAddLineToPoint(context, f2Left.x, f2Left.y)
-        
-        
         
         // Draw those lines!
         CGContextStrokePath(context)

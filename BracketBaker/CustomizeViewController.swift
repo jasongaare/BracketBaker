@@ -49,8 +49,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var selectedRow : Int = 0
     var pickerArrayEnteringTF : [[String]] = []
     
-    
-    // MARK: View Load/Unload Functions
+    // MARK:- View Load/Unload Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +99,28 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
             // If it does has data, we can proceed
             else{
-                dataLoaded = true
+                
+                // Separate by lines, then separate lines into the master data array
+                let linesOfData = currentFileContents.componentsSeparatedByString("\n")
+                
+                // Data file should have year (1 line) and info for 64 teams (64 lines)
+                if(linesOfData.count == 65) {
+                    // Get year from first line
+                    self.year = linesOfData[0]
+                
+                    currentYearLabel.text = "Data loaded from \(self.year) tournament"
+                
+                    // Populate array from remaining lines
+                    for line in 1...(linesOfData.count-1) {
+                        masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
+                    }
+                
+                    dataLoaded = true
+                }
+                else {
+                    dataLoaded = false
+                }
+                
                 
                 // Let's look online in the background, to see if we need to update a new file
                 
@@ -114,9 +134,8 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     dispatch_async(dispatch_get_main_queue()) {
                         if (updateFile) {
                             
-                            let alert = UIAlertController(title: "New data", message: "Updated tournament information found online. Would you like to refresh with new data?", preferredStyle: UIAlertControllerStyle.Alert)
-                            let noAction = UIAlertAction(title: "Not now", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
-                            let rAction = UIAlertAction(title: "Refesh", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+                            let alert = UIAlertController(title: "New data", message: "Updated tournament information found online. Data will now refresh.", preferredStyle: UIAlertControllerStyle.Alert)
+                            let rAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
                                 
                                 // Load data from updated save file
                                 var newData = ""
@@ -162,7 +181,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                                 
                             
                             }
-                            alert.addAction(noAction)
                             alert.addAction(rAction)
                             alert.preferredAction = rAction
                             self.self.presentViewController(alert, animated: true) { () -> Void in }
@@ -174,18 +192,6 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
                 //*____________
                 
-                //Separate by lines, then separate lines into the master data array
-                let linesOfData = currentFileContents.componentsSeparatedByString("\n")
-                    
-                // Get year from first line
-                self.year = linesOfData[0]
-                    
-                currentYearLabel.text = "Data loaded from \(self.year) tournament"
-                    
-                // Populate array from remaining lines
-                for line in 1...(linesOfData.count-1) {
-                    masterDataArray.append(linesOfData[line].componentsSeparatedByString("/"))
-                }
                 
             }
             
@@ -248,7 +254,9 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             winnerPickerTextField.text = self.placeholder
             cinderellaTF.text = "None"
             
-            // Add toolbar to the pickers (with Close button)
+            /*
+             *  CREATE THE TOOL BAR ON TOP OF THE PICKERS
+             */
             let toolBar = UIToolbar()
             toolBar.barStyle = UIBarStyle.Default
             toolBar.translucent = false
@@ -304,7 +312,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
         // If we didn't find the data stored on the phone, or online
         if(!dataLoaded)
         {
-            let alert = UIAlertController(title: "No Connection!", message: "App will not work under current conditions. Try again with working network connection.", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "No Data Found", message: "Something went wrong. Please terminate the app, check your network connection, and try again.", preferredStyle: UIAlertControllerStyle.Alert)
             let okayAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
             alert.addAction(okayAction)
             presentViewController(alert, animated: true) { () -> Void in }
@@ -1311,7 +1319,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     
-    // MARK: Outlets and Connections
+    // MARK:- Outlets and Connections
     @IBOutlet weak var winnerPickerTextField: UITextField!
     @IBOutlet weak var midwestFinalTextField: UITextField!
     @IBOutlet weak var westFinalTextField: UITextField!

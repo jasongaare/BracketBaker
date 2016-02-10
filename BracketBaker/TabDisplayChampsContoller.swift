@@ -52,7 +52,6 @@ class TabDisplayChampsContoller: UIViewController {
     @IBOutlet weak var Final2Label: UILabel!
     @IBOutlet weak var ChampLabel: UILabel!
     
-    
     @IBOutlet weak var myBracketDisplay: TabDisplayChamps!
     
 }

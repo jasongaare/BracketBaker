@@ -34,11 +34,6 @@ class TabDisplayRegion: UIView {
         // This makes some settings things
         let context = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(context, 1.5)
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        let components: [CGFloat] = [0.0, 0.0, 1.0, 1.0]
-//        let color = CGColorCreate(colorSpace, components)
-//        CGContextSetStrokeColorWithColor(context, color)
-        
         
         // Lines for Matchup #1
         let team1Left = CGPointMake(team1.frame.origin.x, CGRectGetMaxY(team1.frame) + spacer)
@@ -89,7 +84,6 @@ class TabDisplayRegion: UIView {
         
         // Lines for Matchup #5
         
-        // Now we want the "left" to be equal to the right of the previous column of teams
         let team9Left = CGPointMake(CGRectGetMaxX(team1.frame), CGRectGetMaxY(team9.frame) + spacer)
         let team9Right = CGPointMake(CGRectGetMaxX(team9.frame), CGRectGetMaxY(team9.frame) + spacer)
         let team10Right = CGPointMake(CGRectGetMaxX(team10.frame), CGRectGetMaxY(team10.frame) + spacer)
@@ -102,7 +96,6 @@ class TabDisplayRegion: UIView {
         
         // Lines for Matchup #6
         
-        // Now we want the "left" to be equal to the right of the previous column of teams
         let team11Left = CGPointMake(CGRectGetMaxX(team5.frame), CGRectGetMaxY(team11.frame) + spacer)
         let team11Right = CGPointMake(CGRectGetMaxX(team11.frame), CGRectGetMaxY(team11.frame) + spacer)
         let team12Right = CGPointMake(CGRectGetMaxX(team12.frame), CGRectGetMaxY(team12.frame) + spacer)
@@ -115,7 +108,6 @@ class TabDisplayRegion: UIView {
         
         // Lines for Matchup #7
         
-        // Now we want the "left" to be equal to the right of the previous column of teams
         let team13Left = CGPointMake(CGRectGetMaxX(team10.frame), CGRectGetMaxY(team13.frame) + spacer)
         let team13Right = CGPointMake(CGRectGetMaxX(team13.frame), CGRectGetMaxY(team13.frame) + spacer)
         let team14Right = CGPointMake(CGRectGetMaxX(team14.frame), CGRectGetMaxY(team14.frame) + spacer)
@@ -126,7 +118,7 @@ class TabDisplayRegion: UIView {
         CGContextAddLineToPoint(context, team14Right.x, team14Right.y)
         CGContextAddLineToPoint(context, team14Left.x, team14Left.y)
         
-        // Draw line under winner
+        // Line under winner
         
         let team15Left = CGPointMake(CGRectGetMaxX(team13.frame), CGRectGetMaxY(team15.frame) + spacer)
         let team15Right = CGPointMake(CGRectGetMaxX(team15.frame),CGRectGetMaxY(team15.frame) + spacer)

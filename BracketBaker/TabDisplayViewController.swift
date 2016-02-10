@@ -40,9 +40,6 @@ class TabDisplayViewController: UITabBarController, UIGestureRecognizerDelegate 
             alert.preferredAction = contAction
             presentViewController(alert, animated: true) { () -> Void in }
         }
- 
-
-        
     }
     
     // Disable the back swipe to get to the customize page.

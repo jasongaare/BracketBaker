@@ -18,6 +18,7 @@
 		1B30B7EA1C15EAF6008C0657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B30B7E81C15EAF6008C0657 /* LaunchScreen.storyboard */; };
 		1B30B7F51C15EAF7008C0657 /* BracketBakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7F41C15EAF7008C0657 /* BracketBakerTests.swift */; };
 		1B30B8001C15EAF7008C0657 /* BracketBakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */; };
+		1B42AB7D1C6BE047007F8826 /* PickerOnlyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42AB7C1C6BE047007F8826 /* PickerOnlyTextField.swift */; };
 		1B5BB7171C498E3600E0D315 /* TapDisplayChamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */; };
 		1B5BB7191C499FE600E0D315 /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB7181C499FE600E0D315 /* CustomizeView.swift */; };
 		1B5F87111C692D260052B75A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5F870F1C692D260052B75A /* Fabric.framework */; };
@@ -67,6 +68,7 @@
 		1B30B7FB1C15EAF7008C0657 /* BracketBakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BracketBakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B30B7FF1C15EAF7008C0657 /* BracketBakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketBakerUITests.swift; sourceTree = "<group>"; };
 		1B30B8011C15EAF7008C0657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B42AB7C1C6BE047007F8826 /* PickerOnlyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerOnlyTextField.swift; sourceTree = "<group>"; };
 		1B5BB7161C498E3600E0D315 /* TapDisplayChamps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapDisplayChamps.swift; sourceTree = "<group>"; };
 		1B5BB7181C499FE600E0D315 /* CustomizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
 		1B5F870F1C692D260052B75A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1B04E85E1C4585E800A64085 /* Data Models */,
 				1B04E85D1C4585C900A64085 /* TabDisplay */,
 				1B30B7DF1C15EAF6008C0657 /* AppDelegate.swift */,
+				1B42AB7C1C6BE047007F8826 /* PickerOnlyTextField.swift */,
 				1BAA310A1C3702FE0063E2C3 /* BracketSolver.swift */,
 				1B5BB7181C499FE600E0D315 /* CustomizeView.swift */,
 				1B30B7E11C15EAF6008C0657 /* CustomizeViewController.swift */,
@@ -355,6 +358,7 @@
 				1BC68FFC1C446C9200BD9478 /* TabDisplaySouthContoller.swift in Sources */,
 				1BC68FF61C4468D000BD9478 /* TabDisplayWestController.swift in Sources */,
 				1B04E8661C46C09900A64085 /* TabDisplayRegion.swift in Sources */,
+				1B42AB7D1C6BE047007F8826 /* PickerOnlyTextField.swift in Sources */,
 				1BBD5FCE1C517F7100265CB3 /* NavBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Gaare (WMRN875AGJ)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -517,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Gaare (WMRN875AGJ)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
