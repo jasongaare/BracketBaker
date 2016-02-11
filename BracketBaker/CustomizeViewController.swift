@@ -396,6 +396,7 @@ class CustomizeViewController: UIViewController, UIPickerViewDataSource, UIPicke
             rawDataString = NSString(data: rawBracketData, encoding: NSUTF8StringEncoding)! as String
         } catch {
             print(error)
+            return false
         }
         
         // If the saved data and online data are different
